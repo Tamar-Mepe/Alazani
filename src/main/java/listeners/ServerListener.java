@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import javax.servlet.http.HttpSessionBindingEvent;
+import java.sql.SQLException;
 
 @WebListener()
 public class ServerListener implements ServletContextListener,
@@ -28,7 +29,13 @@ public class ServerListener implements ServletContextListener,
          You can initialize servlet context related data here.
       */
       // TODO: Database Connection
-        DB db = new MySQL();
+        try {
+            DB db = new MySQL();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

@@ -6,23 +6,24 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySQL implements DB {
-    private Connection conn;
-    @Override
-    public String getAll(String tableName) {
-        return "SELECT * FROM " + tableName + ";";
-    }
+    private Connection connection;
 
-    @Override
-    public Connection connectToDatabase() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection currCon = DriverManager.getConnection(Environment.URL,Environment.USER,Environment.PASSWORD);
-        Statement useStatement =  conn.createStatement();
-        useStatement.execute( "USE "  + Environment.DATABASE +";");
-        return currCon;
-    }
 
     public MySQL() throws SQLException, ClassNotFoundException {
-        conn = connectToDatabase();
+        connectToDatabase();
+    }
+
+    private void connectToDatabase() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        connection = DriverManager.getConnection(Environment.URL, Environment.USER, Environment.PASSWORD);
+        Statement useStatement = connection.createStatement();
+        useStatement.execute("USE " + Environment.DATABASE);
+    }
+
+
+    @Override
+    public String getAll(String tableName) {
+        return "SELECT * FROM " + tableName;
     }
 
 }
