@@ -1,6 +1,7 @@
 package listeners;
 
 import models.db.DB;
+import models.db.Migration;
 import models.db.MySQL;
 
 import javax.servlet.ServletContextEvent;
@@ -31,9 +32,8 @@ public class ServerListener implements ServletContextListener,
       // TODO: Database Connection
         try {
             DB db = new MySQL();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            Migration.createTables(db);
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
