@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class Product extends BaseModel {
     public static final String TABLE_NAME = "products";
-    public static Map<String, String[]> FIELDS = new HashMap<String, String[]>();
+    public static Map<String, Object> FIELDS = new HashMap<>();
 
     static {
-        FIELDS.put("id", new String[]{"int"});
-        FIELDS.put("name", new String[]{"varchar(32)"});
-        FIELDS.put("description", new String[]{"varchar(256)"});
+        FIELDS.put("id", new String[]{"int", "primary key"});
+        FIELDS.put("name", "varchar(32)");
+        FIELDS.put("description", "varchar(256)");
     }
 }

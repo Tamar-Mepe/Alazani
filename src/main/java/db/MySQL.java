@@ -1,5 +1,6 @@
 package db;
 
+import javax.crypto.spec.PSource;
 import java.sql.*;
 import java.util.Map;
 
@@ -30,13 +31,19 @@ public class MySQL implements DB {
     }
 
     @Override
-    public String getCreateTable(String tableName, Map<String, String[]> fields) {
+    public String getCreateTable(String tableName, Map<String, Object> fields) {
         StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + "(\n");
         for (String name : fields.keySet()) {
+            // If Object is Iterable
             StringBuilder constraintString = new StringBuilder();
-            for (String constraint: fields.get(name))
-                constraintString.append(" ").append(constraint);
-            query.append(name).append(" ").append(constraintString).append(",\n");
+            Object obj = fields.get(name);
+            if (obj instanceof  String []) {
+                for (String constraint : (String[]) obj)
+                    constraintString.append(" ").append(constraint);
+            } else if (obj instanceof String) {
+                constraintString = new StringBuilder((String) obj);
+            }
+            query.append(name).append(" ").append(constraintString.toString()).append(",\n");
         }
         query.deleteCharAt(query.length() - 2);
         query.append(");");
@@ -56,12 +63,13 @@ public class MySQL implements DB {
     }
 
     @Override
-    public void createTable(String tableName, Map<String, String[]> fields) throws SQLException {
+    public void createTable(String tableName, Map<String, Object> fields) throws SQLException {
         // Drop existing table
         execute("DROP TABLE IF EXISTS " + tableName);
         // Create new Table
         String query = getCreateTable(tableName, fields);
         execute(query);
+
     }
 
 
