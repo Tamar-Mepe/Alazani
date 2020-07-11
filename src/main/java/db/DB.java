@@ -12,8 +12,12 @@ public interface DB {
 
     String getCreateDatabase();
 
+    String getInsertInto(String tableName, Map<String, String> fields);
+
     // Execute queries
     void createTable(String tableName, Map<String, Object> fields) throws SQLException;
 
     void createDatabase() throws SQLException;
+
+    void insertInto(String tableName, Map<String, String> fields) throws SQLException;
 }

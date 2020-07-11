@@ -30,7 +30,7 @@ public class ServerListener implements ServletContextListener,
          You can initialize servlet context related data here.
       */
         try {
-            DB db = new MySQL();
+            DB db = MySQL.getInstance();
             Migration.createDatabase(db);
             Migration.createTables(db);
         } catch (SQLException | ClassNotFoundException e) {
