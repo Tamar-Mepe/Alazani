@@ -29,9 +29,9 @@ public class ServerListener implements ServletContextListener,
          initialized(when the Web application is deployed). 
          You can initialize servlet context related data here.
       */
-      // TODO: Database Connection
         try {
             DB db = new MySQL();
+            Migration.createDatabase(db);
             Migration.createTables(db);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

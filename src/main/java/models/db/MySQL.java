@@ -24,22 +24,31 @@ public class MySQL implements DB {
         statement.execute();
     }
 
+
+    // Queries
     @Override
-    public String getAll(String tableName) {
-        return "SELECT * FROM " + tableName;
+    public String getCreateDatabase() {
+        return "CREATE DATABASE " + Environment.DATABASE;
     }
 
     @Override
     public String getCreateTable(String tableName, Map<String, String> fields) {
-        StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + "(");
+        StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + "(\n");
         for (String name : fields.keySet()) {
-            query.append(name).append(" ").append(fields.get(name)).append(", ");
+            query.append(name).append(" ").append(fields.get(name)).append(",\n");
         }
-        query.deleteCharAt(query.length() - 1);
-        query.deleteCharAt(query.length() - 1);
+        query.deleteCharAt(query.length() - 2);
+        //  query.deleteCharAt(query.length() - 1);
         query.append(");");
         System.out.println(query.toString());
         return query.toString();
+    }
+
+    // Query Executions
+    @Override
+    public void createDatabase() throws SQLException {
+        String query = getCreateDatabase();
+        execute(query);
     }
 
     @Override
@@ -50,5 +59,6 @@ public class MySQL implements DB {
         String query = getCreateTable(tableName, fields);
         execute(query);
     }
+
 
 }
