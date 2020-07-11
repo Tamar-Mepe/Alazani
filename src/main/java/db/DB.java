@@ -1,4 +1,4 @@
-package models.db;
+package db;
 
 
 import java.sql.SQLException;
@@ -8,12 +8,12 @@ public interface DB {
     void execute(String query) throws SQLException;
 
     // Queries
-    String getCreateTable(String tableName, Map<String, String> fields);
+    String getCreateTable(String tableName, Map<String, String[]> fields);
 
     String getCreateDatabase();
 
     // Execute queries
-    void createTable(String tableName, Map<String, String> fields) throws SQLException;
+    void createTable(String tableName, Map<String, String[]> fields) throws SQLException;
 
     void createDatabase() throws SQLException;
 }

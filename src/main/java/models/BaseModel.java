@@ -8,9 +8,9 @@ public class BaseModel {
     public static final String TABLE_NAME = "table";
 
     // Model Table Fields
-    public static Map<String, String> FIELDS = new HashMap<>();
+    public static Map<String, String[]> FIELDS = new HashMap<>();
 
     static {
-        FIELDS.put("id", "int");
+        FIELDS.put("id", new String[]{"int"});
     }
 }

@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class User extends BaseModel {
     public static final String TABLE_NAME = "users";
-    public static Map<String, String> FIELDS = new HashMap<>();
+    public static Map<String, String[]> FIELDS = new HashMap<String, String[]>();
 
     static {
-        FIELDS.put("id", "int");
-        FIELDS.put("first_name", "varchar(30)");
-        FIELDS.put("last_name", "varchar(30)");
+        FIELDS.put("id", new String[]{"int", "primary key"});
+        FIELDS.put("first_name", new String[]{"varchar(30)"});
+        FIELDS.put("last_name", new String[]{"varchar(30)"});
     }
 
     // Instance Variables

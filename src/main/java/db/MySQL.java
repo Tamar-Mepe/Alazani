@@ -1,4 +1,4 @@
-package models.db;
+package db;
 
 import java.sql.*;
 import java.util.Map;
@@ -30,10 +30,13 @@ public class MySQL implements DB {
     }
 
     @Override
-    public String getCreateTable(String tableName, Map<String, String> fields) {
+    public String getCreateTable(String tableName, Map<String, String[]> fields) {
         StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + "(\n");
         for (String name : fields.keySet()) {
-            query.append(name).append(" ").append(fields.get(name)).append(",\n");
+            StringBuilder constraintString = new StringBuilder();
+            for (String constraint: fields.get(name))
+                constraintString.append(" ").append(constraint);
+            query.append(name).append(" ").append(constraintString).append(",\n");
         }
         query.deleteCharAt(query.length() - 2);
         query.append(");");
@@ -53,7 +56,7 @@ public class MySQL implements DB {
     }
 
     @Override
-    public void createTable(String tableName, Map<String, String> fields) throws SQLException {
+    public void createTable(String tableName, Map<String, String[]> fields) throws SQLException {
         // Drop existing table
         execute("DROP TABLE IF EXISTS " + tableName);
         // Create new Table

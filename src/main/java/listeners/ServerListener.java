@@ -1,8 +1,8 @@
 package listeners;
 
-import models.db.DB;
-import models.db.Migration;
-import models.db.MySQL;
+import db.DB;
+import db.Migration;
+import db.MySQL;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
