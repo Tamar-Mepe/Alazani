@@ -1,7 +1,7 @@
 package models;
 
-import java.sql.SQLException;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class User extends BaseModel {
     public static final String TABLE_NAME = "users";

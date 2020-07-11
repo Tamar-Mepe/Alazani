@@ -1,9 +1,9 @@
 package db;
 
-import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
-
-import javax.crypto.spec.PSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class MySQL implements DB {

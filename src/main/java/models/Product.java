@@ -1,12 +1,7 @@
 package models;
 
-import sun.reflect.generics.tree.Tree;
-
-import javax.swing.tree.TreeNode;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class Product extends BaseModel {
     public static final String TABLE_NAME = "products";
