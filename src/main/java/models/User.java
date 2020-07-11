@@ -12,4 +12,13 @@ public class User extends BaseModel {
         FIELDS.put("first_name", "varchar(30)");
         FIELDS.put("last_name", "varchar(30)");
     }
+
+    // Instance Variables
+    private String firstName;
+    private String lastName;
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }

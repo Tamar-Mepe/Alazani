@@ -14,8 +14,6 @@ public class MySQL implements DB {
     private void connectToDatabase() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(Environment.URL, Environment.USER, Environment.PASSWORD);
-        Statement useStatement = connection.createStatement();
-        useStatement.execute("USE " + Environment.DATABASE);
     }
 
     @Override
@@ -38,17 +36,20 @@ public class MySQL implements DB {
             query.append(name).append(" ").append(fields.get(name)).append(",\n");
         }
         query.deleteCharAt(query.length() - 2);
-        //  query.deleteCharAt(query.length() - 1);
         query.append(");");
-        System.out.println(query.toString());
         return query.toString();
     }
 
     // Query Executions
     @Override
     public void createDatabase() throws SQLException {
+        // Drop existing database
+        execute("DROP DATABASE IF EXISTS " + Environment.DATABASE);
+        // Create new Database
         String query = getCreateDatabase();
         execute(query);
+        // Use created Database
+        execute("USE " + Environment.DATABASE);
     }
 
     @Override
