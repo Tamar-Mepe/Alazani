@@ -18,13 +18,13 @@
         </header>
         <main>
             <ul class="product-list">
-                <% for (int i = 0; i < 20; i++) { %>
+                <% for (int i = 0; i < 12; i++) { %>
                 <jsp:include page="WEB-INF/single-product.jsp"></jsp:include>
                 <%}%>
             </ul>
             <%--TODO: Pagination--%>
         </main>
-        <%--TODO: Footer--%>
+        <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
     </div>
 </div>
 </body>

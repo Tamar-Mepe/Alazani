@@ -12,6 +12,7 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
 
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet"
