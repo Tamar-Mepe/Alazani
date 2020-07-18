@@ -1,4 +1,4 @@
-<li class="product">
+<div class="product col-md-4">
     <p style="font-size:40px;margin-bottom: 20px;margin-top: 20px;">Product 1</p>
     <div class="product-layout">
         <div>
@@ -14,4 +14,4 @@
             </div>
         </div>
     </div>
-</li>
+</div>

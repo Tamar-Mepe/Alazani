@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="footer-main page-footer font-small blue pt-4">
+<footer class="footer-main page-footer font-small blue pt-4 mt-auto">
 
     <!-- Footer Links -->
     <div class=" container-fluid text-center text-md-left">
@@ -74,7 +74,7 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-mini footer-copyright text-center py-3">© 2020 Copyright:
+    <div class="footer-mini footer-copyright text-center py-3">2020 Copyright:
         <a href="https://mdbootstrap.com/"> Alazani.com</a>
     </div>
     <!-- Copyright -->

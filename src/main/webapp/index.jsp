@@ -17,12 +17,7 @@
             <jsp:include page="WEB-INF/header-bar.jsp"></jsp:include>
         </header>
         <main>
-            <ul class="product-list">
-                <% for (int i = 0; i < 12; i++) { %>
-                <jsp:include page="WEB-INF/single-product.jsp"></jsp:include>
-                <%}%>
-            </ul>
-            <%--TODO: Pagination--%>
+            <jsp:include page="WEB-INF/product-all.jsp"></jsp:include>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
     </div>
