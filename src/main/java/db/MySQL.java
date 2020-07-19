@@ -55,7 +55,7 @@ public class MySQL implements DB {
     }
 
     @Override
-    public String getInsertInto(String tableName, Map<String, String> fields) {
+    public String getInsertInto(String tableName, Map<String, Object> fields) {
         StringBuilder query = new StringBuilder("INSERT INTO " + tableName + " (");
         for (String current : fields.keySet()) {
             query.append(current).append(",");
@@ -103,20 +103,20 @@ public class MySQL implements DB {
     }
 
     @Override
-    public int insertInto(String tableName, Map<String, String> fields) throws SQLException {
+    public int insertInto(String tableName, Map<String, Object> fields) throws SQLException {
         // Create new record
         String query = getInsertInto(tableName, fields);
         return executeInsert(query);
     }
 
     @Override
-    public void updateInfo(String tableName, int id, Map<String, String> fields) throws SQLException {
+    public void updateInfo(String tableName, int id, Map<String, Object> fields) throws SQLException {
         // Modify existing info
         String query = getUpdate(tableName, id, fields);
         execute(query);
     }
 
-    private String getUpdate(String tableName, int id, Map<String, String> fields) {
+    private String getUpdate(String tableName, int id, Map<String, Object> fields) {
         StringBuilder query = new StringBuilder("UPDATE " + tableName + " SET ");
         for (String current : fields.keySet()) {
             query.append(current).append(" = '").append(fields.get(current)).append("',");

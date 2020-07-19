@@ -1,5 +1,7 @@
 package db;
 
+import db.seeder.ProductSeeder;
+import db.seeder.UserSeeder;
 import models.Product;
 import models.User;
 
@@ -13,8 +15,11 @@ public class Migration {
     public static void createTables(DB db) throws SQLException {
         db.createTable(User.TABLE_NAME, User.FIELDS);
         db.createTable(Product.TABLE_NAME, Product.FIELDS);
+    }
 
-        new User("Irakli", "Gabelia").save();
+    public static void createStartingData(DB db){
+        UserSeeder.Seed(db);
+        ProductSeeder.Seed(db);
     }
 
 }

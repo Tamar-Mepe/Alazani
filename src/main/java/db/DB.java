@@ -14,14 +14,14 @@ public interface DB {
 
     String getCreateDatabase();
 
-    String getInsertInto(String tableName, Map<String, String> fields);
+    String getInsertInto(String tableName, Map<String, Object> fields);
 
     // Execute queries
     void createTable(String tableName, Map<String, Object> fields) throws SQLException;
 
     void createDatabase() throws SQLException;
 
-    int insertInto(String tableName, Map<String, String> fields) throws SQLException;
+    int insertInto(String tableName, Map<String, Object> fields) throws SQLException;
 
-    void updateInfo(String tableName, int id, Map<String, String> fields) throws SQLException;
+    void updateInfo(String tableName, int id, Map<String, Object> fields) throws SQLException;
 }

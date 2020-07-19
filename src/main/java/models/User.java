@@ -13,8 +13,6 @@ public class User extends BaseModel {
         FIELDS.put("last_name", "varchar(30)");
     }
 
-    // Instance Variables
-    private int id = -1;
     private String firstName;
     private String lastName;
 
@@ -24,41 +22,22 @@ public class User extends BaseModel {
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public void save() {
-        Map<String, String> userFields = new LinkedHashMap<String, String>() {
-            {
-                put("first_name", firstName);
-                put("last_name", lastName);
-            }
-        };
-
-        // Save fields into table
-        this.id = this.saveIntoTable(userFields);
+        Map<String, Object> field = generateFieldMap();
+        id = this.saveIntoTable(field);
     }
 
-    public boolean update(){
-        Map<String, String> userFields = new LinkedHashMap<String, String>() {
+    public boolean update() {
+        Map<String, Object> field = generateFieldMap();
+        return this.updateTable(id, field);
+    }
+
+    private Map<String, Object> generateFieldMap() {
+        return new LinkedHashMap<String, Object>() {
             {
                 put("first_name", firstName);
                 put("last_name", lastName);
             }
         };
-        return this.updateTable(id, userFields);
     }
 }

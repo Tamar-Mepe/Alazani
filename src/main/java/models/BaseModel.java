@@ -20,6 +20,7 @@ public class BaseModel {
 
     // Instance variables
     private DB db;
+    protected int id = -1;
     private final String table_name;
 
     protected BaseModel(String table_name) {
@@ -31,7 +32,7 @@ public class BaseModel {
         }
     }
 
-    protected int saveIntoTable(Map<String, String> values) {
+    protected int saveIntoTable(Map<String, Object> values) {
         try {
             return this.db.insertInto(this.table_name, values);
         } catch (SQLException e) {
@@ -40,7 +41,7 @@ public class BaseModel {
         return -1;
     }
 
-    protected boolean updateTable(int id, Map<String, String> values) {
+    protected boolean updateTable(int id, Map<String, Object> values) {
         if (id <= 0)
             return false;
 
