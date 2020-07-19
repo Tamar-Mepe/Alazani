@@ -1,10 +1,14 @@
 package models;
 
+import com.mysql.cj.jdbc.exceptions.MySQLStatementCancelledException;
+import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
+import com.mysql.cj.x.protobuf.MysqlxSql;
 import db.DB;
 import db.MySQL;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BaseModel {
@@ -35,6 +39,11 @@ public class BaseModel {
     protected static Map<String, String> getOneRecord(String tableName, int id) throws SQLException, ClassNotFoundException {
         DB db = MySQL.getInstance();
         return db.get(tableName, id);
+    }
+
+    protected static List<Map<String, String>> getAllRecords(String tableName) throws SQLException, ClassNotFoundException {
+        DB db = MySQL.getInstance();
+        return db.getAll(tableName);
     }
 
     protected int saveIntoTable(Map<String, Object> values) {

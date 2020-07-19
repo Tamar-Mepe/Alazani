@@ -1,7 +1,9 @@
 package models;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User extends BaseModel {
@@ -48,16 +50,31 @@ public class User extends BaseModel {
         this.lastName = lastName;
     }
 
-    public static User get(int id){
+    public static User get(int id) {
         try {
             Map<String, String> fields = BaseModel.getOneRecord(TABLE_NAME, id);
-
             User user = new User(fields.get("first_name"), fields.get("last_name"));
             user.setId(Integer.parseInt(fields.get("id")));
             return user;
         } catch (SQLException | ClassNotFoundException e) {
             return null;
         }
+    }
+
+    public static List<User> getAll() {
+        List <User> allEntries = new ArrayList<>();
+
+        try {
+            List<Map<String, String>> records = BaseModel.getAllRecords(TABLE_NAME);
+            for(Map<String, String> fields : records){
+                User user = new User(fields.get("first_name"), fields.get("last_name"));
+                user.setId(Integer.parseInt(fields.get("id")));
+                allEntries.add(user);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return allEntries;
     }
 
     public void save() {

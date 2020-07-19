@@ -1,6 +1,7 @@
 package db;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -162,7 +163,20 @@ public class MySQL implements DB {
 
     @Override
     public List<Map<String, String>> getAll(String tableName) throws SQLException {
-        return null;
+        List<Map<String, String>> answer = new ArrayList<>();
+        String getAllQuery = getAllQuery(tableName);
+        ResultSet resultSet = executeWithResultSet(getAllQuery);
+        ResultSetMetaData rsmd = resultSet.getMetaData();
+        int columnCount = rsmd.getColumnCount();
+        while (resultSet.next()) {
+            Map<String, String> curr = new HashMap<>();
+            for (int i = 1; i <= columnCount; i++) {
+                String colName = rsmd.getColumnName(i);
+                curr.put(colName, resultSet.getString(colName));
+            }
+            answer.add(curr);
+        }
+        return answer;
     }
 
     @Override
