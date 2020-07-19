@@ -1,6 +1,8 @@
 package db;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MySQL implements DB {
@@ -50,12 +52,12 @@ public class MySQL implements DB {
 
     // Queries
     @Override
-    public String getCreateDatabase() {
+    public String creteDatabaseQuery() {
         return "CREATE DATABASE " + Environment.DATABASE;
     }
 
     @Override
-    public String getInsertInto(String tableName, Map<String, Object> fields) {
+    public String insertQuery(String tableName, Map<String, Object> fields) {
         StringBuilder query = new StringBuilder("INSERT INTO " + tableName + " (");
         for (String current : fields.keySet()) {
             query.append(current).append(",");
@@ -71,7 +73,7 @@ public class MySQL implements DB {
     }
 
     @Override
-    public String getCreateTable(String tableName, Map<String, Object> fields) {
+    public String createTableQuery(String tableName, Map<String, Object> fields) {
         StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + "(\n");
         for (String name : fields.keySet()) {
             // If Object is Iterable
@@ -90,33 +92,8 @@ public class MySQL implements DB {
         return query.toString();
     }
 
-    // Query Executions
     @Override
-    public void createDatabase() throws SQLException {
-        // Drop existing database
-        execute("DROP DATABASE IF EXISTS " + Environment.DATABASE);
-        // Create new Database
-        String query = getCreateDatabase();
-        execute(query);
-        // Use created Database
-        execute("USE " + Environment.DATABASE);
-    }
-
-    @Override
-    public int insertInto(String tableName, Map<String, Object> fields) throws SQLException {
-        // Create new record
-        String query = getInsertInto(tableName, fields);
-        return executeInsert(query);
-    }
-
-    @Override
-    public void updateInfo(String tableName, int id, Map<String, Object> fields) throws SQLException {
-        // Modify existing info
-        String query = getUpdate(tableName, id, fields);
-        execute(query);
-    }
-
-    private String getUpdate(String tableName, int id, Map<String, Object> fields) {
+    public String updateQuery(String tableName, int id, Map<String, Object> fields) {
         StringBuilder query = new StringBuilder("UPDATE " + tableName + " SET ");
         for (String current : fields.keySet()) {
             query.append(current).append(" = '").append(fields.get(current)).append("',");
@@ -127,11 +104,73 @@ public class MySQL implements DB {
     }
 
     @Override
+    public String getAllQuery(String tableName) {
+        return "SELECT * from " + tableName + ";";
+    }
+
+    @Override
+    public String getQuery(String tableName, int id) {
+        return "SELECT * from " + tableName + " WHERE id = " + id + ";";
+    }
+
+    // Query Executions
+    @Override
+    public void createDatabase() throws SQLException {
+        // Drop existing database
+        execute("DROP DATABASE IF EXISTS " + Environment.DATABASE);
+        // Create new Database
+        String query = creteDatabaseQuery();
+        execute(query);
+        // Use created Database
+        execute("USE " + Environment.DATABASE);
+    }
+
+    @Override
+    public int insert(String tableName, Map<String, Object> fields) throws SQLException {
+        // Create new record
+        String query = insertQuery(tableName, fields);
+        return executeInsert(query);
+    }
+
+    @Override
+    public void update(String tableName, int id, Map<String, Object> fields) throws SQLException {
+        // Modify existing info
+        String query = updateQuery(tableName, id, fields);
+        execute(query);
+    }
+
+    @Override
+    public Map<String, String> get(String tableName, int id) throws SQLException {
+        Map<String, String> answer = new HashMap<>();
+        String getQuery = getQuery(tableName, id);
+        ResultSet rs = executeWithResultSet(getQuery);
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int columnCount = rsmd.getColumnCount();
+        while (rs.next()) {
+            for (int i = 1; i <= columnCount; i++) {
+                String colName = rsmd.getColumnName(i);
+                answer.put(colName, rs.getString(colName));
+            }
+        }
+        return answer;
+    }
+
+    private ResultSet executeWithResultSet(String query) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(query);
+        return statement.executeQuery(query);
+    }
+
+    @Override
+    public List<Map<String, String>> getAll(String tableName) throws SQLException {
+        return null;
+    }
+
+    @Override
     public void createTable(String tableName, Map<String, Object> fields) throws SQLException {
         // Drop existing table
         execute("DROP TABLE IF EXISTS " + tableName);
         // Create new Table
-        String query = getCreateTable(tableName, fields);
+        String query = createTableQuery(tableName, fields);
         execute(query);
     }
 

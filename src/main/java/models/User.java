@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ public class User extends BaseModel {
         FIELDS.put("last_name", "varchar(30)");
     }
 
+    private int id;
     private String firstName;
     private String lastName;
 
@@ -20,6 +22,42 @@ public class User extends BaseModel {
         super(User.TABLE_NAME);
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public static User get(int id){
+        try {
+            Map<String, String> fields = BaseModel.getOneRecord(TABLE_NAME, id);
+
+            User user = new User(fields.get("first_name"), fields.get("last_name"));
+            user.setId(Integer.parseInt(fields.get("id")));
+            return user;
+        } catch (SQLException | ClassNotFoundException e) {
+            return null;
+        }
     }
 
     public void save() {

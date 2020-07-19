@@ -2,6 +2,7 @@ package db;
 
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 public interface DB {
@@ -10,18 +11,28 @@ public interface DB {
     int executeInsert(String query) throws SQLException;
 
     // Queries
-    String getCreateTable(String tableName, Map<String, Object> fields);
+    String createTableQuery(String tableName, Map<String, Object> fields);
 
-    String getCreateDatabase();
+    String creteDatabaseQuery();
 
-    String getInsertInto(String tableName, Map<String, Object> fields);
+    String insertQuery(String tableName, Map<String, Object> fields);
+
+    String updateQuery(String tableName, int id, Map<String, Object> fields);
+
+    String getAllQuery(String tableName);
+
+    String getQuery(String tableName, int id);
 
     // Execute queries
     void createTable(String tableName, Map<String, Object> fields) throws SQLException;
 
     void createDatabase() throws SQLException;
 
-    int insertInto(String tableName, Map<String, Object> fields) throws SQLException;
+    int insert(String tableName, Map<String, Object> fields) throws SQLException;
 
-    void updateInfo(String tableName, int id, Map<String, Object> fields) throws SQLException;
+    void update(String tableName, int id, Map<String, Object> fields) throws SQLException;
+
+    Map<String, String> get(String tableName, int id) throws SQLException;
+
+    List<Map<String, String>> getAll(String tableName) throws SQLException;
 }

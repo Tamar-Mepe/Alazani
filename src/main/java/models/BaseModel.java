@@ -32,9 +32,14 @@ public class BaseModel {
         }
     }
 
+    protected static Map<String, String> getOneRecord(String tableName, int id) throws SQLException, ClassNotFoundException {
+        DB db = MySQL.getInstance();
+        return db.get(tableName, id);
+    }
+
     protected int saveIntoTable(Map<String, Object> values) {
         try {
-            return this.db.insertInto(this.table_name, values);
+            return this.db.insert(this.table_name, values);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -46,7 +51,7 @@ public class BaseModel {
             return false;
 
         try {
-            this.db.updateInfo(this.table_name, id, values);
+            this.db.update(this.table_name, id, values);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
