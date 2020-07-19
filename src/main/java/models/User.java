@@ -14,12 +14,29 @@ public class User extends BaseModel {
     }
 
     // Instance Variables
+    private int id = -1;
     private String firstName;
     private String lastName;
 
     public User(String firstName, String lastName) {
         super(User.TABLE_NAME);
         this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -32,6 +49,16 @@ public class User extends BaseModel {
         };
 
         // Save fields into table
-        this.saveIntoTable(userFields);
+        this.id = this.saveIntoTable(userFields);
+    }
+
+    public boolean update(){
+        Map<String, String> userFields = new LinkedHashMap<String, String>() {
+            {
+                put("first_name", firstName);
+                put("last_name", lastName);
+            }
+        };
+        return this.updateTable(id, userFields);
     }
 }

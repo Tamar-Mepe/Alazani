@@ -1,9 +1,6 @@
 package db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Map;
 
 public class MySQL implements DB {
@@ -31,6 +28,23 @@ public class MySQL implements DB {
     public void execute(String query) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(query);
         statement.execute();
+    }
+
+    @Override
+    public int executeInsert(String query) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        int affectedRows = statement.executeUpdate();
+
+        if (affectedRows == 0) {
+            throw new SQLException("Creating user failed, no rows affected.");
+        }
+
+        try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+            if (generatedKeys.next())
+                return generatedKeys.getInt(1);
+            else
+                throw new SQLException("Creating user failed, no ID obtained.");
+        }
     }
 
 
@@ -89,10 +103,27 @@ public class MySQL implements DB {
     }
 
     @Override
-    public void insertInto(String tableName, Map<String, String> fields) throws SQLException {
+    public int insertInto(String tableName, Map<String, String> fields) throws SQLException {
         // Create new record
         String query = getInsertInto(tableName, fields);
+        return executeInsert(query);
+    }
+
+    @Override
+    public void updateInfo(String tableName, int id, Map<String, String> fields) throws SQLException {
+        // Modify existing info
+        String query = getUpdate(tableName, id, fields);
         execute(query);
+    }
+
+    private String getUpdate(String tableName, int id, Map<String, String> fields) {
+        StringBuilder query = new StringBuilder("UPDATE " + tableName + " SET ");
+        for (String current : fields.keySet()) {
+            query.append(current).append(" = '").append(fields.get(current)).append("',");
+        }
+        query.deleteCharAt(query.length() - 1);
+        query.append(" WHERE id = ").append(id).append(";");
+        return query.toString();
     }
 
     @Override
@@ -103,6 +134,5 @@ public class MySQL implements DB {
         String query = getCreateTable(tableName, fields);
         execute(query);
     }
-
 
 }

@@ -7,6 +7,8 @@ import java.util.Map;
 public interface DB {
     void execute(String query) throws SQLException;
 
+    int executeInsert(String query) throws SQLException;
+
     // Queries
     String getCreateTable(String tableName, Map<String, Object> fields);
 
@@ -19,5 +21,7 @@ public interface DB {
 
     void createDatabase() throws SQLException;
 
-    void insertInto(String tableName, Map<String, String> fields) throws SQLException;
+    int insertInto(String tableName, Map<String, String> fields) throws SQLException;
+
+    void updateInfo(String tableName, int id, Map<String, String> fields) throws SQLException;
 }

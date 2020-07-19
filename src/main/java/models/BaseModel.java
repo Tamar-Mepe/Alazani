@@ -22,20 +22,35 @@ public class BaseModel {
     private DB db;
     private final String table_name;
 
-    public BaseModel(String table_name) {
+    protected BaseModel(String table_name) {
         this.table_name = table_name;
         try {
             db = MySQL.getInstance();
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
-    protected void saveIntoTable(Map<String, String> values) {
-        try {
-            this.db.insertInto(this.table_name, values);
-        } catch (SQLException throwable) {
+        } catch (SQLException | ClassNotFoundException throwable) {
             throwable.printStackTrace();
         }
     }
+
+    protected int saveIntoTable(Map<String, String> values) {
+        try {
+            return this.db.insertInto(this.table_name, values);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    protected boolean updateTable(int id, Map<String, String> values) {
+        if (id <= 0)
+            return false;
+
+        try {
+            this.db.updateInfo(this.table_name, id, values);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
