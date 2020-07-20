@@ -16,7 +16,7 @@
         <header>
             <jsp:include page="WEB-INF/header-bar.jsp"></jsp:include>
         </header>
-        <main>
+        <main class="mb-5">
             <jsp:include page="WEB-INF/product-all.jsp"></jsp:include>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>

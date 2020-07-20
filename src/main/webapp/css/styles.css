@@ -1,15 +1,10 @@
-.product{
+.product {
     border-style: ridge;
 
 }
+
 .product-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    list-style-type: none;
-}
-
-.header-bar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     list-style-type: none;
 }
