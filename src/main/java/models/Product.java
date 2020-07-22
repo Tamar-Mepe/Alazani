@@ -1,5 +1,7 @@
 package models;
 
+import db.Fields;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -8,12 +10,12 @@ public class Product extends BaseModel {
     public static Map<String, Object> FIELDS = new LinkedHashMap<>();
 
     static {
-        FIELDS.put("id", new String[]{"int", "primary key", "AUTO_INCREMENT"});
-        FIELDS.put("name", "varchar(32)");
-        FIELDS.put("description", "varchar(256)");
-        FIELDS.put("price", "double");
-        FIELDS.put("category_id", "int");
-        FIELDS.put("quantity", "int");
+        FIELDS.put("id", Fields.ID);
+        FIELDS.put("name", Fields.varchar(30));
+        FIELDS.put("description", Fields.varchar(250));
+        FIELDS.put("price", Fields.DOUBLE);
+        FIELDS.put("category_id", Fields.INT);
+        FIELDS.put("quantity", Fields.INT);
     }
 
     private String name;
@@ -32,17 +34,7 @@ public class Product extends BaseModel {
     }
 
 
-    public void save() {
-        Map<String, Object> field = generateFieldMap();
-        id = this.saveIntoTable(field);
-    }
-
-    public boolean update() {
-        Map<String, Object> field = generateFieldMap();
-        return this.updateTable(id, field);
-    }
-
-    private Map<String, Object> generateFieldMap() {
+    protected Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
                 put("name", name);

@@ -1,19 +1,14 @@
 package models;
 
-import com.mysql.cj.jdbc.exceptions.MySQLStatementCancelledException;
-import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
-import com.mysql.cj.x.protobuf.MysqlxSql;
 import db.DB;
 import db.MySQL;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BaseModel {
     // Model Table Name
-     public static final String TABLE_NAME = "table";
+    public static final String TABLE_NAME = "table";
 
     // Model Table Fields
     public static Map<String, String[]> FIELDS = new HashMap<>();
@@ -68,4 +63,55 @@ public class BaseModel {
         }
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    //  Adding to Database
+    protected Map<String, Object> JavaToDB() {
+        // Translate java instance variables to Database fields
+        return new LinkedHashMap<String, Object>() {
+            {
+                // put("db_field_name", java_var);
+            }
+        };
+    }
+
+    public void save() {
+        Map<String, Object> field = JavaToDB();
+        id = this.saveIntoTable(field);
+    }
+
+    public boolean update() {
+        Map<String, Object> field = JavaToDB();
+        return this.updateTable(id, field);
+    }
+
+    // Getting From Database
+    private static Object DBToJava(Map<String, String> fields) {
+        return null;
+    }
+
+    protected static Object get(int id) {
+        try {
+            Map<String, String> fields = BaseModel.getOneRecord(TABLE_NAME, id);
+            return DBToJava(fields);
+        } catch (SQLException | ClassNotFoundException e) {
+            return null;
+        }
+    }
+
+    public static List<Object> getAll() {
+        List<Object> allEntries = new ArrayList<>();
+
+        try {
+            List<Map<String, String>> records = BaseModel.getAllRecords(TABLE_NAME);
+            for (Map<String, String> fields : records) {
+                allEntries.add(DBToJava(fields));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return allEntries;
+    }
 }
