@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
     private DB db;
+
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
         db = MySQL.getInstance();
-        Migration.createDatabase(db);
         Migration.createTables(db);
     }
 //    public Product(String name, String description, double price, int category_id, int quantity, int user_id)
@@ -29,10 +29,10 @@ class ProductTest {
     @Test
     void get() throws SQLException {
         // Save To DB
-        Product product = new Product("Bu", "fav predator", 100,-1,3,-1);
+        Product product = new Product("Bu", "fav predator", 100, -1, 3, -1);
         product.save();
         int saved_id = product.getId();
-        User new_user =  User.get(saved_id);
+        User new_user = User.get(saved_id);
 
 //        assertEquals(new_user.getId(), saved_id);
 //        assertEquals(new_user.getFirstName(), user.getFirstName());

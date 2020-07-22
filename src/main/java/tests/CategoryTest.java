@@ -22,7 +22,6 @@ class CategoryTest {
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
         db = MySQL.getInstance();
-        Migration.createDatabase(db);
         Migration.createTables(db);
     }
 
