@@ -1,5 +1,6 @@
 package db;
 
+import db.seeder.CategorySeeder;
 import db.seeder.ProductSeeder;
 import db.seeder.UserSeeder;
 import models.Category;
@@ -22,7 +23,7 @@ public class Migration {
     public static void createStartingData(DB db){
         UserSeeder.Seed(db);
         ProductSeeder.Seed(db);
-
+        CategorySeeder.Seed(db);
     }
 
 }

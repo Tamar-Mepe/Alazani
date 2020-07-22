@@ -92,7 +92,7 @@ public class BaseModel {
     }
 
     // Getting From Database
-    public static Map<String, String> get(String table_name, int id) {
+    public static Map<String, String> getGeneric(String table_name, int id) {
         try {
             return BaseModel.getOneRecord(table_name, id);
         } catch (SQLException | ClassNotFoundException e) {
@@ -100,7 +100,7 @@ public class BaseModel {
         }
     }
 
-    public static List<Map<String, String>> getAll(String table_name) {
+    public static List<Map<String, String>> getAllGeneric(String table_name) {
         List<Map<String, String>> allEntries = new ArrayList<>();
 
         try {

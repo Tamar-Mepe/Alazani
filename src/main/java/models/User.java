@@ -46,13 +46,13 @@ public class User extends BaseModel {
     }
 
     public static User get(int id) {
-        Map<String, String> fields = BaseModel.get(TABLE_NAME, id);
+        Map<String, String> fields = BaseModel.getGeneric(TABLE_NAME, id);
         assert fields != null;
         return DBToJava(fields);
     }
 
     public static List<User> getAll() {
-        List<Map<String, String>> fields = BaseModel.getAll(TABLE_NAME);
+        List<Map<String, String>> fields = BaseModel.getAllGeneric(TABLE_NAME);
         List<User> allUsers = new ArrayList<>();
         for (Map<String, String> field : fields) {
             allUsers.add(DBToJava(field));
