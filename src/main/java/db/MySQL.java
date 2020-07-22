@@ -25,6 +25,9 @@ public class MySQL implements DB {
     private void connectToDatabase() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(Environment.URL, Environment.USER, Environment.PASSWORD);
+
+        // Use Database
+        execute("USE " + Environment.DATABASE);
     }
 
     @Override
@@ -187,5 +190,7 @@ public class MySQL implements DB {
         String query = createTableQuery(tableName, fields);
         execute(query);
     }
+
+
 
 }

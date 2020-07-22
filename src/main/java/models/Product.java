@@ -34,7 +34,7 @@ public class Product extends BaseModel {
     }
 
 
-    protected Map<String, Object> JavaToDB() {
+    public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
                 put("name", name);

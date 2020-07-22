@@ -26,7 +26,19 @@ public class User extends BaseModel {
         this.password = password;
     }
 
-    protected Map<String, Object> JavaToDB() {
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
                 put("first_name", firstName);
@@ -36,14 +48,28 @@ public class User extends BaseModel {
         };
     }
 
-    private static Object DBToJava(Map<String, String> fields) {
-        User user = new User(fields.get("first_name"), fields.get("last_name"), fields.get("password"));
+    public static User DBToJava(Map<String, String> fields) {
+        User user = new User(fields.get("first_name"),
+                fields.get("last_name"),
+                fields.get("password"));
         user.setId(Integer.parseInt(fields.get("id")));
+
         return user;
     }
 
-    public static String encrypt(String password) {
-        // ToDo: encrpyt
-        return password;
+    public static User get(int id) {
+        Map<String, String> fields = BaseModel.get(TABLE_NAME, id);
+        assert fields != null;
+        return DBToJava(fields);
     }
+
+    public static List<User> getAll() {
+        List<Map<String, String>> fields = BaseModel.getAll(TABLE_NAME);
+        List<User> allUsers = new ArrayList<>();
+        for (Map<String, String> field : fields) {
+            allUsers.add(DBToJava(field));
+        }
+        return allUsers;
+    }
+
 }

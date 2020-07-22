@@ -22,6 +22,10 @@ public class BaseModel {
     protected int id = -1;
     private final String table_name;
 
+    public int getId() {
+        return id;
+    }
+
     protected BaseModel(String table_name) {
         this.table_name = table_name;
         try {
@@ -68,7 +72,7 @@ public class BaseModel {
     }
 
     //  Adding to Database
-    protected Map<String, Object> JavaToDB() {
+    public Map<String, Object> JavaToDB() {
         // Translate java instance variables to Database fields
         return new LinkedHashMap<String, Object>() {
             {
@@ -88,27 +92,20 @@ public class BaseModel {
     }
 
     // Getting From Database
-    private static Object DBToJava(Map<String, String> fields) {
-        return null;
-    }
-
-    protected static Object get(int id) {
+    public static Map<String, String> get(String table_name, int id) {
         try {
-            Map<String, String> fields = BaseModel.getOneRecord(TABLE_NAME, id);
-            return DBToJava(fields);
+            return BaseModel.getOneRecord(table_name, id);
         } catch (SQLException | ClassNotFoundException e) {
             return null;
         }
     }
 
-    public static List<Object> getAll() {
-        List<Object> allEntries = new ArrayList<>();
+    public static List<Map<String, String>> getAll(String table_name) {
+        List<Map<String, String>> allEntries = new ArrayList<>();
 
         try {
-            List<Map<String, String>> records = BaseModel.getAllRecords(TABLE_NAME);
-            for (Map<String, String> fields : records) {
-                allEntries.add(DBToJava(fields));
-            }
+            List<Map<String, String>> records = BaseModel.getAllRecords(table_name);
+            allEntries.addAll(records);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
