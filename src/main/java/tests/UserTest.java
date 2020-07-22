@@ -48,7 +48,10 @@ class UserTest {
     }
 
     @Test
-    void get(){
+    void get() throws SQLException {
+        Migration.createDatabase(db);
+        Migration.createTables(db);
+
         // Save To DB
         User user = new User("f_test", "l_test", "p_test");
         user.save();
@@ -84,6 +87,38 @@ class UserTest {
             assertEquals(userDB.getPassword(), user.getPassword());
 
         }
+    }
+
+    @Test
+    void update() throws SQLException {
+        Migration.createDatabase(db);
+        Migration.createTables(db);
+
+        // Save To DB
+        User user = new User("f_test", "l_test", "p_test");
+        user.save();
+        int saved_id = user.getId();
+
+        // Update user
+        user.setFirstName("f_changed");
+        user.setLastName("l_changed");
+        user.setPassword("p_changed");
+
+        // Should fail
+        User new_user =  User.get(saved_id);
+        assertEquals(new_user.getId(), saved_id);
+        assertNotEquals(new_user.getFirstName(), user.getFirstName());
+        assertNotEquals(new_user.getLastName(), user.getLastName());
+        assertNotEquals(new_user.getPassword(), user.getPassword());
+
+        // Should Pass after updating
+        user.update();
+        new_user =  User.get(saved_id);
+        assertEquals(new_user.getId(), saved_id);
+        assertEquals(new_user.getFirstName(), user.getFirstName());
+        assertEquals(new_user.getLastName(), user.getLastName());
+        assertEquals(new_user.getPassword(), user.getPassword());
+
     }
 
 }
