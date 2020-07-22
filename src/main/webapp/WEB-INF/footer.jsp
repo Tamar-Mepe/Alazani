@@ -74,8 +74,8 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-mini footer-copyright text-center py-3">2020 Copyright:
-        <a href="https://mdbootstrap.com/"> Alazani.com</a>
+    <div class="footer-mini footer-copyright text-center py-3">
+        <a href="https://mdbootstrap.com/">2020 Copyright</a>
     </div>
     <!-- Copyright -->
 

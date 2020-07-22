@@ -2,7 +2,7 @@
 <html>
 
 <jsp:include page="WEB-INF/head.jsp">
-    <jsp:param name="title" value="Home"/>
+    <jsp:param name="title" value="Alazani"/>
 </jsp:include>
 
 <body>
