@@ -73,12 +73,7 @@ public class BaseModel {
 
     //  Adding to Database
     public Map<String, Object> JavaToDB() {
-        // Translate java instance variables to Database fields
-        return new LinkedHashMap<String, Object>() {
-            {
-                // put("db_field_name", java_var);
-            }
-        };
+        return null;
     }
 
     public void save() {

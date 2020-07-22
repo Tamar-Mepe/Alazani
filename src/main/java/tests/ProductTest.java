@@ -32,7 +32,8 @@ class ProductTest {
         Product product = new Product("Bu", "fav predator", 100, -1, 3, -1);
         product.save();
         int saved_id = product.getId();
-        User new_user = User.get(saved_id);
+//        TODO:
+//        User new_user = User.get(saved_id);
 
 //        assertEquals(new_user.getId(), saved_id);
 //        assertEquals(new_user.getFirstName(), user.getFirstName());

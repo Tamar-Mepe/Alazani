@@ -47,9 +47,9 @@ class CategoryTest {
                 add(new Category("axalikategoria2"));
                 add(new Category("axalikategoria3"));
                 add(new Category("axalikategoria4"));
-
             }
         };
+
         // Save all of them in DB
         for (Category category : allCategories)
             category.save();
@@ -57,7 +57,7 @@ class CategoryTest {
         List<Category> allCategoriesDB = Category.getAll();
         for (int i = 0; i < allCategoriesDB.size(); i++) {
             Category categoryDB = allCategoriesDB.get(i);
-            Category category = allCategoriesDB.get(i);
+            Category category = allCategories.get(i);
             assertEquals(categoryDB.getName(), category.getName());
         }
     }

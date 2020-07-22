@@ -25,9 +25,9 @@ class UserTest {
     void javaToDB() {
         User user = new User("f_test", "l_test", "p_test");
         Map<String, Object> map = user.JavaToDB();
-        assert (map.containsKey("first_name") && map.get("first_name").equals("f_test"));
-        assert (map.containsKey("last_name") && map.get("last_name").equals("l_test"));
-        assert (map.containsKey("password") && map.get("password").equals("p_test"));
+        assertTrue(map.containsKey("first_name") && map.get("first_name").equals("f_test"));
+        assertTrue(map.containsKey("last_name") && map.get("last_name").equals("l_test"));
+        assertTrue(map.containsKey("password") && map.get("password").equals("p_test"));
     }
 
     @Test
@@ -67,6 +67,9 @@ class UserTest {
         List<User> allUsers = new ArrayList<User>() {
             {
                 add(new User("f1", "l1", "p1"));
+                add(new User("f2", "l2", "p2"));
+                add(new User("f3", "l3", "p3"));
+                add(new User("f4", "l4", "p4"));
             }
         };
 
@@ -78,11 +81,9 @@ class UserTest {
         for (int i = 0; i < allUsers.size(); i++) {
             User userDB = allUsersDB.get(i);
             User user = allUsers.get(i);
-
             assertEquals(userDB.getFirstName(), user.getFirstName());
             assertEquals(userDB.getLastName(), user.getLastName());
             assertEquals(userDB.getPassword(), user.getPassword());
-
         }
     }
 

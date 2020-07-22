@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Category extends BaseModel {
-    private  String name;
+    private String name;
     public static final String TABLE_NAME = "categories";
     public static Map<String, Object> FIELDS = new LinkedHashMap<>();
 
@@ -16,6 +16,7 @@ public class Category extends BaseModel {
         FIELDS.put("id", Fields.ID);
         FIELDS.put("name", Fields.varchar(30));
     }
+
     public Category(String name) {
         super(TABLE_NAME);
         this.name = name;
@@ -26,6 +27,7 @@ public class Category extends BaseModel {
         assert fields != null;
         return DBToJava(fields);
     }
+
     public static Category DBToJava(Map<String, String> fields) {
         Category category = new Category(fields.get("name"));
         category.setId(Integer.parseInt(fields.get("id")));

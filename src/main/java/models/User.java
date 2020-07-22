@@ -41,7 +41,6 @@ public class User extends BaseModel {
                 fields.get("last_name"),
                 fields.get("password"));
         user.setId(Integer.parseInt(fields.get("id")));
-
         return user;
     }
 
