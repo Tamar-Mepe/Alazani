@@ -11,10 +11,11 @@ public class Product extends BaseModel {
 
     static {
         FIELDS.put("id", Fields.ID);
+        FIELDS.put("user_id", Fields.INT);
+        FIELDS.put("category_id", Fields.INT);
         FIELDS.put("name", Fields.varchar(30));
         FIELDS.put("description", Fields.varchar(250));
         FIELDS.put("price", Fields.DOUBLE);
-        FIELDS.put("category_id", Fields.INT);
         FIELDS.put("quantity", Fields.INT);
     }
 
@@ -23,13 +24,15 @@ public class Product extends BaseModel {
     private double price;
     private int category_id;
     private int quantity;
+    private int user_id;
 
-    public Product(String name, String description, double price, int category_id, int quantity) {
+    public Product(String name, String description, double price, int category_id, int quantity, int user_id) {
         super(Product.TABLE_NAME);
         this.name = name;
         this.description = description;
         this.price = price;
         this.category_id = category_id;
+        this.user_id = user_id;
         this.quantity = quantity;
     }
 
@@ -38,9 +41,10 @@ public class Product extends BaseModel {
         return new LinkedHashMap<String, Object>() {
             {
                 put("name", name);
+                put("user_id", user_id);
+                put("category_id", category_id);
                 put("description", description);
                 put("price", price);
-                put("category_id", category_id);
                 put("quantity", quantity);
             }
         };
