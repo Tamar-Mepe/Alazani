@@ -56,7 +56,7 @@ public class MySQL implements DB {
 
     // Queries
     @Override
-    public String creteDatabaseQuery() {
+    public String createDatabaseQuery() {
         return "CREATE DATABASE " + Environment.DATABASE;
     }
 
@@ -123,7 +123,7 @@ public class MySQL implements DB {
         // Drop existing database
         execute("DROP DATABASE IF EXISTS " + Environment.DATABASE);
         // Create new Database
-        String query = creteDatabaseQuery();
+        String query = createDatabaseQuery();
         execute(query);
         // Use created Database
         execute("USE " + Environment.DATABASE);

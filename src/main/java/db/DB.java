@@ -13,7 +13,7 @@ public interface DB {
     // Queries
     String createTableQuery(String tableName, Map<String, Object> fields);
 
-    String creteDatabaseQuery();
+    String createDatabaseQuery();
 
     String insertQuery(String tableName, Map<String, Object> fields);
 
