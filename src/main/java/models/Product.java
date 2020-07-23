@@ -2,7 +2,9 @@ package models;
 
 import db.Fields;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Product extends BaseModel {
@@ -36,6 +38,32 @@ public class Product extends BaseModel {
         this.quantity = quantity;
     }
 
+    public static Product DBToJava(Map<String, String> fields) {
+        Product product = new Product(fields.get("name"),
+                fields.get("description"),
+                Double.parseDouble(fields.get("price")),
+                Integer.parseInt(fields.get("category_id")),
+                Integer.parseInt(fields.get("quantity")),
+                Integer.parseInt(fields.get("user_id")));
+        product.setId(Integer.parseInt(fields.get("id")));
+        return product;
+    }
+
+    public static Product get(int id) {
+        Map<String, String> fields = BaseModel.getGeneric(TABLE_NAME, id);
+        assert fields != null;
+        return DBToJava(fields);
+    }
+
+    public static List<Product> getAll() {
+        List<Map<String, String>> fields = BaseModel.getAllGeneric(TABLE_NAME);
+        List<Product> allProducts = new ArrayList<>();
+        for (Map<String, String> field : fields) {
+            allProducts.add(DBToJava(field));
+        }
+        return allProducts;
+    }
+
 
     public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
@@ -48,5 +76,52 @@ public class Product extends BaseModel {
                 put("quantity", quantity);
             }
         };
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public int getCategory_id() {
+        return quantity;
+    }
+    public int getUser_id() {
+        return quantity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }
