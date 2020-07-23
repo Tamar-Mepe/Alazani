@@ -97,7 +97,6 @@ public class BaseModel {
 
     public static List<Map<String, String>> getAllGeneric(String table_name) {
         List<Map<String, String>> allEntries = new ArrayList<>();
-
         try {
             List<Map<String, String>> records = BaseModel.getAllRecords(table_name);
             allEntries.addAll(records);

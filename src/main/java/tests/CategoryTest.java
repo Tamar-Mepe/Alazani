@@ -30,10 +30,10 @@ class CategoryTest {
         // Save To DB
         Category category = new Category("testCategory");
         category.save();
-        int saved_id = category.getId();
-        Category category1 = Category.get(saved_id);
+        int savedId = category.getId();
+        Category category1 = Category.get(savedId);
 
-        assertEquals(category1.getId(), saved_id);
+        assertEquals(category1.getId(), savedId);
         assertEquals(category.getName(), category1.getName());
 
     }
@@ -67,20 +67,20 @@ class CategoryTest {
         // Save To DB
         Category category = new Category("axalikategoria");
         category.save();
-        int saved_id = category.getId();
+        int savedId = category.getId();
 
         // Update user
         category.setName("axalikategoria2");
 
         // Should fail
-        Category newCategory = Category.get(saved_id);
-        assertEquals(newCategory.getId(), saved_id);
+        Category newCategory = Category.get(savedId);
+        assertEquals(newCategory.getId(), savedId);
         assertNotEquals(newCategory.getName(), category.getName());
 
         // Should Pass after updating
         category.update();
-        newCategory = Category.get(saved_id);
-        assertEquals(newCategory.getId(), saved_id);
+        newCategory = Category.get(savedId);
+        assertEquals(newCategory.getId(), savedId);
         assertEquals(newCategory.getName(), category.getName());
     }
 }

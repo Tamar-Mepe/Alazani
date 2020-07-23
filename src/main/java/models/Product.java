@@ -24,17 +24,17 @@ public class Product extends BaseModel {
     private String name;
     private String description;
     private double price;
-    private int category_id;
+    private int categoryId;
     private int quantity;
-    private int user_id;
+    private int userId;
 
-    public Product(String name, String description, double price, int category_id, int quantity, int user_id) {
+    public Product(String name, String description, double price, int categoryId, int quantity, int userId) {
         super(Product.TABLE_NAME);
         this.name = name;
         this.description = description;
         this.price = price;
-        this.category_id = category_id;
-        this.user_id = user_id;
+        this.categoryId = categoryId;
+        this.userId = userId;
         this.quantity = quantity;
     }
 
@@ -69,8 +69,8 @@ public class Product extends BaseModel {
         return new LinkedHashMap<String, Object>() {
             {
                 put("name", name);
-                put("user_id", user_id);
-                put("category_id", category_id);
+                put("user_id", userId);
+                put("category_id", categoryId);
                 put("description", description);
                 put("price", price);
                 put("quantity", quantity);
@@ -94,11 +94,12 @@ public class Product extends BaseModel {
         return price;
     }
 
-    public int getCategory_id() {
-        return quantity;
+    public int getCategoryId() {
+        return categoryId;
     }
-    public int getUser_id() {
-        return quantity;
+
+    public int getUserId() {
+        return userId;
     }
 
     public void setName(String name) {
@@ -117,11 +118,11 @@ public class Product extends BaseModel {
         this.price = price;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
