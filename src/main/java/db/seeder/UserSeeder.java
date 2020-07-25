@@ -6,7 +6,7 @@ import models.User;
 public class UserSeeder {
 
     public static void Seed(DB db) {
-        new User("Admin", "Admin", "admin451").save();
+        new User("Admin", "Admin", "admin451", "GM", "admin@gmail").save();
 //        new User("John", "Doe").save();
 //        new User("Tamar", "Davitaia").save();
 //        new User("Irakli", "Gabelia").save();

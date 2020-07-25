@@ -22,7 +22,7 @@ public class RegistrationServlet extends HttpServlet {
             //todo
             return;
         }
-        User user = new User(firstName, lastName, password);
+        User user = new User(firstName, lastName, password, username, email);
         user.save();
 
     }

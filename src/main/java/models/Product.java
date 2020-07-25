@@ -106,7 +106,9 @@ public class Product extends BaseModel {
         return userId;
     }
 
-    public String getImageAddress() { return imageAddress; }
+    public String getImageAddress() {
+        return imageAddress;
+    }
 
     public void setName(String name) {
         this.name = name;

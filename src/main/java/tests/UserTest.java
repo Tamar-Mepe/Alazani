@@ -23,11 +23,13 @@ class UserTest {
 
     @Test
     void javaToDB() {
-        User user = new User("f_test", "l_test", "p_test");
+        User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         Map<String, Object> map = user.JavaToDB();
         assertTrue(map.containsKey("first_name") && map.get("first_name").equals("f_test"));
         assertTrue(map.containsKey("last_name") && map.get("last_name").equals("l_test"));
         assertTrue(map.containsKey("password") && map.get("password").equals("p_test"));
+        assertTrue(map.containsKey("username") && map.get("username").equals("u_test"));
+        assertTrue(map.containsKey("email") && map.get("email").equals("e_test"));
     }
 
     @Test
@@ -38,19 +40,23 @@ class UserTest {
                 put("first_name", "f_test");
                 put("last_name", "l_test");
                 put("password", "p_test");
+                put("username", "u_test");
+                put("email", "e_test");
             }
         };
         User user = User.DBToJava(map);
         assertEquals(user.getFirstName(), "f_test");
         assertEquals(user.getLastName(), "l_test");
         assertEquals(user.getPassword(), "p_test");
+        assertEquals(user.getUsername(), "u_test");
+        assertEquals(user.getEmail(), "e_test");
         assertEquals(user.getId(), 0);
     }
 
     @Test
     void get() throws SQLException {
         // Save To DB
-        User user = new User("f_test", "l_test", "p_test");
+        User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         user.save();
         int savedId = user.getId();
         User newUser = User.get(savedId);
@@ -58,7 +64,8 @@ class UserTest {
         assertEquals(newUser.getId(), savedId);
         assertEquals(newUser.getFirstName(), user.getFirstName());
         assertEquals(newUser.getLastName(), user.getLastName());
-        assertEquals(newUser.getPassword(), user.getPassword());
+        assertEquals(newUser.getUsername(), user.getUsername());
+        assertEquals(newUser.getEmail(), user.getEmail());
     }
 
     @Test
@@ -66,10 +73,10 @@ class UserTest {
         // Initialize all users
         List<User> allUsers = new ArrayList<User>() {
             {
-                add(new User("f1", "l1", "p1"));
-                add(new User("f2", "l2", "p2"));
-                add(new User("f3", "l3", "p3"));
-                add(new User("f4", "l4", "p4"));
+                add(new User("f1", "l1", "p1","u1","e1"));
+                add(new User("f2", "l2", "p2","u2","e2"));
+                add(new User("f3", "l3", "p3","u3","e3"));
+                add(new User("f4", "l4", "p4","u4","e5"));
             }
         };
 
@@ -84,13 +91,15 @@ class UserTest {
             assertEquals(userDB.getFirstName(), user.getFirstName());
             assertEquals(userDB.getLastName(), user.getLastName());
             assertEquals(userDB.getPassword(), user.getPassword());
+            assertEquals(userDB.getUsername(), user.getUsername());
+            assertEquals(userDB.getEmail(), user.getEmail());
         }
     }
 
     @Test
     void update() throws SQLException {
         // Save To DB
-        User user = new User("f_test", "l_test", "p_test");
+        User user = new User("f_test", "l_test", "p_test","u_test", "e_test");
         user.save();
         int savedId = user.getId();
 
@@ -98,6 +107,8 @@ class UserTest {
         user.setFirstName("f_changed");
         user.setLastName("l_changed");
         user.setPassword("p_changed");
+        user.setUsername("u_changed");
+        user.setEmail("e_changed");
 
         // Should fail
         User newUser = User.get(savedId);
@@ -105,6 +116,8 @@ class UserTest {
         assertNotEquals(newUser.getFirstName(), user.getFirstName());
         assertNotEquals(newUser.getLastName(), user.getLastName());
         assertNotEquals(newUser.getPassword(), user.getPassword());
+        assertNotEquals(newUser.getUsername(), user.getUsername());
+        assertNotEquals(newUser.getEmail(), user.getEmail());
 
         // Should Pass after updating
         user.update();
@@ -113,6 +126,8 @@ class UserTest {
         assertEquals(newUser.getFirstName(), user.getFirstName());
         assertEquals(newUser.getLastName(), user.getLastName());
         assertEquals(newUser.getPassword(), user.getPassword());
+        assertEquals(newUser.getUsername(), user.getUsername());
+        assertEquals(newUser.getEmail(), user.getEmail());
 
     }
 
