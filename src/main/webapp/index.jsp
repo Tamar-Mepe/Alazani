@@ -1,6 +1,8 @@
+<%@ page import="models.Product" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
-
+<%! List<Product> products = Product.getAll(); %>
 <jsp:include page="WEB-INF/head.jsp">
     <jsp:param name="title" value="Alazani"/>
 </jsp:include>
@@ -17,7 +19,18 @@
             <jsp:include page="WEB-INF/header-bar.jsp"></jsp:include>
         </header>
         <main class="mb-5">
-            <jsp:include page="WEB-INF/product-all.jsp"></jsp:include>
+            <div class="container">
+                <div class="product-list row">
+                    <% for (Product product : products) { %>
+                    <jsp:include page="WEB-INF/product-single.jsp">
+                        <jsp:param name="product-name" value="<%=product.getName()%>"/>
+                        <jsp:param name="product-description" value="<%=product.getDescription()%>"/>
+                        <jsp:param name="product-image-path" value="<%=product.getImageAddress()%>"/>
+                        <jsp:param name="product-price" value="<%=product.getPrice()%>"/>
+                    </jsp:include>
+                    <%}%>
+                </div>
+            </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
     </div>

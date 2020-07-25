@@ -19,6 +19,7 @@ public class Product extends BaseModel {
         FIELDS.put("description", Fields.varchar(250));
         FIELDS.put("price", Fields.DOUBLE);
         FIELDS.put("quantity", Fields.INT);
+        FIELDS.put("image_address", Fields.varchar(256));
     }
 
     private String name;
@@ -27,8 +28,8 @@ public class Product extends BaseModel {
     private int categoryId;
     private int quantity;
     private int userId;
-
-    public Product(String name, String description, double price, int categoryId, int quantity, int userId) {
+    private String imageAddress;
+    public Product(String name, String description, double price, int categoryId, int quantity, int userId, String imageAddress) {
         super(Product.TABLE_NAME);
         this.name = name;
         this.description = description;
@@ -36,6 +37,7 @@ public class Product extends BaseModel {
         this.categoryId = categoryId;
         this.userId = userId;
         this.quantity = quantity;
+        this.imageAddress = imageAddress;
     }
 
     public static Product DBToJava(Map<String, String> fields) {
@@ -44,7 +46,8 @@ public class Product extends BaseModel {
                 Double.parseDouble(fields.get("price")),
                 Integer.parseInt(fields.get("category_id")),
                 Integer.parseInt(fields.get("quantity")),
-                Integer.parseInt(fields.get("user_id")));
+                Integer.parseInt(fields.get("user_id")),
+                fields.get("image_address"));
         product.setId(Integer.parseInt(fields.get("id")));
         return product;
     }
@@ -74,6 +77,7 @@ public class Product extends BaseModel {
                 put("description", description);
                 put("price", price);
                 put("quantity", quantity);
+                put("image_address", imageAddress);
             }
         };
     }
@@ -102,6 +106,8 @@ public class Product extends BaseModel {
         return userId;
     }
 
+    public String getImageAddress() { return imageAddress; }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -124,5 +130,9 @@ public class Product extends BaseModel {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setImageAddress(String imageAddress) {
+        this.imageAddress = imageAddress;
     }
 }

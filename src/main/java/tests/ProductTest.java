@@ -25,7 +25,7 @@ class ProductTest {
     @Test
     void get() throws SQLException {
         // Save To DB
-        Product product = new Product("Bu", "fav predator", 100, -1, 3, -1);
+        Product product = new Product("Bu", "fav predator", 100, -1, 3, -1, "image address");
         product.save();
         int savedId = product.getId();
 //        TODO:
@@ -38,6 +38,7 @@ class ProductTest {
         assertEquals(newProduct.getPrice(), product.getPrice());
         assertEquals(newProduct.getCategoryId(), product.getCategoryId());
         assertEquals(newProduct.getUserId(), product.getUserId());
+        assertEquals(newProduct.getImageAddress(), product.getImageAddress());
     }
 
     @Test
@@ -45,11 +46,11 @@ class ProductTest {
         // Initialize all products
         List<Product> allProducts = new ArrayList<Product>() {
             {
-                add(new Product("p1", "d1", 10, -1, 10000, -1));
-                add(new Product("p2", "d2", 100, -1, 1000, -1));
-                add(new Product("p3", "d3", 1000, -1, 100, -1));
-                add(new Product("p4", "d4", 10000, -1, 10, -1));
-                add(new Product("p5", "d5", 100000, -1, 1, -1));
+                add(new Product("p1", "d1", 10, -1, 10000, -1, "address"));
+                add(new Product("p2", "d2", 100, -1, 1000, -1, "address"));
+                add(new Product("p3", "d3", 1000, -1, 100, -1, "address"));
+                add(new Product("p4", "d4", 10000, -1, 10, -1, "address"));
+                add(new Product("p5", "d5", 100000, -1, 1, -1, "address"));
             }
         };
 
@@ -68,13 +69,14 @@ class ProductTest {
             assertEquals(productDB.getPrice(), product.getPrice());
             assertEquals(productDB.getCategoryId(), product.getCategoryId());
             assertEquals(productDB.getUserId(), product.getUserId());
+            assertEquals(productDB.getImageAddress(), product.getImageAddress());
         }
     }
 
     @Test
     void update() throws SQLException {
         // Save To DB
-        Product product = new Product("Bu", "predator breed", 100, -1, 1, -1);
+        Product product = new Product("Bu", "predator breed", 100, -1, 1, -1, "address");
         product.save();
         int savedId = product.getId();
 
@@ -85,7 +87,7 @@ class ProductTest {
         product.setPrice(5);
         product.setCategoryId(7);
         product.setUserId(9);
-
+        product.setImageAddress("image address");
         // Should fail
         Product newProductTmp = Product.get(savedId);
         assertEquals(newProductTmp.getId(), savedId);
@@ -95,6 +97,7 @@ class ProductTest {
         assertNotEquals(newProductTmp.getPrice(), product.getPrice());
         assertNotEquals(newProductTmp.getCategoryId(), product.getCategoryId());
         assertNotEquals(newProductTmp.getUserId(), product.getUserId());
+        assertNotEquals(newProductTmp.getImageAddress(), product.getImageAddress());
 
         // Should Pass after updating
         product.update();
@@ -106,6 +109,6 @@ class ProductTest {
         assertEquals(newProduct.getPrice(), product.getPrice());
         assertEquals(newProduct.getCategoryId(), product.getCategoryId());
         assertEquals(newProduct.getUserId(), product.getUserId());
-
+        assertEquals(newProduct.getImageAddress(), product.getImageAddress());
     }
 }

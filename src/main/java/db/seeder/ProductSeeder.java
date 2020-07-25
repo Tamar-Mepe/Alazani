@@ -13,7 +13,11 @@ public class ProductSeeder {
         List<User> users = User.getAll();
         Random rand = new Random();
         User user = users.get(rand.nextInt(users.size()));
-        new Product("iPhone 11 Pro Max", "Some Description", 999, 1, 3, user.getId()).save();
+        new Product("iPhone 11 Pro Max", "Some Description", 999, 1, 3, user.getId(), "images/product/iphone.jpeg").save();
+        new Product("Yoda Figure", "Some Description", 25, 2, 3, user.getId(), "images/product/yoda.png").save();
+        new Product("Laptop", "Some Description", 999, 1, 3, user.getId(), "images/product/laptop.png").save();
+        new Product("Converse", "Some Description", 999, 3, 3, user.getId(), "images/product/converse.png").save();
+        new Product("Toaster", "Some Description", 999, 5, 3, user.getId(), "images/product/toaster.jpg").save();
         // ToDo: More Fake Products
     }
 }
