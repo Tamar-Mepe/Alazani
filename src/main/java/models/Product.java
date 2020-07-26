@@ -68,7 +68,6 @@ public class Product extends BaseModel {
         return allProducts;
     }
 
-
     public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
@@ -139,11 +138,11 @@ public class Product extends BaseModel {
         this.imageAddress = imageAddress;
     }
 
-    public Category category(){
+    public Category category() {
         return Category.get(this.categoryId);
     }
 
-    public User user(){
+    public User user() {
         return User.get(this.userId);
     }
 }

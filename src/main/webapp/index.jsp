@@ -3,12 +3,25 @@
 <%@ page import="models.Category" %>
 <!DOCTYPE html>
 <html>
-<% List<Product> products = Product.getAll();
+<%
+    // Cateogirzation
+    List<Product> products = Product.getAll();
     String categoryIdStr = request.getParameter("category");
-    if (categoryIdStr != null){
+    if (categoryIdStr != null) {
         Category cat = Category.get(Integer.parseInt(categoryIdStr));
         products = cat.products();
     }
+
+    // Pagination
+    int prodPerPage = 18;
+    int pageNum = 1;
+    int totalPages = (int) Math.ceil((double) products.size() / prodPerPage);
+    String pageNumStr = request.getParameter("page");
+    if (pageNumStr != null) {
+        pageNum = Integer.parseInt(pageNumStr);
+    }
+
+    products = products.subList((pageNum - 1) * prodPerPage, Math.min(pageNum * prodPerPage, products.size()));
 %>
 <jsp:include page="WEB-INF/head.jsp">
     <jsp:param name="title" value="Alazani"/>
@@ -37,6 +50,23 @@
                     </jsp:include>
                     <%}%>
                 </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <% String currPath = pageContext.getRequest().getServletContext().getContextPath();%>
+                        <li class="page-item <%= pageNum == 1 ? "disabled" :""%>">
+                            <a class="page-link" href="<%=currPath%>/?page=<%=pageNum-1%>">Previous</a>
+                        </li>
+                        <% for (int i = 1; i <= totalPages; i++) {%>
+                        <li class="page-item <%= i == pageNum ? "active" : ""%>">
+                            <a class="page-link" href="<%=currPath%>/?page=<%=i%>"><%=i%>
+                            </a>
+                        </li>
+                        <%}%>
+                        <li class="page-item <%= pageNum == totalPages ? "disabled" : ""%>">
+                            <a class="page-link" href="<%=currPath%>/?page=<%=pageNum+1%>">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
