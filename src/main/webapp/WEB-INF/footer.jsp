@@ -23,20 +23,20 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
+                <h5 class="text-uppercase">Contributors</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="https://www.facebook.com/davitaiatamar" target="_blank">Tamar Davitaia</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
+                        <a href="https://www.linkedin.com/in/zura-khutsishvili-497b131a1/" target="_blank">Zura Khutsishvili</a>
                     </li>
                     <li>
-                        <a href="#!">Link 3</a>
+                        <a href="https://www.linkedin.com/in/irakli-gabelia-005a421a6/" target="_blank">Irakli Gabelia</a>
                     </li>
                     <li>
-                        <a href="#!">Link 4</a>
+                        <a href="https://www.linkedin.com/in/david-targamadze-a620b316b/" target="_blank">David Targamadze</a>
                     </li>
                 </ul>
 
