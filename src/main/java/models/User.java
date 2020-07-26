@@ -3,6 +3,7 @@ package models;
 import db.Fields;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class User extends BaseModel {
     public static final String TABLE_NAME = "users";
@@ -22,6 +23,7 @@ public class User extends BaseModel {
     private String password;
     private String username;
     private String email;
+
     public User(String firstName, String lastName, String password, String username, String email) {
         super(User.TABLE_NAME);
         this.firstName = firstName;
@@ -106,5 +108,10 @@ public class User extends BaseModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Product> products(){
+        List<Product> allProducts = Product.getAll();
+        return allProducts.stream().filter(product -> product.getUserId() == this.id).collect(Collectors.toList());
     }
 }

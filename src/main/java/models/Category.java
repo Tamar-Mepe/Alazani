@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Category extends BaseModel {
     private String name;
@@ -56,5 +57,10 @@ public class Category extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> products (){
+        List<Product> allProducts = Product.getAll();
+        return allProducts.stream().filter(product -> product.getCategoryId() == this.id).collect(Collectors.toList());
     }
 }

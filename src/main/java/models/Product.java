@@ -29,6 +29,7 @@ public class Product extends BaseModel {
     private int quantity;
     private int userId;
     private String imageAddress;
+
     public Product(String name, String description, double price, int categoryId, int quantity, int userId, String imageAddress) {
         super(Product.TABLE_NAME);
         this.name = name;
@@ -136,5 +137,13 @@ public class Product extends BaseModel {
 
     public void setImageAddress(String imageAddress) {
         this.imageAddress = imageAddress;
+    }
+
+    public Category category(){
+        return Category.get(this.id);
+    }
+
+    public User user(){
+        return User.get(this.id);
     }
 }
