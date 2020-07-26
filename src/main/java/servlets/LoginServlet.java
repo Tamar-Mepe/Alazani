@@ -16,6 +16,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         List<User> users = User.getAll();
+
         for(User user : users){
             if (user.getUsername().equals(username)){
                 //TODO: String hashedPassword;

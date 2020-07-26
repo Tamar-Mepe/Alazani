@@ -10,6 +10,10 @@ public class CategorySeeder {
         new Category("Electronics").save();
         new Category("Shoes").save();
         new Category("Toys").save();
-        new Category("Home & Kitchen").save();
+        new Category("Kitchen").save();
+        new Category("Accessories").save();
+        new Category("Clothes").save();
+        new Category("Gaming").save();
+        new Category("Phone Accessories").save();
     }
 }
