@@ -3,6 +3,8 @@ package tests;
 import db.DB;
 import db.Migration;
 import db.MySQL;
+import models.Category;
+import models.Product;
 import models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -129,6 +131,35 @@ class UserTest {
         assertEquals(newUser.getUsername(), user.getUsername());
         assertEquals(newUser.getEmail(), user.getEmail());
 
+    }
+    @Test
+    public void product() {
+        // init categories
+        Category cat1 = (Category) new Category("cat1").save();
+        Category cat2 = (Category) new Category("cat2").save();
+
+        User user1 = (User) new User("f_test_1", "l_test_1", "p_test_1","u_test_1", "e_test_1").save();
+        User user2 = (User) new User("f_test_2", "l_test_2", "p_test_2","u_test_2", "e_test_2").save();
+
+        Product prod1 = (Product) new Product("prod1", "desc1", 99.99, cat1.getId(), 100, user1.getId(), null).save();
+        Product prod2 = (Product) new Product("prod2", "desc2", 99.99, cat1.getId(), 100, user1.getId(), null).save();
+        Product prod3 = (Product) new Product("prod3", "desc3", 99.99, cat1.getId(), 100, user2.getId(), null).save();
+        Product prod4 = (Product) new Product("prod4", "desc4", 99.99, cat2.getId(), 100, user2.getId(), null).save();
+        Product prod5 = (Product) new Product("prod5", "desc5", 99.99, cat2.getId(), 100, user2.getId(), null).save();
+
+
+        // check Category.products()
+        List<Product> user1Products = user1.products();
+        List<Product> user2Products = user2.products();
+
+        for(Product product : user1Products){
+            assertTrue(product.getUserId() == prod1.getUserId() || product.getUserId() == prod2.getUserId() );
+        }
+        for(Product product : user2Products){
+            assertTrue(product.getUserId() == prod3.getUserId() || product.getUserId() == prod4.getUserId() || product.getUserId() == prod5.getUserId());
+        }
+        assertEquals(user1Products.size(), 2);
+        assertEquals(user2Products.size(), 3);
     }
 
 }
