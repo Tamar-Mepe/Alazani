@@ -48,7 +48,7 @@ a:focus {
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: green;
+    background: #FF8C00;
     color: #fff;
     transition: all 0.3s;
 }
@@ -64,7 +64,7 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #FF8C00;
 }
 
 #sidebar ul p {
@@ -94,7 +94,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: purple;
+    background: #ffb429;
 }
 
 ul.CTAs {
