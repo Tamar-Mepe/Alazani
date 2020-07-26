@@ -1,3 +1,5 @@
+<%@ page import="models.Category" %>
+<%@ page import="java.util.List" %>
 <nav id="sidebar">
     <div class="sidebar-header">
         <h3>Fake Amazon</h3>
@@ -6,11 +8,12 @@
     <ul class="list-unstyled components">
         <p>Dummy Fake Amazon</p>
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
+            <%! List<Category> categories = Category.getAll(); %>
             <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li><a href="#">Home 1</a></li>
-                <li><a href="#">Home 2</a></li>
-                <li><a href="#">Home 3</a></li>
+                <% for (Category cat : categories) { %>
+                    <li><a href="/?category=<%=cat.getId()%>"><%=cat.getName()%></a></li>
+                <%}%>
             </ul>
         </li>
         <li><a href="#">About</a></li>
