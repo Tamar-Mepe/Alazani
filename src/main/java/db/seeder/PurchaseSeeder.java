@@ -1,4 +1,5 @@
 package db.seeder;
+
 import db.DB;
 import models.Category;
 import models.Purchase;
@@ -15,7 +16,7 @@ public class PurchaseSeeder {
     public static void Seed(DB db) {
         List<User> users = User.getAll();
         List<Integer> userId = new ArrayList<>();
-        for(User user : users){
+        for (User user : users) {
             userId.add(user.getId());
         }
         //store category name and ids
@@ -25,8 +26,8 @@ public class PurchaseSeeder {
             productId.add(product.getId());
         }
         Random rand = new Random();
-        for(int i=0; i<20; i++){
-            new Purchase(userId.get(rand.nextInt(userId.size())),productId.get(rand.nextInt(productId.size())), rand.nextInt(10), "23/05/2020").save();
+        for (int i = 0; i < 20; i++) {
+            new Purchase(userId.get(rand.nextInt(userId.size())), productId.get(rand.nextInt(productId.size())), rand.nextInt(10), "23/05/2020").save();
         }
 
     }

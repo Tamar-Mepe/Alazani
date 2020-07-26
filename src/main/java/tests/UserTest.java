@@ -75,10 +75,10 @@ class UserTest {
         // Initialize all users
         List<User> allUsers = new ArrayList<User>() {
             {
-                add(new User("f1", "l1", "p1","u1","e1"));
-                add(new User("f2", "l2", "p2","u2","e2"));
-                add(new User("f3", "l3", "p3","u3","e3"));
-                add(new User("f4", "l4", "p4","u4","e5"));
+                add(new User("f1", "l1", "p1", "u1", "e1"));
+                add(new User("f2", "l2", "p2", "u2", "e2"));
+                add(new User("f3", "l3", "p3", "u3", "e3"));
+                add(new User("f4", "l4", "p4", "u4", "e5"));
             }
         };
 
@@ -101,7 +101,7 @@ class UserTest {
     @Test
     void update() throws SQLException {
         // Save To DB
-        User user = new User("f_test", "l_test", "p_test","u_test", "e_test");
+        User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         user.save();
         int savedId = user.getId();
 
@@ -132,14 +132,15 @@ class UserTest {
         assertEquals(newUser.getEmail(), user.getEmail());
 
     }
+
     @Test
     public void product() {
         // init categories
         Category cat1 = (Category) new Category("cat1").save();
         Category cat2 = (Category) new Category("cat2").save();
 
-        User user1 = (User) new User("f_test_1", "l_test_1", "p_test_1","u_test_1", "e_test_1").save();
-        User user2 = (User) new User("f_test_2", "l_test_2", "p_test_2","u_test_2", "e_test_2").save();
+        User user1 = (User) new User("f_test_1", "l_test_1", "p_test_1", "u_test_1", "e_test_1").save();
+        User user2 = (User) new User("f_test_2", "l_test_2", "p_test_2", "u_test_2", "e_test_2").save();
 
         Product prod1 = (Product) new Product("prod1", "desc1", 99.99, cat1.getId(), 100, user1.getId(), null).save();
         Product prod2 = (Product) new Product("prod2", "desc2", 99.99, cat1.getId(), 100, user1.getId(), null).save();
@@ -152,10 +153,10 @@ class UserTest {
         List<Product> user1Products = user1.products();
         List<Product> user2Products = user2.products();
 
-        for(Product product : user1Products){
-            assertTrue(product.getUserId() == prod1.getUserId() || product.getUserId() == prod2.getUserId() );
+        for (Product product : user1Products) {
+            assertTrue(product.getUserId() == prod1.getUserId() || product.getUserId() == prod2.getUserId());
         }
-        for(Product product : user2Products){
+        for (Product product : user2Products) {
             assertTrue(product.getUserId() == prod3.getUserId() || product.getUserId() == prod4.getUserId() || product.getUserId() == prod5.getUserId());
         }
         assertEquals(user1Products.size(), 2);

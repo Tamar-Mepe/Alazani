@@ -32,16 +32,16 @@ class PurchaseTest {
         UserSeeder.Seed(db);
         CategorySeeder.Seed(db);
         ProductSeeder.Seed(db);
-        List<Product> products  = Product.getAll();
+        List<Product> products = Product.getAll();
 
-        Purchase purchase = new Purchase(-1,products.get(0).getId(), 100, "22/12/2014");
+        Purchase purchase = new Purchase(-1, products.get(0).getId(), 100, "22/12/2014");
         purchase.save();
         int savedId = purchase.getId();
 //        TODO:
         Purchase newPurchase = Purchase.get(savedId);
 
         assertEquals(newPurchase.getId(), savedId);
-        assertEquals(newPurchase.getUserId(),purchase.getUserId());
+        assertEquals(newPurchase.getUserId(), purchase.getUserId());
         assertEquals(newPurchase.getProductId(), purchase.getProductId());
         assertEquals(newPurchase.getSoldQuantity(), purchase.getSoldQuantity());
         assertEquals(newPurchase.getPurchaseDate(), purchase.getPurchaseDate());

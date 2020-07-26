@@ -2,7 +2,6 @@ package servlets;
 
 import models.User;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,21 +19,21 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("password_confirmation");
-        List<User> allUser= User.getAll();
+        List<User> allUser = User.getAll();
         boolean foundEMail = false;
-        for (User user : allUser){
-            if(user.getUsername().equals(username)){
+        for (User user : allUser) {
+            if (user.getUsername().equals(username)) {
                 /*TODO*/
                 return;
             }
-            if(!foundEMail && user.getEmail().equals(email)){
+            if (!foundEMail && user.getEmail().equals(email)) {
                 foundEMail = true;
             }
         }
-        if(foundEMail){
+        if (foundEMail) {
             return;
         }
-        if(!password.equals(confirmPassword)){
+        if (!password.equals(confirmPassword)) {
             return;
         }
 

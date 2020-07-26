@@ -4,7 +4,6 @@ import db.DB;
 import db.Migration;
 import db.MySQL;
 import models.Category;
-import models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -30,13 +30,16 @@
                         <a href="https://www.facebook.com/davitaiatamar" target="_blank">Tamar Davitaia</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/zura-khutsishvili-497b131a1/" target="_blank">Zura Khutsishvili</a>
+                        <a href="https://www.linkedin.com/in/zura-khutsishvili-497b131a1/" target="_blank">Zura
+                            Khutsishvili</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/irakli-gabelia-005a421a6/" target="_blank">Irakli Gabelia</a>
+                        <a href="https://www.linkedin.com/in/irakli-gabelia-005a421a6/" target="_blank">Irakli
+                            Gabelia</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/david-targamadze-a620b316b/" target="_blank">David Targamadze</a>
+                        <a href="https://www.linkedin.com/in/david-targamadze-a620b316b/" target="_blank">David
+                            Targamadze</a>
                     </li>
                 </ul>
 

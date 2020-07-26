@@ -16,7 +16,7 @@ public class Migration {
         db.createTable(User.TABLE_NAME, User.FIELDS);
         db.createTable(Product.TABLE_NAME, Product.FIELDS);
         db.createTable(Category.TABLE_NAME, Category.FIELDS);
-        db.createTable(Purchase.TABLE_NAME,Purchase.FIELDS);
+        db.createTable(Purchase.TABLE_NAME, Purchase.FIELDS);
     }
 
     public static void createStartingData(DB db) {

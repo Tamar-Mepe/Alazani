@@ -17,17 +17,17 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         List<User> users = User.getAll();
 
-        for(User user : users){
-            if (user.getUsername().equals(username)){
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
                 //TODO: String hashedPassword;
-                if( user.getPassword().equals(password)){
-                //TODO: move to profile page
-                }else{
-                 //TODO: move to error page (wrong password)
+                if (user.getPassword().equals(password)) {
+                    //TODO: move to profile page
+                } else {
+                    //TODO: move to error page (wrong password)
                 }
             }
         }
-       //TODO: alert("incorrect username");
+        //TODO: alert("incorrect username");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

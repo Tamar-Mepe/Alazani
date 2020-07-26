@@ -11,7 +11,8 @@
             <%! List<Category> categories = Category.getAll(); %>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <% for (Category cat : categories) { %>
-                    <li><a href="/?category=<%=cat.getId()%>"><%=cat.getName()%></a></li>
+                <li><a href="/?category=<%=cat.getId()%>"><%=cat.getName()%>
+                </a></li>
                 <%}%>
             </ul>
         </li>
