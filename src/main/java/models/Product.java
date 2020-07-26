@@ -2,6 +2,7 @@ package models;
 
 import db.Fields;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -96,6 +97,11 @@ public class Product extends BaseModel {
 
     public Double getPrice() {
         return price;
+    }
+
+    public String getPriceString() {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(price);
     }
 
     public int getCategoryId() {
