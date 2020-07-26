@@ -30,8 +30,8 @@ class PurchaseTest {
     void get() throws SQLException {
         // Save To DB
         UserSeeder.Seed(db);
-        ProductSeeder.Seed(db);
         CategorySeeder.Seed(db);
+        ProductSeeder.Seed(db);
         List<Product> products  = Product.getAll();
 
         Purchase purchase = new Purchase(-1,products.get(0).getId(), 100, "22/12/2014");

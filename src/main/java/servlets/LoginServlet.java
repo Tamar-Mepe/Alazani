@@ -8,24 +8,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/RegistrationServlet")
-public class RegistrationServlet extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = request.getParameter("first_name");
-        String lastName = request.getParameter("last_name");
         String username = request.getParameter("username");
-        String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("password_confirmation");
-        if(!password.equals(confirmPassword)) {
-            //todo
-            return;
+        List<User> users = User.getAll();
+        for(User user : users){
+            if (user.getUsername().equals(username)){
+                //TODO: String hashedPassword;
+                if( user.getPassword().equals(password)){
+                //TODO: move to profile page
+                }else{
+                 //TODO: move to error page (wrong password)
+                }
+            }
         }
-        
-        User user = new User(firstName, lastName, password, username, email);
-        user.save();
-
+       //TODO: alert("incorrect username");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,7 +23,7 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Contributors</h5>
+                <h5 class="text-uppercase">Network</h5>
 
                 <ul class="list-unstyled">
                     <li>
@@ -47,20 +47,20 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
+                <h5 class="text-uppercase">Contributors</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="https://github.com/Tamar-Mepe" target="_blank">Tamar-Mepe</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
+                        <a href="https://github.com/zkhut16" target="_blank">zkhut16</a>
                     </li>
                     <li>
-                        <a href="#!">Link 3</a>
+                        <a href="https://github.com/irakli998" target="_blank">irakli998</a>
                     </li>
                     <li>
-                        <a href="#!">Link 4</a>
+                        <a href="https://github.com/dtarg16" target="_blank">dtarg16</a>
                     </li>
                 </ul>
 
