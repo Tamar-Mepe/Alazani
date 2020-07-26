@@ -21,8 +21,8 @@ public class Migration {
 
     public static void createStartingData(DB db) {
         UserSeeder.Seed(db);
-        ProductSeeder.Seed(db);
         CategorySeeder.Seed(db);
+        ProductSeeder.Seed(db);
         PurchaseSeeder.Seed(db);
     }
 

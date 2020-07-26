@@ -1,8 +1,12 @@
 package db.seeder;
 import db.DB;
+import models.Category;
 import models.Purchase;
 import models.User;
 import models.Product;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -10,16 +14,20 @@ public class PurchaseSeeder {
 
     public static void Seed(DB db) {
         List<User> users = User.getAll();
-        List<Product> Products = Product.getAll();
+        List<Integer> userId = new ArrayList<>();
+        for(User user : users){
+            userId.add(user.getId());
+        }
+        //store category name and ids
+        List<Product> products = Product.getAll();
+        List<Integer> productId = new ArrayList<>();
+        for (Product product : products) {
+            productId.add(product.getId());
+        }
         Random rand = new Random();
-        User user = users.get(rand.nextInt(users.size()));
-        Product product = Products.get(rand.nextInt(Products.size()));
-        new Purchase(user.getId(),product.getId(), 999, "23/05/2020").save();
-        new Purchase(user.getId(),product.getId(), 100, "23/05/2020").save();
-        new Purchase(user.getId(),product.getId(), 52, "23/05/2020").save();
-
-
-
+        for(int i=0; i<20; i++){
+            new Purchase(userId.get(rand.nextInt(userId.size())),productId.get(rand.nextInt(productId.size())), rand.nextInt(10), "23/05/2020").save();
+        }
 
     }
 
