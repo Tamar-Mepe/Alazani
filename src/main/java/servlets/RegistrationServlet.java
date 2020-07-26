@@ -2,6 +2,7 @@ package servlets;
 
 import models.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +19,10 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("password_confirmation");
-        if(!password.equals(confirmPassword)) {
-            //todo
-            return;
-        }
-        
-        User user = new User(firstName, lastName, password, username, email);
-        user.save();
 
+        request.setAttribute("error", "404");
+        RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
+        view.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

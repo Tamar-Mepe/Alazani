@@ -35,8 +35,13 @@
             <input type="text" class="form-control item" id="email" placeholder="Email">
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-block create-account">Create Account</button>
+            <button type="submit" class="btn btn-block create-account">Create Account</button>
         </div>
+        <% if (request.getAttribute("error") != null) {%>
+        <label><%=request.getAttribute("error")%>
+        </label>
+        <% }%>
+
     </form>
     <div class="already_registered">
         <h5><a href="login.jsp">Already Have An Account? Click Here.</a></h5>
