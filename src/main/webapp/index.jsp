@@ -46,7 +46,7 @@
                         <jsp:param name="product-name" value="<%=product.getName()%>"/>
                         <jsp:param name="product-description" value="<%=product.getDescription()%>"/>
                         <jsp:param name="product-image-path" value="<%=product.getImageAddress()%>"/>
-                        <jsp:param name="product-price" value="<%=product.getPrice()%>"/>
+                        <jsp:param name="product-price" value="<%=product.getPriceString()%>"/>
                     </jsp:include>
                     <%}%>
                 </div>
