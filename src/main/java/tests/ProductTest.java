@@ -3,6 +3,7 @@ package tests;
 import db.DB;
 import db.Migration;
 import db.MySQL;
+import models.Category;
 import models.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,6 @@ class ProductTest {
         Product product = new Product("Bu", "fav predator", 100, -1, 3, -1, "image address");
         product.save();
         int savedId = product.getId();
-//        TODO:
         Product newProduct = Product.get(savedId);
 
         assertEquals(newProduct.getId(), savedId);
@@ -110,5 +110,33 @@ class ProductTest {
         assertEquals(newProduct.getCategoryId(), product.getCategoryId());
         assertEquals(newProduct.getUserId(), product.getUserId());
         assertEquals(newProduct.getImageAddress(), product.getImageAddress());
+    }
+
+    @Test
+    public void category() {
+        // init categories
+        Category cat1 = (Category) new Category("cat1").save();
+        Category cat2 = (Category) new Category("cat2").save();
+
+        // init products
+        Product prod1 = (Product) new Product("prod1", "desc1", 99.99, cat1.getId(), 100, -1, null).save();
+        Product prod2 = (Product) new Product("prod2", "desc2", 99.99, cat1.getId(), 100, -1, null).save();
+        Product prod3 = (Product) new Product("prod3", "desc3", 99.99, cat1.getId(), 100, -1, null).save();
+        Product prod4 = (Product) new Product("prod4", "desc4", 99.99, cat1.getId(), 100, -1, null).save();
+        Product prod5 = (Product) new Product("prod5", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+
+        // check Product.category()
+        assertEquals(cat1.getId(), prod1.category().getId());
+        assertEquals(cat1.getId(), prod2.category().getId());
+        assertEquals(cat1.getId(), prod3.category().getId());
+        assertEquals(cat1.getId(), prod4.category().getId());
+        assertEquals(cat2.getId(), prod5.category().getId());
+
+        // check Category.products()
+        List<Product> cat1Products = cat1.products();
+        List<Product> cat2Products = cat2.products();
+
+        assertEquals(cat1Products.size(), 4);
+        assertEquals(cat2Products.size(), 1);
     }
 }

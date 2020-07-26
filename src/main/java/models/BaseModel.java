@@ -76,9 +76,10 @@ public class BaseModel {
         return null;
     }
 
-    public void save() {
+    public Object save() {
         Map<String, Object> field = JavaToDB();
         id = this.saveIntoTable(field);
+        return this;
     }
 
     public boolean update() {

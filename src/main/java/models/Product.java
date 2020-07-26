@@ -140,10 +140,10 @@ public class Product extends BaseModel {
     }
 
     public Category category(){
-        return Category.get(this.id);
+        return Category.get(this.categoryId);
     }
 
     public User user(){
-        return User.get(this.id);
+        return User.get(this.userId);
     }
 }
