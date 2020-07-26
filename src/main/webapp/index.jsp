@@ -1,8 +1,15 @@
 <%@ page import="models.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="models.Category" %>
 <!DOCTYPE html>
 <html>
-<%! List<Product> products = Product.getAll(); %>
+<% List<Product> products = Product.getAll();
+    String categoryIdStr = request.getParameter("category");
+    if (categoryIdStr != null){
+        Category cat = Category.get(Integer.parseInt(categoryIdStr));
+        products = cat.products();
+    }
+%>
 <jsp:include page="WEB-INF/head.jsp">
     <jsp:param name="title" value="Alazani"/>
 </jsp:include>
