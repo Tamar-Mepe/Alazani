@@ -31,7 +31,7 @@
 
 <div class="wrapper">
     <%--suppress CheckTagEmptyBody Sidebar--%>
-    <jsp:include page="WEB-INF/sidebar.jsp"></jsp:include>
+    <jsp:include page="/sidebar.jsp"></jsp:include>
 
     <!-- Page Content  -->
     <div id="content">
