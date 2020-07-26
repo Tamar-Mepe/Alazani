@@ -1,13 +1,7 @@
 package db;
 
-import db.seeder.CategorySeeder;
-import db.seeder.ProductSeeder;
-import db.seeder.PurchaseSeeder;
-import db.seeder.UserSeeder;
-import models.Category;
-import models.Product;
-import models.Purchase;
-import models.User;
+import db.seeder.*;
+import models.*;
 
 import java.sql.SQLException;
 
@@ -17,6 +11,7 @@ public class Migration {
         db.createTable(Product.TABLE_NAME, Product.FIELDS);
         db.createTable(Category.TABLE_NAME, Category.FIELDS);
         db.createTable(Purchase.TABLE_NAME, Purchase.FIELDS);
+        db.createTable(Review.TABLE_NAME, Review.FIELDS);
     }
 
     public static void createStartingData(DB db) {
@@ -24,6 +19,7 @@ public class Migration {
         CategorySeeder.Seed(db);
         ProductSeeder.Seed(db);
         PurchaseSeeder.Seed(db);
+        ReviewSeeder.Seed(db);
     }
 
 }
