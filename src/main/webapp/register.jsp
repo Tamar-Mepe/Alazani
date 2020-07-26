@@ -1,67 +1,49 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <title>Register</title>
-    <!------ Include the above in your HEAD tag ---------->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
-<div class="container">
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form role="form" method="post" action="/RegistrationServlet">
-                <h2 class="register_header">Please Sign Up</h2>
-                <hr class="colorgraph">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="first_name" id="first_name" class="form-control input-lg"
-                                   placeholder="First Name" tabindex="1">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="last_name" id="last_name" class="form-control input-lg"
-                                   placeholder="Last Name" tabindex="2">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="username" id="username" class="form-control input-lg"
-                           placeholder="Username" tabindex="3">
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg"
-                           placeholder="Email Address" tabindex="4">
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <input type="password" name="password" id="password" class="form-control input-lg"
-                                   placeholder="Password" tabindex="5">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <input type="password" name="password_confirmation" id="password_confirmation"
-                                   class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
-                        </div>
-                    </div>
-                </div>
-                <hr class="colorgraph">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6"><input type="submit" value="Register"
-                                                           class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-                    <div class="col-xs-12 col-md-6"><a href="login.jsp" class="btn btn-success btn-block btn-lg">Sign
-                        In</a>
-                    </div>
-                </div>
-            </form>
+<div class="registration-form">
+    <form method="post" action="/RegistrationServlet">
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
         </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="first_name" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="last_name" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password_confirmation" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-block create-account">Create Account</button>
+        </div>
+    </form>
+    <div class="already_registered">
+        <h5><a href="login.jsp">Already Have An Account? Click Here.</a></h5>
     </div>
 </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 </body>
 </html>

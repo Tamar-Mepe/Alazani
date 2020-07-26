@@ -1,36 +1,37 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container">
-
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form role="form" method="post" action="/LoginServlet">
-                <fieldset>
-                    <h2>Please Sign In</h2>
-                    <hr class="colorgraph">
-                    <div class="form-group">
-                        <input type="text" name="username" id="username" class="form-control input-lg"
-                               placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-lg"
-                               placeholder="Password">
-                    </div>
-                    <hr class="colorgraph">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <a href="register.jsp" class="btn btn-lg btn-primary btn-block">Register</a>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="registration-form">
+    <form method="post" action="/LoginServlet">
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
         </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-block create-account">Sign in</button>
+        </div>
+    </form>
+    <div class="not-registered">
+        <h5><a href="register.jsp">Not Registered Yet? Click Here.</a></h5>
     </div>
-
 </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+</body>
+</html>
