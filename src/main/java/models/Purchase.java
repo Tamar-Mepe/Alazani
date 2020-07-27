@@ -20,17 +20,17 @@ public class Purchase extends BaseModel {
         FIELDS.put("purchase_date", Fields.varchar(15));
     }
 
-    private int user_id;
-    private int product_id;
+    private int userId;
+    private int productId;
     private int quantity;
-    private String purchase_date;
+    private String purchaseDate;
 
-    public Purchase(int user_id, int product_id, int quantity, String purchase_date) {
+    public Purchase(int userId, int productId, int quantity, String purchaseDate) {
         super(TABLE_NAME);
-        this.user_id = user_id;
-        this.product_id = product_id;
+        this.userId = userId;
+        this.productId = productId;
         this.quantity = quantity;
-        this.purchase_date = purchase_date;
+        this.purchaseDate = purchaseDate;
     }
 
 
@@ -63,10 +63,10 @@ public class Purchase extends BaseModel {
     public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
-                put("user_id", user_id);
-                put("product_id", product_id);
+                put("user_id", userId);
+                put("product_id", productId);
                 put("quantity", quantity);
-                put("purchase_date", purchase_date);
+                put("purchase_date", purchaseDate);
             }
         };
     }
@@ -76,15 +76,14 @@ public class Purchase extends BaseModel {
     }
 
     public int getUserId() {
-        return this.user_id;
+        return this.userId;
     }
 
     public int getProductId() {
-        return this.product_id;
+        return this.productId;
     }
 
-
     public String getPurchaseDate() {
-        return this.purchase_date;
+        return this.purchaseDate;
     }
 }

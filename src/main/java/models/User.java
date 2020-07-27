@@ -70,18 +70,20 @@ public class User extends BaseModel {
         }
         return allUsers;
     }
-    public static User getWithUserName(String username){
+
+    public static User getWithUserName(String username) {
         List<User> allUsers = User.getAll();
         List<User> users = allUsers.stream().filter(user -> user.getUsername().equals(username)).collect(Collectors.toList());
-        if (users.size()==0) {
+        if (users.size() == 0) {
             return null;
         }
         return users.get(0);
     }
-    public static User getWithEmail(String email){
+
+    public static User getWithEmail(String email) {
         List<User> allUsers = User.getAll();
         List<User> users = allUsers.stream().filter(user -> user.getEmail().equals(email)).collect(Collectors.toList());
-        if (users.size()==0) {
+        if (users.size() == 0) {
             return null;
         }
         return users.get(0);
@@ -127,7 +129,7 @@ public class User extends BaseModel {
         this.email = email;
     }
 
-    public List<Product> products(){
+    public List<Product> products() {
         List<Product> allProducts = Product.getAll();
         return allProducts.stream().filter(product -> product.getUserId() == this.id).collect(Collectors.toList());
     }

@@ -19,25 +19,25 @@ public class Review extends BaseModel {
 
     private String comment;
     private int points;
-    private int user_id;
-    private int product_id;
+    private int userId;
+    private int productId;
 
-    public Review(String comment, int points, int user_id, int product_id) {
+    public Review(String comment, int points, int userId, int productId) {
         super(TABLE_NAME);
         this.comment = comment;
         this.points = points;
-        this.user_id = user_id;
-        this.product_id = product_id;
+        this.userId = userId;
+        this.productId = productId;
     }
 
 
     public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
-                put("user_id", user_id);
-                put("product_id", product_id);
-                put("comment",comment);
-                put("points",points);
+                put("user_id", userId);
+                put("product_id", productId);
+                put("comment", comment);
+                put("points", points);
             }
         };
     }

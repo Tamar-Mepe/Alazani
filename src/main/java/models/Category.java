@@ -59,7 +59,7 @@ public class Category extends BaseModel {
         this.name = name;
     }
 
-    public List<Product> products (){
+    public List<Product> products() {
         List<Product> allProducts = Product.getAll();
         return allProducts.stream().filter(product -> product.getCategoryId() == this.id).collect(Collectors.toList());
     }

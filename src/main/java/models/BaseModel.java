@@ -72,8 +72,7 @@ public class BaseModel {
     }
 
     //  Adding to Database
-    public Map<String, Object> JavaToDB()
-    {
+    public Map<String, Object> JavaToDB() {
         throw new Error("JavaToDB Function should be overrided");
     }
 
