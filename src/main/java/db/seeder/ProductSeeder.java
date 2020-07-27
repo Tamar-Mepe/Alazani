@@ -13,22 +13,20 @@ import java.util.Random;
 public class ProductSeeder {
 
     public static void Seed(DB db) {
-
         //store user ids
-//        User user = users.get(rand.nextInt(users.size()));
         List<User> users = User.getAll();
         List<Integer> userId = new ArrayList<>();
-        for (User user : users) {
+        for (User user : users)
             userId.add(user.getId());
-        }
+
         //store category name and ids
         List<Category> categories = Category.getAll();
         HashMap<String, Integer> categoryId = new HashMap<>();
-        for (Category category : categories) {
+        for (Category category : categories)
             categoryId.put(category.getName(), category.getId());
-        }
-        Random rand = new Random();
+
         // seed
+        Random rand = new Random();
         new Product("iPhone 11 Pro Max", "Gacvlac mawyobs tirkmelshi", 999, categoryId.get("Electronics"), 2, userId.get(rand.nextInt(userId.size())), "images/product/iphone.jpeg").save();
         new Product("Yoda Figure", "Buds all green like yoda", 25, categoryId.get("Toys"), 16, userId.get(rand.nextInt(userId.size())), "images/product/yoda.png").save();
         new Product("Laptop", "MacBook Pro desit tishi laria micemuli prosta mechqareba da iafad vyidi", 3000, categoryId.get("Electronics"), 3, userId.get(rand.nextInt(userId.size())), "images/product/laptop.png").save();

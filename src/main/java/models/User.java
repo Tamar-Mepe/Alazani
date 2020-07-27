@@ -80,7 +80,7 @@ public class User extends BaseModel {
     }
     public static User getWithEmail(String email){
         List<User> allUsers = User.getAll();
-        List<User> users = allUsers.stream().filter(user -> user.getUsername().equals(email)).collect(Collectors.toList());
+        List<User> users = allUsers.stream().filter(user -> user.getEmail().equals(email)).collect(Collectors.toList());
         if (users.size()==0) {
             return null;
         }
