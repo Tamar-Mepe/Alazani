@@ -43,7 +43,7 @@ public class ProductSeeder {
         new Product("Mouse", "Gaming mouse", 13, categoryId.get("Gaming"), 1, userId.get(rand.nextInt(userId.size())), "images/product/mouse.jpg").save();
         new Product("Necklace", "Owl necklace", 13, categoryId.get("Accessories"), 1, userId.get(rand.nextInt(userId.size())), "images/product/necklace.jpg").save();
         new Product("Phone Charger", "Wired phone charger", 13, categoryId.get("Phone Accessories"), 1, userId.get(rand.nextInt(userId.size())), "images/product/phone charger.jpg").save();
-        new Product("Sapilpilee Da Samarile", "Salt and Pepper shakers", 13, categoryId.get("Kitchen"), 1, userId.get(rand.nextInt(userId.size())), "images/product/salt&pepper shaker.jpg").save();
+        new Product("Sapilpile Da Samarile", "Salt and Pepper shakers", 13, categoryId.get("Kitchen"), 1, userId.get(rand.nextInt(userId.size())), "images/product/salt&pepper shaker.jpg").save();
         new Product("Shoes", "Owl shoes", 23, categoryId.get("Shoes"), 5, userId.get(rand.nextInt(userId.size())), "images/product/shoes.jpg").save();
         new Product("Sunglasses", "Armenian sunglasses", 223, categoryId.get("Accessories"), 1, userId.get(rand.nextInt(userId.size())), "images/product/sunglasses.jpg").save();
         new Product("Swimsuit", "Great swimsuit", 223, categoryId.get("Clothes"), 1, userId.get(rand.nextInt(userId.size())), "images/product/swim suit.jpg").save();
