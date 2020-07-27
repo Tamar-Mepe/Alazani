@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="registration-form">
-    <form method="post" action="/LoginServlet">
+    <form method="post" action="LoginServlet">
         <div class="form-icon">
             <span><i class="icon icon-user"></i></span>
         </div>

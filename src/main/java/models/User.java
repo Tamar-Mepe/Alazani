@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class User extends BaseModel {
     public static final String TABLE_NAME = "users";
+    public static final String ATTRIBUTE_NAME = "userID";
     public static Map<String, Object> FIELDS = new LinkedHashMap<>();
 
     static {
@@ -68,6 +69,22 @@ public class User extends BaseModel {
             allUsers.add(DBToJava(field));
         }
         return allUsers;
+    }
+    public static User getWithUserName(String username){
+        List<User> allUsers = User.getAll();
+        List<User> users = allUsers.stream().filter(user -> user.getUsername().equals(username)).collect(Collectors.toList());
+        if (users.size()==0) {
+            return null;
+        }
+        return users.get(0);
+    }
+    public static User getWithEmail(String email){
+        List<User> allUsers = User.getAll();
+        List<User> users = allUsers.stream().filter(user -> user.getUsername().equals(email)).collect(Collectors.toList());
+        if (users.size()==0) {
+            return null;
+        }
+        return users.get(0);
     }
 
     public String getFirstName() {
