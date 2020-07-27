@@ -17,10 +17,10 @@
             <span><i class="icon icon-user"></i></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="username" placeholder="Username">
+            <input type="text" name="username" class="form-control item" id="username" placeholder="Username">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password">
+            <input type="password" name="password" class="form-control item" id="password" placeholder="Password">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-block create-account">Sign in</button>

@@ -17,22 +17,22 @@
             <span><i class="icon icon-user"></i></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="first_name" placeholder="First Name">
+            <input type="text" name="first_name" class="form-control item" id="first_name" placeholder="First Name">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="last_name" placeholder="Last Name">
+            <input type="text" name="last_name" class="form-control item" id="last_name" placeholder="Last Name">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="username" placeholder="Username">
+            <input type="text" name="username" class="form-control item" id="username" placeholder="Username">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password">
+            <input type="password" name="password" class="form-control item" id="password" placeholder="Password">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control item" id="password_confirmation" placeholder="Confirm Password">
+            <input type="password" name="password_confirmation" class="form-control item" id="password_confirmation" placeholder="Confirm Password">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="email" placeholder="Email">
+            <input type="text" name="email" class="form-control item" id="email" placeholder="Email">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-block create-account">Create Account</button>
