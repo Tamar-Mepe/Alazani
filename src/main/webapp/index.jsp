@@ -42,7 +42,8 @@
             <div class="container">
                 <div class="product-list row">
                     <% for (Product product : products) { %>
-                    <jsp:include page="WEB-INF/product-single.jsp">
+                    <jsp:include page="product-single.jsp">
+                        <jsp:param name="product-id" value="<%=product.getId()%>"/>
                         <jsp:param name="product-name" value="<%=product.getName()%>"/>
                         <jsp:param name="product-description" value="<%=product.getDescription()%>"/>
                         <jsp:param name="product-image-path" value="<%=product.getImageAddress()%>"/>

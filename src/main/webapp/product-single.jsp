@@ -1,9 +1,11 @@
 <div class="mb-4 col-md-4">
     <div class="product">
-        <p style="font-size:40px;margin-bottom: 20px;margin-top: 20px;padding-left: 10px;"><%=request.getParameter("product-name")%>
-        </p>
+        <a href="itempage.jsp?id=<%=request.getParameter("product-id")%>">
+            <p class="item-name-style"><%=request.getParameter("product-name")%>
+            </p>
+        </a>
         <div class="product-layout">
-            <div>
+            <div id="one-prod">
                 <img src="<%=request.getParameter("product-image-path")%>" alt="product" width="80%">
             </div>
             <div>
