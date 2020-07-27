@@ -30,7 +30,7 @@ class BCryptTest {
             hashedPasswords.add(generatedSecuredPasswordHash);
         }
 
-        for(int i=0; i<10; i++){
+        for(int i=0; i<3; i++){
             for(int j=0; j<passwords.length; j++){
                 assertTrue(BCrypt.checkpw(passwords[j], hashedPasswords.get(j)));
                 String almostSamePassword = passwords[j]+" ";

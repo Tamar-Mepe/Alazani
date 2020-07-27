@@ -13,7 +13,7 @@ public class User extends BaseModel {
         FIELDS.put("id", Fields.ID);
         FIELDS.put("first_name", Fields.varchar(30));
         FIELDS.put("last_name", Fields.varchar(30));
-        FIELDS.put("password", Fields.varchar(32));
+        FIELDS.put("password", Fields.varchar(512));
         FIELDS.put("username", Fields.varchar(32));
         FIELDS.put("email", Fields.varchar(256));
     }

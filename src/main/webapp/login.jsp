@@ -23,7 +23,7 @@
             <input type="password" class="form-control item" id="password" placeholder="Password">
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-block create-account">Sign in</button>
+            <button type="submit" class="btn btn-block create-account">Sign in</button>
         </div>
     </form>
     <div class="not-registered">

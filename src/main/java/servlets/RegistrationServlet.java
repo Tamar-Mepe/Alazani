@@ -1,6 +1,7 @@
 package servlets;
 
 import models.User;
+import utils.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,7 @@ public class RegistrationServlet extends HttpServlet {
         for (User user : allUser) {
             if (user.getUsername().equals(username)) {
                 /*TODO*/
+
                 return;
             }
             if (!foundEMail && user.getEmail().equals(email)) {
@@ -36,7 +38,8 @@ public class RegistrationServlet extends HttpServlet {
         if (!password.equals(confirmPassword)) {
             return;
         }
-
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        User user = (User) new User(firstName, lastName,hashedPassword,username,email).save();
 
       /*  request.setAttribute("error", "404");
         RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
