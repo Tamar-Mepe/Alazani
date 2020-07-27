@@ -16,24 +16,20 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        List<User> users = User.getAll();
-        for (User user : users) {
 
-            if (user.getUsername().equals(username)) {
-                //TODO: String hashedPassword;
-                if (BCrypt.checkpw(password, user.getPassword())) {
-                    request.getSession().setAttribute(User.ATTRIBUTE_NAME,user.getId());
-                    //TODO: move to front page
-                } else {
-                    //TODO: move to error page (wrong password)
-                }
-            }
+        User user = User.getWithUserName(username);
+        if (user == null) {
+            //TODO: return error username doesn't exists
+            return;
         }
-
-        //TODO: alert("incorrect username");
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (BCrypt.checkpw(password, user.getPassword())) {
+            request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
+            //TODO: move to front page
+            return;
+        } else {
+            //TODO: move to error page (wrong password)
+            return;
+        }
 
     }
 }

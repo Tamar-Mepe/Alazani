@@ -22,37 +22,27 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("password_confirmation");
-        List<User> allUser = User.getAll();
         String errorMessage = "";
-        boolean foundEMail = false;
-        for (User user : allUser) {
-            System.out.println(user.getUsername());
-            if (user.getUsername().equals(username)) {
-                /*TODO*/
-                request.setAttribute("error", "404");
-                RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
-                view.forward(request, response);
-                return;
-            }
-            if (!foundEMail && user.getEmail().equals(email)) {
-                foundEMail = true;
-            }
-        }
-        if (foundEMail) {
+
+        if(User.getWithUserName(username)!=null){
+            errorMessage = "This username already exists";
+            //TODO: redirect
             return;
         }
-        if (!password.equals(confirmPassword)) {
+        if(User.getWithEmail(email)!=null){
+            errorMessage = "This email already exists";
+            //TODO: redirect
             return;
         }
+        if(!password.equals(confirmPassword)){
+            errorMessage = "Passwords doesn't match";
+            //TODO: redirect
+            return;
+        }
+
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = (User) new User(firstName, lastName,hashedPassword,username,email).save();
-
-      /*  request.setAttribute("error", "404");
-        RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
-        view.forward(request, response);*/
+        request.getSession().setAttribute(User.ATTRIBUTE_NAME,user.getId());
     }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
+    
 }
