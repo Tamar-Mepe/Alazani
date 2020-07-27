@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 
         User user = User.getWithUserName(username);
         if (user == null) {
-            errorMessage = "Username doesn't exists";
+            errorMessage = "Username doesn't exist";
         }
         if (BCrypt.checkpw(password, user.getPassword()) && errorMessage.equals("")) {
             request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());

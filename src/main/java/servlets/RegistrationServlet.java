@@ -33,7 +33,7 @@ public class RegistrationServlet extends HttpServlet {
             //TODO: redirect
         }
         if(!password.equals(confirmPassword) && errorMessage.equals("")){
-            errorMessage = "Passwords doesn't match";
+            errorMessage = "Passwords don't match";
             //TODO: redirect
         }
         if(!errorMessage.equals("")){
