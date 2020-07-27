@@ -41,6 +41,7 @@
 
 .seller-label {
     font-size: 20px;
+    color: gray;
 }
 
 .quantity-label {
@@ -56,6 +57,7 @@
 
 .product-description {
     font-size: 20px;
+    color: gray;
 }
 
 .price-label {
