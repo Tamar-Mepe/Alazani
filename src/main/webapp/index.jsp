@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <%
-    // Cateogirzation
+    // Categorization
     List<Product> products = Product.getAll();
     String categoryIdStr = request.getParameter("category");
     if (categoryIdStr != null) {
