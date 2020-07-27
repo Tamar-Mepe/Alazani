@@ -1,12 +1,15 @@
 package servlets;
 
 import models.User;
+import utils.BCrypt;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,10 +23,15 @@ public class RegistrationServlet extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("password_confirmation");
         List<User> allUser = User.getAll();
+        String errorMessage = "";
         boolean foundEMail = false;
         for (User user : allUser) {
+            System.out.println(user.getUsername());
             if (user.getUsername().equals(username)) {
                 /*TODO*/
+                request.setAttribute("error", "404");
+                RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
+                view.forward(request, response);
                 return;
             }
             if (!foundEMail && user.getEmail().equals(email)) {
@@ -36,7 +44,8 @@ public class RegistrationServlet extends HttpServlet {
         if (!password.equals(confirmPassword)) {
             return;
         }
-
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        User user = (User) new User(firstName, lastName,hashedPassword,username,email).save();
 
       /*  request.setAttribute("error", "404");
         RequestDispatcher view = request.getRequestDispatcher("/register.jsp");

@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3 style="text-align:center">Alazani</h3>
+        <label class="alazani-label"><a href="/index.jsp">Alazani</a></label>
     </div>
 
     <ul class="list-unstyled components">

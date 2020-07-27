@@ -1,6 +1,7 @@
 package servlets;
 
 import models.User;
+import utils.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,17 +17,19 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         List<User> users = User.getAll();
-
         for (User user : users) {
+
             if (user.getUsername().equals(username)) {
                 //TODO: String hashedPassword;
-                if (user.getPassword().equals(password)) {
-                    //TODO: move to profile page
+                if (BCrypt.checkpw(password, user.getPassword())) {
+                    request.getSession().setAttribute(User.ATTRIBUTE_NAME,user.getId());
+                    //TODO: move to front page
                 } else {
                     //TODO: move to error page (wrong password)
                 }
             }
         }
+
         //TODO: alert("incorrect username");
     }
 
