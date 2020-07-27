@@ -45,7 +45,7 @@
                                 </option>
                                 <%}%>
                             </select>
-                            <button type="submit" class="buy-button btn btn-primary btn-sm">Small button</button>
+                            <button type="submit" class="buy-button btn btn-primary btn-sm">Add To Cart</button>
                         </form>
                     </div>
                 </div>
