@@ -1,4 +1,5 @@
 <%@ page import="models.Product" %>
+<%@ page import="models.User" %>
 <!DOCTYPE html>
 <html>
 <%
@@ -27,7 +28,7 @@
                     <div>
                         <label class="title-label"><%=currProd.getName()%>
                         </label><br>
-                        <label class="seller-label">By Anonymous User
+                        <label class="seller-label">Added by: <%=User.get(currProd.getUserId()).getUsername()%>
                         </label><br>
                         <label class="quantity-label">Only <%=currProd.getQuantity()%> Left in stock - order
                             soon.</label><br>
@@ -44,7 +45,7 @@
                                 </option>
                                 <%}%>
                             </select>
-                            <button type="submit" class="buy-button btn btn-¬primary btn-sm">Small button</button>
+                            <button type="submit" class="buy-button btn btn-primary btn-sm">Small button</button>
                         </form>
                     </div>
                 </div>
