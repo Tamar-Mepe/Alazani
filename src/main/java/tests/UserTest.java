@@ -148,16 +148,22 @@ class UserTest {
         Product prod4 = (Product) new Product("prod4", "desc4", 99.99, cat2.getId(), 100, user2.getId(), null).save();
         Product prod5 = (Product) new Product("prod5", "desc5", 99.99, cat2.getId(), 100, user2.getId(), null).save();
 
-
+        List<Integer> user1SavedProductIds = new ArrayList<>();
+        user1SavedProductIds.add(prod1.getId());
+        user1SavedProductIds.add(prod2.getId());
+        List<Integer> user2SavedProductIds = new ArrayList<>();
+        user2SavedProductIds.add(prod3.getId());
+        user2SavedProductIds.add(prod4.getId());
+        user2SavedProductIds.add(prod5.getId());
         // check Category.products()
         List<Product> user1Products = user1.products();
         List<Product> user2Products = user2.products();
 
         for (Product product : user1Products) {
-            assertTrue(product.getUserId() == prod1.getUserId() || product.getUserId() == prod2.getUserId());
+            assertTrue(user1SavedProductIds.contains(product.getId()));
         }
         for (Product product : user2Products) {
-            assertTrue(product.getUserId() == prod3.getUserId() || product.getUserId() == prod4.getUserId() || product.getUserId() == prod5.getUserId());
+            assertTrue(user2SavedProductIds.contains(product.getId()));
         }
         assertEquals(user1Products.size(), 2);
         assertEquals(user2Products.size(), 3);
