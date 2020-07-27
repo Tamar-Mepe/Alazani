@@ -27,22 +27,26 @@ public class RegistrationServlet extends HttpServlet {
         if(User.getWithUserName(username)!=null){
             errorMessage = "This username already exists";
             //TODO: redirect
-            return;
         }
-        if(User.getWithEmail(email)!=null){
+        if(User.getWithEmail(email)!=null && errorMessage.equals("")){
             errorMessage = "This email already exists";
             //TODO: redirect
-            return;
         }
-        if(!password.equals(confirmPassword)){
+        if(!password.equals(confirmPassword) && errorMessage.equals("")){
             errorMessage = "Passwords doesn't match";
             //TODO: redirect
-            return;
+        }
+        if(!errorMessage.equals("")){
+            request.setAttribute("error", errorMessage);
+            RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
+            view.forward(request, response);
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = (User) new User(firstName, lastName,hashedPassword,username,email).save();
         request.getSession().setAttribute(User.ATTRIBUTE_NAME,user.getId());
+        //TODO: send redirect to main page
+
     }
     
 }

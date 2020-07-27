@@ -3,6 +3,7 @@ package servlets;
 import models.User;
 import utils.BCrypt;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,20 +17,22 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String errorMessage = "";
 
         User user = User.getWithUserName(username);
         if (user == null) {
-            //TODO: return error username doesn't exists
-            return;
+            errorMessage = "Username doesn't exists";
         }
-        if (BCrypt.checkpw(password, user.getPassword())) {
+        if (BCrypt.checkpw(password, user.getPassword()) && errorMessage.equals("")) {
             request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
             //TODO: move to front page
             return;
-        } else {
-            //TODO: move to error page (wrong password)
-            return;
+        } else if(errorMessage.equals("")) {
+            errorMessage = "Incorrect password";
         }
-
+        // happend if username doesn't exist or password was incorrect
+        request.setAttribute("error", errorMessage);
+        RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
+        view.forward(request, response);
     }
 }
