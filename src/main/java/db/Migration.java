@@ -12,6 +12,7 @@ public class Migration {
         db.createTable(Category.TABLE_NAME, Category.FIELDS);
         db.createTable(Purchase.TABLE_NAME, Purchase.FIELDS);
         db.createTable(Review.TABLE_NAME, Review.FIELDS);
+        db.createTable(Cart.TABLE_NAME, Cart.FIELDS);
     }
 
     public static void createStartingData(DB db) {
