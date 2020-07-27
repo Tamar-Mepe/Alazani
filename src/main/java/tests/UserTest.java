@@ -169,4 +169,50 @@ class UserTest {
         assertEquals(user2Products.size(), 3);
     }
 
+    @Test
+    public void checkUsername(){
+        List<User> allUsers = new ArrayList<User>() {
+            {
+                add(new User("f1", "l1", "p1", "u1", "e1"));
+                add(new User("f2", "l2", "p2", "u2", "e2"));
+                add(new User("f3", "l3", "p3", "u3", "e3"));
+                add(new User("f4", "l4", "p4", "u4", "e5"));
+            }
+        };
+
+        // Save all of them in DB
+        for (User user : allUsers)
+            user.save();
+
+        List<User> allUsersDB = User.getAll();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User userDB = allUsersDB.get(i);
+            User user = allUsers.get(i);
+            assertEquals(userDB.getWithUserName(user.getUsername()).getId(), user.getId());
+        }
+    }
+
+    @Test
+    public void checkEmail(){
+        List<User> allUsers = new ArrayList<User>() {
+            {
+                add(new User("f1", "l1", "p1", "u1", "e1"));
+                add(new User("f2", "l2", "p2", "u2", "e2"));
+                add(new User("f3", "l3", "p3", "u3", "e3"));
+                add(new User("f4", "l4", "p4", "u4", "e5"));
+            }
+        };
+
+        // Save all of them in DB
+        for (User user : allUsers)
+            user.save();
+
+        List<User> allUsersDB = User.getAll();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User userDB = allUsersDB.get(i);
+            User user = allUsers.get(i);
+            assertEquals(userDB.getWithEmail(user.getEmail()).getId(), user.getId());
+        }
+    }
+
 }
