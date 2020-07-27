@@ -88,3 +88,29 @@ select {
     background-color: #ffa90c;
     border-color: #ffa90c;
 }
+
+.btn-info {
+    color: #fff;
+    background-color: #ffa90c;
+    border-color: #ffa90c;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: black;
+    border-color: black;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: black;
+    border-color: black;
+}
+
+.bg-light {
+    background-color: #1f1f1f !important;
+}
+
+.header-label {
+    color: white;
+}

@@ -19,10 +19,10 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="../login.jsp">Sign In</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sell Items</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Buy Items</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login.jsp" style="color: white">Sign In</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sell.jsp" style="color: white">Sell Items</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" style="color: white">Buy Items</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" style="color: white">Cart</a></li>
             </ul>
         </div>
     </div>
