@@ -63,19 +63,26 @@ public class Cart extends BaseModel {
         return userId;
     }
 
-    public List<Cart> getCarts() {
+    public List<Cart> getCarts(int userId) {
         List<Cart> Carts = Cart.getAll();
-        return Carts.stream().filter(art -> art.getUserId() == this.userId).collect(Collectors.toList());
+        return Carts.stream().filter(art -> art.getUserId() == userId).collect(Collectors.toList());
     }
 
-    public Map<Product, Integer> getProductsByUserId() {
-        Map<Product, Integer> resultProducts = new HashMap<Product, Integer>();
-        List<Cart> carts = getCarts();
-        for (Cart currCurt : carts) {
-            Product currProduct = Product.get(currCurt.productId);
-            resultProducts.put(currProduct, currProduct.getQuantity());
+    public Map<Product, Integer> getProductsByUserId(int userId) {
+        Map<Integer, Integer> resultProducts = new HashMap<Integer, Integer>();
+        List<Cart> carts = getCarts(userId);
+        for (Cart currCart : carts) {
+            if(resultProducts.containsKey(currCart.productId)){
+                resultProducts.put(currCart.productId,resultProducts.get(currCart.productId) + currCart.quantity);
+            }else{
+                resultProducts.put(currCart.productId, currCart.quantity);
+            }
         }
-        return resultProducts;
+        Map<Product, Integer> prodMap = new HashMap<Product, Integer>();
+        for(int prodId : resultProducts.keySet()){
+            prodMap.put(Product.get(prodId), resultProducts.get(prodId));
+        }
+        return prodMap;
     }
 
     public int getQuantity() {
