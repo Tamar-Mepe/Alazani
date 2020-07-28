@@ -44,7 +44,8 @@
                             <input name="productId" type="hidden" value=<%=id%>>
                             <select name="quantity-select">
                                 <% for (int i = 1; i <= currProd.getQuantity(); i++) { %>
-                                <option name="quant"><%=i%>
+                                <option>
+                                    <%=i%>
                                 </option>
                                 <%}%>
                             </select>

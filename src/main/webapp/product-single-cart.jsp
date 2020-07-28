@@ -1,10 +1,14 @@
 <%@ page import="models.Review" %>
 <% int id = Integer.parseInt(request.getParameter("product-id"));%>
-<div class="mb-4 col-md-4">
+<div class="mb-4 col-xl-3 col-lg-4 col-md-6">
     <div class="product">
         <a href="itempage.jsp?id=<%=request.getParameter("product-id")%>">
-            <p class="item-name-style"><%=request.getParameter("product-name")%>
-            </p>
+            <h3 class="cart-item-style" style="margin-top: 10px">
+                <%=request.getParameter("product-name")%>
+                <span class="badge badge-primary quantity-label-style">
+                    x<%=request.getParameter("product-quantity")%>
+                </span>
+            </h3>
         </a>
         <div class="product-layout">
             <div id="one-prod">
@@ -19,7 +23,9 @@
                     <img src="images/star.png" alt="star" id="image-style">
                     <label id="review-styling">
                         <%=Review.getAverageReviewByProductId(id)%>/5 (<%=Review.getReviewsByProductId(id).size()%>)
-                    </label>
+                    </label><br>
+                    <button type="submit" class="btn btn-secondary btn-sm cart-buttons">Remove</button>
+                    <button type="submit" class="btn btn-primary btn-sm cart-buttons">Buy</button>
                 </div>
             </div>
         </div>
