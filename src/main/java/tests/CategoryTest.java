@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class CategoryTest {
@@ -78,7 +77,10 @@ class CategoryTest {
         // Should Pass after updating
         category.update();
         newCategory = Category.get(savedId);
+        Category newCategory2 = Category.getByName("axalikategoria2");
+        assertEquals(savedId,newCategory2.getId());
         assertEquals(newCategory.getId(), savedId);
         assertEquals(newCategory.getName(), category.getName());
+        assertNull( Category.getByName("chgrpgr"));
     }
 }
