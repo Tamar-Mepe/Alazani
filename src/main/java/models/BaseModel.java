@@ -106,4 +106,9 @@ public class BaseModel {
         }
         return allEntries;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.id == ((BaseModel) obj).getId();
+    }
 }
