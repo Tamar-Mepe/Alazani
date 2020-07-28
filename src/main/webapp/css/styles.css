@@ -138,3 +138,32 @@ select {
     margin-top: 30px;
     width: 10%;
 }
+
+#review-label {
+    font-size: 50px;
+    font-weight: bold;
+    padding-top: 150px;
+    padding-bottom: 30px;
+}
+
+#username-label {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+#rating-label {
+    color: gray;
+    font-size: 15px;
+}
+
+#star-image {
+    width: 17px;
+    height: 17px;
+}
+
+#review-text {
+    padding-top: 10px;
+    font-style: italic;
+    padding-bottom: 40px;
+    font-size: 20px;
+}
