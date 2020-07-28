@@ -12,6 +12,11 @@ public class Product extends BaseModel {
     public static final String TABLE_NAME = "products";
     public static Map<String, Object> FIELDS = new LinkedHashMap<>();
 
+    @Override
+    public boolean equals(Object obj) {
+        return this.id == ((Product)obj).getId();
+    }
+
     static {
         FIELDS.put("id", Fields.ID);
         FIELDS.put("user_id", Fields.INT);
