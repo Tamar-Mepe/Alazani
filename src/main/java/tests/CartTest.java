@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -62,17 +63,34 @@ class CartTest {
     }
     @Test
     void getProducts() throws SQLException {
-//        // Save To DB
-//        UserSeeder.Seed(db);
-//        CategorySeeder.Seed(db);
-//        ProductSeeder.Seed(db);
-//
-//        new Cart(1,1,1).save();
-//        new Cart(1,2,1).save();
-//        new Cart(1,3,1).save();
-//        new Cart(2,2,1).save();
-//        new Cart(3,3,1).save();
-//        new Cart(1,4,1).save();
+        // Save To DB
+        UserSeeder.Seed(db);
+        CategorySeeder.Seed(db);
+        ProductSeeder.Seed(db);
+
+        new Cart(1,1,1).save();
+        new Cart(1,2,1).save();
+        new Cart(1,3,1).save();
+        new Cart(2,2,1).save();
+        new Cart(3,3,1).save();
+        new Cart(1,4,1).save();
+        Map<Product, Integer> user1Products = Cart.getProductsByUserId(1);
+        assertEquals(4,user1Products.size());
+        new Cart(1,4,1).save();
+        user1Products = Cart.getProductsByUserId(1);
+        assertEquals(4,user1Products.size());
+        for(int i=0; i<7; i++){
+            new Cart(1,1,3).save();
+        }
+        user1Products = Cart.getProductsByUserId(1);
+        for(Product key : user1Products.keySet()){
+            if(key.getId() == 4){
+                assertEquals(2,user1Products.get(key));
+            }
+            if(key.getId() == 1){
+                assertEquals(22,user1Products.get(key));
+            }
+        }
     }
 
 }

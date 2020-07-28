@@ -63,12 +63,12 @@ public class Cart extends BaseModel {
         return userId;
     }
 
-    public List<Cart> getCarts(int userId) {
+    public static List<Cart> getCarts(int userId) {
         List<Cart> Carts = Cart.getAll();
         return Carts.stream().filter(art -> art.getUserId() == userId).collect(Collectors.toList());
     }
 
-    public Map<Product, Integer> getProductsByUserId(int userId) {
+    public static Map<Product, Integer> getProductsByUserId(int userId) {
         Map<Integer, Integer> resultProducts = new HashMap<Integer, Integer>();
         List<Cart> carts = getCarts(userId);
         for (Cart currCart : carts) {
