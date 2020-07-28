@@ -34,7 +34,6 @@ class CategoryTest {
 
         assertEquals(category1.getId(), savedId);
         assertEquals(category.getName(), category1.getName());
-
     }
 
     @Test
