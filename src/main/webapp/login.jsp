@@ -25,6 +25,10 @@
         <div class="form-group">
             <button type="submit" class="btn btn-block create-account">Sign in</button>
         </div>
+        <% if (request.getAttribute("error") != null) {%>
+        <label><%=request.getAttribute("error")%>
+        </label>
+        <% }%>
     </form>
     <div class="not-registered">
         <h5><a href="register.jsp">Not Registered Yet? Click Here.</a></h5>
