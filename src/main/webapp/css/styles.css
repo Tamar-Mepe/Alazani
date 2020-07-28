@@ -117,7 +117,7 @@ select {
     color: white;
 }
 
-#sell-label {
+.label-styling-bold {
     font-size: 50px;
     font-weight: bold;
 }
@@ -171,4 +171,25 @@ sell-labels {
 #add-review-button {
     margin-top: 150px;
     width: 20%;
+}
+
+#about-us-styling {
+    font-size: 30px;
+    font-style: italic;
+    color: gray;
+}
+
+#text-about-us-styling {
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+.creator-name{
+    font-weight: bold;
+}
+
+.creator-email{
+    color: gray;
 }

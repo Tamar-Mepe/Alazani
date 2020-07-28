@@ -16,7 +16,7 @@
                 <%}%>
             </ul>
         </li>
-        <li><a href="/contacts.jsp">Contact</a></li>
+        <li><a href="/contacts.jsp">About Us</a></li>
     </ul>
 
     <script type="text/javascript">

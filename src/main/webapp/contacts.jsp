@@ -21,16 +21,20 @@
         </header>
         <main class="mb-5">
             <div class="container">
-                <h3>
-                    This project was designed and made for oop course at free university of tbilisi.<br>
-                </h3>
-                <p2>
-                    <I>A team of four members including:</I><br>
-                        <strong>irakli gabelia</strong>  : igabe17@freeuni.edu.ge<br>
-                        <strong>zura khutsishvili</strong>: zkhut16@freeuni.edu.ge<br>
-                        <strong>davit targamadze</strong>   :dtarg16@freeuni.edu.ge<br>
-                        <strong>tamar davitaia</strong>   : tdavi18@freeuni.edu.ge<br>
-                </p2>
+                <p class="label-styling-bold">
+                    About Us<br>
+                </p>
+                <p id="about-us-styling">This project was designed and made for OOP course at Free University of
+                    Tbilisi</p>
+                <p id="text-about-us-styling">Team of four members including:</p>
+                <label class="creator-name">Davit Targamadze: </label>
+                <label class="creator-email">dtarg16@freeuni.edu.ge</label><br>
+                <label class="creator-name">Irakli Gabelia: </label>
+                <label class="creator-email">igabe17@freeuni.edu.ge</label><br>
+                <label class="creator-name">Zura Khutsishvili: </label>
+                <label class="creator-email">zkhut16@freeuni.edu.ge</label><br>
+                <label class="creator-name">Tamar Davitaia: </label>
+                <label class="creator-email">tdavi18@freeuni.edu.ge</label><br>
             </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
@@ -38,3 +42,5 @@
 </div>
 </body>
 </html>
+
+<%--This project was designed and made for oop course at free university of tbilisi.--%>

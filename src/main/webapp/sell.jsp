@@ -15,7 +15,7 @@
         </header>
         <main class="mb-5">
             <div class="container">
-                <p id="sell-label" class="text-left">Please Fill The Form</p>
+                <p class="label-styling-bold text-left">Please Fill The Form</p>
                 <form>
                     <div class="form-group">
                         <label class="sell-labels" for="formGroupExampleInput">Name</label>
