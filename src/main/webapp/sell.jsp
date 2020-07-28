@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <jsp:include page="WEB-INF/head.jsp">
     <jsp:param name="title" value="Sell Your Item"/>
