@@ -10,7 +10,6 @@
             <i class="fas fa-align-justify"></i>
         </button>
 
-
         <form class="form-inline d-flex justify-content-center md-form form-sm">
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
                    aria-label="Search">
@@ -21,7 +20,6 @@
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/login.jsp" style="color: white">Sign In</a></li>
                 <li class="nav-item"><a class="nav-link" href="/sell.jsp" style="color: white">Sell Items</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="color: white">Buy Items</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" style="color: white">Cart</a></li>
             </ul>
         </div>

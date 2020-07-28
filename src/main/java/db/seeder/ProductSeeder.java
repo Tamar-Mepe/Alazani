@@ -45,10 +45,10 @@ public class ProductSeeder {
         new Product("Phone Charger", "Wired phone charger", 13, categoryId.get("Phone Accessories"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/phone_charger.jpg").save();
         new Product("Sapilpile Da Samarile", "Salt and Pepper shakers", 13, categoryId.get("Kitchen"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/salt_pepper_shaker.jpg").save();
         new Product("Shoes", "Owl shoes", 23, categoryId.get("Shoes"), 5, userId.get(rand.nextInt(userId.size())), "/images/product/shoes.jpg").save();
-        new Product("Sunglasses", "Armenian sunglasses", 223, categoryId.get("Accessories"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/sunglasses.jpg").save();
+        new Product("Sunglasses", "Very stylish sunglasses", 223, categoryId.get("Accessories"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/sunglasses.jpg").save();
         new Product("Swimsuit", "Great swimsuit", 223, categoryId.get("Clothes"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/swimsuit.jpg").save();
         new Product("Owl Talisman", "No words needed", 11, categoryId.get("Accessories"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/talisman.jpg").save();
         new Product("Wireless Charger", "Great charger", 9, categoryId.get("Phone Accessories"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/wirelessCharger.jpg").save();
-
+        new Product("Fabio Canavarro", "Iebs icavs", 3, categoryId.get("Toys"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/fabio.jpg").save();
     }
 }

@@ -5,3 +5,10 @@
 .footer-mini {
     background-color: #ffb733;
 }
+
+footer.fixed {
+    position: fixed;
+    width: calc(100% - 200px);
+    bottom: 0;
+    right: 0;
+}
