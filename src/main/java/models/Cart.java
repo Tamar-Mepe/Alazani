@@ -68,7 +68,7 @@ public class Cart extends BaseModel {
         return Carts.stream().filter(art -> art.getUserId() == userId).collect(Collectors.toList());
     }
 
-    public Map<Product, Integer> getProductsByUserId(int userId) {
+    public HashMap<Product, Integer> getProductsByUserId(int userId) {
         Map<Integer, Integer> resultProducts = new HashMap<Integer, Integer>();
         List<Cart> carts = getCarts(userId);
         for (Cart currCart : carts) {
@@ -78,7 +78,7 @@ public class Cart extends BaseModel {
                 resultProducts.put(currCart.productId, currCart.quantity);
             }
         }
-        Map<Product, Integer> prodMap = new HashMap<Product, Integer>();
+        HashMap<Product, Integer> prodMap = new HashMap<Product, Integer>();
         for(int prodId : resultProducts.keySet()){
             prodMap.put(Product.get(prodId), resultProducts.get(prodId));
         }

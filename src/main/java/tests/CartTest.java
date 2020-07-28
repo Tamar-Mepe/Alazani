@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -62,17 +63,19 @@ class CartTest {
     }
     @Test
     void getProducts() throws SQLException {
-//        // Save To DB
-//        UserSeeder.Seed(db);
-//        CategorySeeder.Seed(db);
-//        ProductSeeder.Seed(db);
-//
-//        new Cart(1,1,1).save();
-//        new Cart(1,2,1).save();
-//        new Cart(1,3,1).save();
-//        new Cart(2,2,1).save();
-//        new Cart(3,3,1).save();
-//        new Cart(1,4,1).save();
+//         Save To DB
+        UserSeeder.Seed(db);
+        CategorySeeder.Seed(db);
+        ProductSeeder.Seed(db);
+
+        new Cart(1,1,1).save();
+        new Cart(1,2,1).save();
+        new Cart(1,3,1).save();
+        new Cart(2,2,1).save();
+        new Cart(3,3,1).save();
+        new Cart(1,4,1).save();
+//        Map<Product, Integer> prodMap=Cart.;
+
     }
 
 }

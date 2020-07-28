@@ -28,7 +28,7 @@ public class ProductSeeder {
         // seed
         Random rand = new Random();
         new Product("iPhone 11 Pro Max", "Gacvlac mawyobs tirkmelshi", 999, categoryId.get("Electronics"), 2, userId.get(rand.nextInt(userId.size())), "/images/product/iphone.jpeg").save();
-        new Product("Yoda Figure", "Buds all green like yoda", 25, categoryId.get("Toys"), 16, userId.get(rand.nextInt(userId.size())), "/images/product/yoda.png").save();
+        new Product("Yoda Figure", "Buds all green like yoda", 25, categoryId.get("Toys"), 50, userId.get(rand.nextInt(userId.size())), "/images/product/yoda.png").save();
         new Product("Laptop", "MacBook Pro desit tishi laria micemuli prosta mechqareba da iafad vyidi", 3000, categoryId.get("Electronics"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/laptop.png").save();
         new Product("Converse", "It does not need description", 999, categoryId.get("Shoes"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/converse.png").save();
         new Product("Toaster", "Toasts bread or other identical things", 999, categoryId.get("Kitchen"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/toaster.jpg").save();

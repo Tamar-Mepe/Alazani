@@ -38,10 +38,11 @@
                         </label><br>
                         <label class="price-label">$<%=currProd.getPriceString()%>
                         </label>
-                        <form action="quantity-form">
+                        <form method="post" action="CartServlet">
+                            <input name="productId" type="hidden" value=<%=id%>>
                             <select name="quantity-select">
                                 <% for (int i = 1; i <= currProd.getQuantity(); i++) { %>
-                                <option value="quant"><%=i%>
+                                <option name="quant"><%=i%>
                                 </option>
                                 <%}%>
                             </select>
