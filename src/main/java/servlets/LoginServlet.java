@@ -18,12 +18,14 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String errorMessage = "";
-
+        if(username == null || password == null ){
+            errorMessage = "Please fill blank spaces";
+        }
         User user = User.getWithUserName(username);
-        if (user == null) {
+        if (errorMessage.equals("") && user == null) {
             errorMessage = "Username doesn't exist";
         }
-        if (BCrypt.checkpw(password, user.getPassword()) && errorMessage.equals("")) {
+        if ( errorMessage.equals("") && BCrypt.checkpw(password, user.getPassword())) {
             request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
             //TODO: move to front page
             return;
