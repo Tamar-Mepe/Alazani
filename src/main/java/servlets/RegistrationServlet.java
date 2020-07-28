@@ -9,9 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
@@ -24,30 +22,30 @@ public class RegistrationServlet extends HttpServlet {
         String confirmPassword = request.getParameter("password_confirmation");
         String errorMessage = "";
 
-        if(firstName == null || lastName == null || username == null || email == null || password == null || confirmPassword == null){
+        if (firstName == null || lastName == null || username == null || email == null || password == null || confirmPassword == null) {
             errorMessage = "Please fill blank spaces";
         }
-        if(User.getWithUserName(username)!=null){
+        if (User.getWithUserName(username) != null) {
             errorMessage = "This username already exists";
         }
-        if(errorMessage.equals("") && User.getWithEmail(email)!=null){
+        if (errorMessage.equals("") && User.getWithEmail(email) != null) {
             errorMessage = "This email already exists";
         }
-        if(errorMessage.equals("") && !password.equals(confirmPassword)){
+        if (errorMessage.equals("") && !password.equals(confirmPassword)) {
             errorMessage = "Passwords don't match";
             //TODO: redirect
         }
-        if(!errorMessage.equals("")){
+        if (!errorMessage.equals("")) {
             request.setAttribute("error", errorMessage);
             RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
             view.forward(request, response);
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-        User user = (User) new User(firstName, lastName,hashedPassword,username,email).save();
-        request.getSession().setAttribute(User.ATTRIBUTE_NAME,user.getId());
+        User user = (User) new User(firstName, lastName, hashedPassword, username, email).save();
+        request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
         //TODO: send redirect to main page
 
     }
-    
+
 }

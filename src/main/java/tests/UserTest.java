@@ -170,7 +170,7 @@ class UserTest {
     }
 
     @Test
-    public void checkUsername(){
+    public void checkUsername() {
         List<User> allUsers = new ArrayList<User>() {
             {
                 add(new User("f1", "l1", "p1", "u1", "e1"));
@@ -193,7 +193,7 @@ class UserTest {
     }
 
     @Test
-    public void checkEmail(){
+    public void checkEmail() {
         List<User> allUsers = new ArrayList<User>() {
             {
                 add(new User("f1", "l1", "p1", "u1", "e1"));

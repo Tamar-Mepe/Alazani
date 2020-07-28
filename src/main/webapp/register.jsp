@@ -29,7 +29,8 @@
             <input type="password" name="password" class="form-control item" id="password" placeholder="Password">
         </div>
         <div class="form-group">
-            <input type="password" name="password_confirmation" class="form-control item" id="password_confirmation" placeholder="Confirm Password">
+            <input type="password" name="password_confirmation" class="form-control item" id="password_confirmation"
+                   placeholder="Confirm Password">
         </div>
         <div class="form-group">
             <input type="text" name="email" class="form-control item" id="email" placeholder="Email">

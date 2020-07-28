@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static jdk.nashorn.internal.objects.NativeMath.round;
-
 public class Review extends BaseModel {
     public static final String TABLE_NAME = "reviews";
     public static Map<String, Object> FIELDS = new LinkedHashMap<>();
@@ -55,11 +53,13 @@ public class Review extends BaseModel {
         review.setId(Integer.parseInt(fields.get("id")));
         return review;
     }
+
     public static Review get(int id) {
         Map<String, String> fields = BaseModel.getGeneric(TABLE_NAME, id);
         assert fields != null;
         return DBToJava(fields);
     }
+
     public static List<Review> getAll() {
         List<Map<String, String>> fields = BaseModel.getAllGeneric(TABLE_NAME);
         List<Review> allRewviews = new ArrayList<>();
@@ -68,18 +68,19 @@ public class Review extends BaseModel {
         }
         return allRewviews;
     }
-    public static List<Review> getReviewsByProductId(int productId){
+
+    public static List<Review> getReviewsByProductId(int productId) {
         List<Review> allReviews = Review.getAll();
         return allReviews.stream().filter(review -> review.getProductId() == productId).collect(Collectors.toList());
     }
 
-    public static String getAverageReviewByProductId(int productId){
+    public static String getAverageReviewByProductId(int productId) {
         List<Review> reviews = Review.getReviewsByProductId(productId);
         double avg = 0;
-        for(Review review : reviews){
+        for (Review review : reviews) {
             avg += review.getPoints();
         }
-        double answer = avg/reviews.size();
+        double answer = avg / reviews.size();
         DecimalFormat df = new DecimalFormat("#.0");
         return df.format(answer);
     }

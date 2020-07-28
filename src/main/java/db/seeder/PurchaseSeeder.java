@@ -1,13 +1,11 @@
 package db.seeder;
 
 import db.DB;
-import models.Category;
+import models.Product;
 import models.Purchase;
 import models.User;
-import models.Product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 

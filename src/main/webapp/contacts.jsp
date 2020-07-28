@@ -1,6 +1,3 @@
-<%@ page import="models.Product" %>
-<%@ page import="java.util.List" %>
-<%@ page import="models.Category" %>
 <!DOCTYPE html>
 <html>
 
@@ -42,5 +39,3 @@
 </div>
 </body>
 </html>
-
-<%--This project was designed and made for oop course at free university of tbilisi.--%>

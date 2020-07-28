@@ -44,7 +44,8 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </form>
-                <button type="submit" id="sell-button" class="sell-button btn btn-primary btn-lg btn-block">Sell</button>
+                <button type="submit" id="sell-button" class="sell-button btn btn-primary btn-lg btn-block">Sell
+                </button>
             </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>

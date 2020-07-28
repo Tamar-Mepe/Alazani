@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -18,20 +17,20 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String errorMessage = "";
-        if(username == null || password == null ){
+        if (username == null || password == null) {
             errorMessage = "Please fill blank spaces";
         }
         User user = User.getWithUserName(username);
         if (errorMessage.equals("") && user == null) {
             errorMessage = "Username doesn't exist";
         }
-        if ( errorMessage.equals("") && BCrypt.checkpw(password, user.getPassword())) {
+        if (errorMessage.equals("") && BCrypt.checkpw(password, user.getPassword())) {
             request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
             //TODO: move to front page
             RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);
             return;
-        } else if(errorMessage.equals("")) {
+        } else if (errorMessage.equals("")) {
             errorMessage = "Incorrect password";
         }
         // happend if username doesn't exist or password was incorrect

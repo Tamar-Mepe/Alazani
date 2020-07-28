@@ -72,14 +72,14 @@ public class Cart extends BaseModel {
         Map<Integer, Integer> resultProducts = new HashMap<Integer, Integer>();
         List<Cart> carts = getCarts(userId);
         for (Cart currCart : carts) {
-            if(resultProducts.containsKey(currCart.productId)){
-                resultProducts.put(currCart.productId,resultProducts.get(currCart.productId) + currCart.quantity);
-            }else{
+            if (resultProducts.containsKey(currCart.productId)) {
+                resultProducts.put(currCart.productId, resultProducts.get(currCart.productId) + currCart.quantity);
+            } else {
                 resultProducts.put(currCart.productId, currCart.quantity);
             }
         }
         Map<Product, Integer> prodMap = new HashMap<Product, Integer>();
-        for(int prodId : resultProducts.keySet()){
+        for (int prodId : resultProducts.keySet()) {
             prodMap.put(Product.get(prodId), resultProducts.get(prodId));
         }
         return prodMap;

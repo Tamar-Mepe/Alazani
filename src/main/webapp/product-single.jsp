@@ -17,7 +17,8 @@
                 <div>
                     <img src="images/star.png" alt="star"
                          style="vertical-align:middle;width: 22px; height: 22px;">
-                    <label style="font-size: 22px;vertical-align:middle;"><%=Review.getAverageReviewByProductId(Integer.parseInt(request.getParameter("product-id")))%>/5
+                    <label style="font-size: 22px;vertical-align:middle;"><%=Review.getAverageReviewByProductId(Integer.parseInt(request.getParameter("product-id")))%>
+                        /5
                         (<%=Review.getReviewsByProductId(Integer.parseInt(request.getParameter("product-id"))).size()%>)
                     </label>
                 </div>
