@@ -24,15 +24,16 @@ public class RegistrationServlet extends HttpServlet {
         String confirmPassword = request.getParameter("password_confirmation");
         String errorMessage = "";
 
+        if(firstName == null || lastName == null || username == null || email == null || password == null || confirmPassword == null){
+            errorMessage = "Please fill blank spaces";
+        }
         if(User.getWithUserName(username)!=null){
             errorMessage = "This username already exists";
-            //TODO: redirect
         }
-        if(User.getWithEmail(email)!=null && errorMessage.equals("")){
+        if(errorMessage.equals("") && User.getWithEmail(email)!=null){
             errorMessage = "This email already exists";
-            //TODO: redirect
         }
-        if(!password.equals(confirmPassword) && errorMessage.equals("")){
+        if(errorMessage.equals("") && !password.equals(confirmPassword)){
             errorMessage = "Passwords don't match";
             //TODO: redirect
         }

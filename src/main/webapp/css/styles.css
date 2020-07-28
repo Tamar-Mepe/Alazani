@@ -133,3 +133,8 @@ select {
 .custom-file {
     width: 50%;
 }
+
+.sell-button {
+    margin-top: 30px;
+    width: 10%;
+}
