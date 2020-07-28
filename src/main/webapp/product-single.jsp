@@ -12,12 +12,11 @@
             <div>
                 <p><%=request.getParameter("product-description")%>
                 </p>
-                <p style="font-size:30px">$<%=request.getParameter("product-price")%>
+                <p id="font-30">$<%=request.getParameter("product-price")%>
                 </p>
                 <div>
-                    <img src="images/star.png" alt="star"
-                         style="vertical-align:middle;width: 22px; height: 22px;">
-                    <label style="font-size: 22px;vertical-align:middle;"><%=Review.getAverageReviewByProductId(Integer.parseInt(request.getParameter("product-id")))%>
+                    <img src="images/star.png" alt="star" id="image-style">
+                    <label id="review-styling"><%=Review.getAverageReviewByProductId(Integer.parseInt(request.getParameter("product-id")))%>
                         /5
                         (<%=Review.getReviewsByProductId(Integer.parseInt(request.getParameter("product-id"))).size()%>)
                     </label>

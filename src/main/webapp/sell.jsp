@@ -15,7 +15,7 @@
             <jsp:include page="WEB-INF/header-bar.jsp"></jsp:include>
         </header>
         <main class="mb-5">
-            <div class="container item-containter">
+            <div class="container item-container">
                 <p class="label-styling-bold text-left">Please Fill The Form</p>
                 <form>
                     <div class="form-group">
@@ -45,7 +45,7 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </form>
-                <button type="submit" id="sell-button" class="sell-button btn btn-primary btn-lg btn-block">Sell
+                <button type="submit" id="sell-button" class="btn btn-primary btn-lg btn-block">Sell
                 </button>
             </div>
         </main>

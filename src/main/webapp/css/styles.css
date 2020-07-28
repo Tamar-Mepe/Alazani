@@ -122,7 +122,7 @@ select {
     font-weight: bold;
 }
 
-sell-labels {
+.sell-labels {
     font-size: 20px;
 }
 
@@ -186,14 +186,41 @@ sell-labels {
 }
 
 
-.creator-name {
+.bold-name {
     font-weight: bold;
 }
 
-.creator-email {
+.gray-label {
     color: gray;
 }
 
-.item-containter {
+.item-container {
     margin-left: 30px;
+}
+
+.label-styling-bold-2 {
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.profile-styling {
+    font-size: 23px;
+}
+
+#font-30 {
+    font-size: 30px;
+}
+
+#image-style {
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
+    margin-bottom: 6px;
+}
+
+#review-styling {
+    font-size: 22px;
+    vertical-align: middle;
 }
