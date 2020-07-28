@@ -50,6 +50,16 @@
                         </form>
                     </div>
                 </div>
+                <div>
+                    <p id="review-label">Reviews</p>
+                    <% for (int i = 0; i < 10; i++) { %>
+                    <p id="username-label">user: vighacatipi</p>
+                    <label id="rating-label">Rating: </label>
+                    <img id="star-image" src="/images/star.png" alt="review-star" width="1.5%">
+                    <label id="rating-label">4.7/5</label>
+                    <p id="review-text">Magari itemia, kidev vikidi</p>
+                    <%}%>
+                </div>
             </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
