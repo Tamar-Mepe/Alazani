@@ -116,3 +116,20 @@ select {
 .header-label {
     color: white;
 }
+
+.sell-label {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.sell-labels {
+    font-size: 20px;
+}
+
+.form-control {
+    width: 50%;
+}
+
+.custom-file {
+    width: 50%;
+}
