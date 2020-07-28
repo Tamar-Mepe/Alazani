@@ -48,21 +48,27 @@
                                 </option>
                                 <%}%>
                             </select>
-                            <button type="submit" class="buy-button btn btn-primary btn-sm">Add To Cart</button>
+                            <button type="submit" id="buy-button" class="btn btn-primary btn-sm">Add To Cart</button>
                         </form>
                     </div>
                 </div>
                 <div>
+                    <button type="submit" id="add-review-button" class="btn btn-primary btn-lg btn-block">Add Your
+                        Review
+                    </button>
                     <p id="review-label">Reviews</p>
                     <% List<Review> productReviews = Review.getReviewsByProductId(id); %>
                     <% for (Review rev : productReviews) { %>
-                    <p id="username-label">user: <%=User.get(rev.getUserId()).getUsername()%></p>
-                    <label id="rating-label">Rating: <%=rev.getPoints()%></label>
+                    <p id="username-label">user: <%=User.get(rev.getUserId()).getUsername()%>
+                    </p>
+                    <label id="rating-label">Rating: <%=rev.getPoints()%>
+                    </label>
                     <% for (int i = 0; i < rev.getPoints(); i++) { %>
                     <img id="star-image" src="/images/star.png" alt="review-star" width="1.5%">
                     <%}%>
                     <label id="rating-label"><%=rev.getPoints()%>/5</label>
-                    <p id="review-text"><%=rev.getComment()%></p>
+                    <p id="review-text"><%=rev.getComment()%>
+                    </p>
                     <%}%>
                 </div>
             </div>

@@ -81,7 +81,7 @@ select {
     padding-left: 10px;
 }
 
-.buy-button {
+#buy-button {
     margin-bottom: 3px
 }
 
@@ -117,12 +117,12 @@ select {
     color: white;
 }
 
-.sell-label {
+#sell-label {
     font-size: 50px;
     font-weight: bold;
 }
 
-.sell-labels {
+sell-labels {
     font-size: 20px;
 }
 
@@ -134,7 +134,7 @@ select {
     width: 50%;
 }
 
-.sell-button {
+#sell-button {
     margin-top: 30px;
     width: 10%;
 }
@@ -142,7 +142,7 @@ select {
 #review-label {
     font-size: 50px;
     font-weight: bold;
-    padding-top: 150px;
+    padding-top: 50px;
     padding-bottom: 30px;
 }
 
@@ -166,4 +166,9 @@ select {
     font-style: italic;
     padding-bottom: 40px;
     font-size: 20px;
+}
+
+#add-review-button {
+    margin-top: 150px;
+    width: 20%;
 }
