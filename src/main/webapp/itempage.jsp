@@ -1,5 +1,7 @@
 <%@ page import="models.Product" %>
 <%@ page import="models.User" %>
+<%@ page import="models.Review" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <%
@@ -52,12 +54,15 @@
                 </div>
                 <div>
                     <p id="review-label">Reviews</p>
-                    <% for (int i = 0; i < 10; i++) { %>
-                    <p id="username-label">user: vighacatipi</p>
-                    <label id="rating-label">Rating: </label>
+                    <% List<Review> productReviews = Review.getReviewsByProductId(id); %>
+                    <% for (Review rev : productReviews) { %>
+                    <p id="username-label">user: <%=User.get(rev.getUserId()).getUsername()%></p>
+                    <label id="rating-label">Rating: <%=rev.getPoints()%></label>
+                    <% for (int i = 0; i < rev.getPoints(); i++) { %>
                     <img id="star-image" src="/images/star.png" alt="review-star" width="1.5%">
-                    <label id="rating-label">4.7/5</label>
-                    <p id="review-text">Magari itemia, kidev vikidi</p>
+                    <%}%>
+                    <label id="rating-label"><%=rev.getPoints()%>/5</label>
+                    <p id="review-text"><%=rev.getComment()%></p>
                     <%}%>
                 </div>
             </div>

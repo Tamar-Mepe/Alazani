@@ -2,8 +2,14 @@ package models;
 
 import db.Fields;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class Review extends BaseModel {
     public static final String TABLE_NAME = "reviews";
@@ -30,7 +36,6 @@ public class Review extends BaseModel {
         this.productId = productId;
     }
 
-
     public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
             {
@@ -42,5 +47,72 @@ public class Review extends BaseModel {
         };
     }
 
+    public static Review DBToJava(Map<String, String> fields) {
+        Review review = new Review(fields.get("comment"),
+                Integer.parseInt(fields.get("points")),
+                Integer.parseInt(fields.get("user_id")),
+                Integer.parseInt(fields.get("product_id")));
+        review.setId(Integer.parseInt(fields.get("id")));
+        return review;
+    }
+    public static Review get(int id) {
+        Map<String, String> fields = BaseModel.getGeneric(TABLE_NAME, id);
+        assert fields != null;
+        return DBToJava(fields);
+    }
+    public static List<Review> getAll() {
+        List<Map<String, String>> fields = BaseModel.getAllGeneric(TABLE_NAME);
+        List<Review> allRewviews = new ArrayList<>();
+        for (Map<String, String> field : fields) {
+            allRewviews.add(DBToJava(field));
+        }
+        return allRewviews;
+    }
+    public static List<Review> getReviewsByProductId(int productId){
+        List<Review> allReviews = Review.getAll();
+        return allReviews.stream().filter(review -> review.getProductId() == productId).collect(Collectors.toList());
+    }
 
+    public static String getAverageReviewByProductId(int productId){
+        List<Review> reviews = Review.getReviewsByProductId(productId);
+        double avg = 0;
+        for(Review review : reviews){
+            avg += review.getPoints();
+        }
+        double answer = avg/reviews.size();
+        DecimalFormat df = new DecimalFormat("#.0");
+        return df.format(answer);
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 }
