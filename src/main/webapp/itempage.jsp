@@ -22,7 +22,7 @@
             <jsp:include page="WEB-INF/header-bar.jsp"></jsp:include>
         </header>
         <main class="mb-5">
-            <div class="container">
+            <div class="container item-containter">
                 <div class="single-prod-layout">
                     <div>
                         <img src=<%=currProd.getImageAddress()%> width="80%">

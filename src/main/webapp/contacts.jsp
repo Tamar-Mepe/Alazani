@@ -17,7 +17,7 @@
             <jsp:include page="WEB-INF/header-bar.jsp"></jsp:include>
         </header>
         <main class="mb-5">
-            <div class="container">
+            <div class="container item-containter">
                 <p class="label-styling-bold">
                     About Us<br>
                 </p>

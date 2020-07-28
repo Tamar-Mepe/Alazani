@@ -43,10 +43,8 @@ a:focus {
 
 #sidebar {
     width: 200px;
-    position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
     z-index: 999;
     background: #FF8C00;
     color: #fff;
@@ -54,7 +52,7 @@ a:focus {
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -200px;
 }
 
 #sidebar .sidebar-header {
@@ -120,10 +118,11 @@ ul.CTAs a {
 ----------------------------------------------------- */
 
 #content {
-    width: calc(100% - 200px);
+    width: 100%;
     min-height: 100vh;
     transition: all 0.3s;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
     top: 0;
     right: 0;
 }
@@ -138,7 +137,7 @@ ul.CTAs a {
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: -200px;
     }
 
     #sidebar.active {

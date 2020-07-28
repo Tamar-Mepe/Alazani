@@ -193,3 +193,7 @@ sell-labels {
 .creator-email {
     color: gray;
 }
+
+.item-containter {
+    margin-left: 30px;
+}
