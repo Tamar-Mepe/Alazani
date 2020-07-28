@@ -7,7 +7,7 @@
 
     <ul class="list-unstyled components">
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
+            <a id="href-id" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
             <%! List<Category> categories = Category.getAll(); %>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <% for (Category cat : categories) { %>
@@ -30,6 +30,7 @@
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
+            $('#href-id').click();
         });
     </script>
 </nav>

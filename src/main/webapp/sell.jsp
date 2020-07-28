@@ -19,24 +19,28 @@
                 <form>
                     <div class="form-group">
                         <label class="sell-labels" for="formGroupExampleInput">Name</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter name...">
+                        <input type="text" class="form-control" id="formGroupExampleInput" name="product-name"
+                               placeholder="Enter name...">
                     </div>
                     <div class="form-group">
                         <label class="sell-labels" for="exampleFormControlTextarea1">Description</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                  name="product-description"
                                   maxlength="256"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="sell-labels" for="inputQuantity">Quantity</label>
-                        <input type="text" class="form-control" id="inputQuantity" placeholder="Enter quantity...">
+                        <input type="text" class="form-control" id="inputQuantity" name="product-quantity"
+                               placeholder="Enter quantity...">
                     </div>
                     <div class="form-group">
                         <label class="sell-labels" for="inputPrice">Price</label>
-                        <input type="text" class="form-control" id="inputPrice" placeholder="Enter price...">
+                        <input type="text" class="form-control" id="inputPrice" name="product-price"
+                               placeholder="Enter price...">
                     </div>
                     <label class="sell-labels" for="customFile">Upload Image</label><br>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" class="custom-file-input" id="customFile" name="image-name">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </form>
