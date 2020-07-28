@@ -13,6 +13,7 @@ public class Cart extends BaseModel {
     public static Map<String, Object> FIELDS = new LinkedHashMap<>();
 
     static {
+        FIELDS.put("id", Fields.ID);
         FIELDS.put("user_id", Fields.INT);
         FIELDS.put("product_id", Fields.INT);
         FIELDS.put("quantity", Fields.INT);
@@ -31,6 +32,22 @@ public class Cart extends BaseModel {
                 Integer.parseInt(fields.get("quantity")));
         cart.setId(Integer.parseInt(fields.get("id")));
         return cart;
+    }
+
+    public static Cart get(int id) {
+        Map<String, String> fields = BaseModel.getGeneric(TABLE_NAME, id);
+        assert fields != null;
+        return DBToJava(fields);
+    }
+
+    public Map<String, Object> JavaToDB() {
+        return new LinkedHashMap<String, Object>() {
+            {
+                put("user_id", userId);
+                put("product_id", productId);
+                put("quantity", quantity);
+            }
+        };
     }
 
     public static List<Cart> getAll() {
@@ -62,10 +79,10 @@ public class Cart extends BaseModel {
     }
 
     public int getQuantity() {
-        return this.quantity;
+        return quantity;
     }
 
     public void updateQuantity(int newQuantity) {
-        this.quantity = newQuantity;
+        quantity = newQuantity;
     }
 }
