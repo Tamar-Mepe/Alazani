@@ -68,6 +68,15 @@ public class Product extends BaseModel {
         }
         return allProducts;
     }
+    public static List<Product> searchProduct(String prodName){
+        List<Product> products  = Product.getAll();
+        List<Product> result = new ArrayList<Product>();
+        for(Product currProduct : products){
+            if(currProduct.getName().indexOf(prodName) != -1)
+                result.add(currProduct);
+        }
+        return result;
+    }
 
     public Map<String, Object> JavaToDB() {
         return new LinkedHashMap<String, Object>() {
