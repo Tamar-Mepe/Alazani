@@ -10,13 +10,15 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
         </button>
+        <%if(request.getServletPath().equals("/index.jsp")){%>
+        <form method="post" action="SearchServlet" class="form-inline d-flex justify-content-center md-form form-sm">
 
-        <form class="form-inline d-flex justify-content-center md-form form-sm">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+            <input name="searchText" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
                    aria-label="Search">
             <i class="fas fa-search" aria-hidden="true"></i>
-        </form>
 
+        </form>
+        <%}%>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
                 <% if (request.getSession().getAttribute(User.ATTRIBUTE_NAME) == null) {%>

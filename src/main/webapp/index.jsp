@@ -7,7 +7,12 @@
 <html>
 <%
     // Categorization
-    List<Product> products = Product.getAll();
+    List<Product> products;
+    if(request.getAttribute("search") == null) {
+        products = Product.getAll();
+    }
+    else
+        products = Product.searchProduct((String)request.getAttribute("search"));
     Collections.reverse(products);
     String categoryIdStr = request.getParameter("category");
     if (categoryIdStr != null) {

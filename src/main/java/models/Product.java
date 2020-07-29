@@ -72,7 +72,7 @@ public class Product extends BaseModel {
         List<Product> products  = Product.getAll();
         List<Product> result = new ArrayList<Product>();
         for(Product currProduct : products){
-            if(currProduct.getName().indexOf(prodName) != -1)
+            if(currProduct.getName().toUpperCase().indexOf(prodName.toUpperCase()) != -1)
                 result.add(currProduct);
         }
         return result;
