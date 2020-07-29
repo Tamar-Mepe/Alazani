@@ -16,9 +16,10 @@ import java.util.*;
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
+
         if(request.getParameter("cartButton") != null){
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             if (request.getParameter("quantity-select") != null) {
                 int quantity = Integer.parseInt(request.getParameter("quantity-select"));
                 if (userId == null) {
@@ -35,10 +36,13 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect("/itempage.jsp?id=" + productId);
         }
         if(request.getParameter("removeButton") != null){
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             Cart.removeCart(userId,productId);
             response.sendRedirect("/cart.jsp");
         }
         if(request.getParameter("bBuy") != null){
+            Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             List<Cart> carts = Cart.getCarts(userId);
             HashMap<Integer,Integer> cont = new HashMap<Integer,Integer>();
             for(Cart cart : carts){
@@ -48,7 +52,7 @@ public class CartServlet extends HttpServlet {
                 else cont.put(cart.getProductId(),cart.getQuantity()+cont.get(cart.getProductId()));
                 product.setQuantity(product.getQuantity()-cart.getQuantity());
                 product.update();
-                Cart.removeCart(userId,productId);
+                Cart.removeCart(userId,cart.getProductId());
             }
             Map<Integer,Integer> map = new HashMap<Integer,Integer>();
             for(User user : User.getAll()){
@@ -67,19 +71,21 @@ public class CartServlet extends HttpServlet {
                         for(int i = 0; i < temp.size();i ++){
                             if(temp.get(i).getProductId() == product){
                                 if(temp.get(i).getQuantity() >= numberToDelete){
-                                    temp.get(i).updateQuantity(temp.get(i).getQuantity()-numberToDelete);
+                                    int curr = numberToDelete;
+                                    numberToDelete -= temp.get(i).getQuantity();
+                                    temp.get(i).updateQuantity(temp.get(i).getQuantity()-curr);
+                                    System.out.println(temp.get(i).getQuantity());
                                     if(temp.get(i).getQuantity() == 0) temp.get(i).deleteRow();
-                                    numberToDelete-=temp.get(i).getQuantity();
+                                    else temp.get(i).update();
 
                                 }else{
                                     temp.get(i).updateQuantity(0);
                                     numberToDelete -= temp.get(i).getQuantity();
                                     temp.get(i).deleteRow();
-
-
                                 }
                             }
                             if(numberToDelete == 0) {
+                                response.sendRedirect("/cart.jsp");
                                 return;
                             }
                         }

@@ -39,6 +39,7 @@
                 <%if(products.size() != 0){%>
                 <form method="post" action="CartServlet">
                     <button name="bBuy" type="submit" class="btn btn-primary btn-sm cart-buttons">Buy</button>
+
                 </form>
                 <%}%>
             </div>
