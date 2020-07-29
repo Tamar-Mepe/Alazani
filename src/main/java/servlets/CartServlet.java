@@ -78,12 +78,11 @@ public class CartServlet extends HttpServlet {
                                     else temp.get(i).update();
 
                                 }else{
-                                    temp.get(i).updateQuantity(0);
                                     numberToDelete -= temp.get(i).getQuantity();
                                     temp.get(i).deleteRow();
                                 }
                             }
-                            if(numberToDelete == 0) {
+                            if(numberToDelete <= 0) {
                                 response.sendRedirect("/cart.jsp");
                                 return;
                             }
