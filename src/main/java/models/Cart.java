@@ -98,17 +98,16 @@ public class Cart extends BaseModel {
         return quantity;
     }
 
-    public static void removeCart(int userId, int productId) throws SQLException, ClassNotFoundException {
+    public static boolean removeCart(int userId, int productId) {
         List<Cart> carts = Cart.getCarts(userId);
         for(Cart cart : carts){
             if(cart.getProductId() == productId){
                 Product product = Product.get(productId);
-                product.setQuantity(product.getQuantity() + cart.getQuantity());
                 product.update();
                 cart.deleteRow();
-                return;
             }
         }
+        return false;
     }
 
     public void updateQuantity(int newQuantity) {

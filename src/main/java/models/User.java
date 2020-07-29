@@ -5,6 +5,8 @@ import db.Fields;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static models.Cart.getProductsByUserId;
+
 public class User extends BaseModel {
     public static final String TABLE_NAME = "users";
     public static final String ATTRIBUTE_NAME = "userID";
