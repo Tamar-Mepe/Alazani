@@ -3,10 +3,7 @@ package models;
 import db.Fields;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Review extends BaseModel {
@@ -71,7 +68,9 @@ public class Review extends BaseModel {
 
     public static List<Review> getReviewsByProductId(int productId) {
         List<Review> allReviews = Review.getAll();
-        return allReviews.stream().filter(review -> review.getProductId() == productId).collect(Collectors.toList());
+        List<Review> res = allReviews.stream().filter(review -> review.getProductId() == productId).collect(Collectors.toList());
+        Collections.reverse(res);
+        return res;
     }
 
     public static String getAverageReviewByProductId(int productId) {

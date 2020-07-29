@@ -40,7 +40,7 @@
                         </label><br>
                         <label class="price-label">$<%=currProd.getPriceString()%>
                         </label>
-                        <form method="post" action="CartServlet">
+                        <form nane="buyForm" method="post" action="CartServlet">
                             <input name="productId" type="hidden" value=<%=id%>>
                             <select name="quantity-select">
                                 <% for (int i = 1; i <= currProd.getQuantity(); i++) { %>
@@ -49,14 +49,29 @@
                                 </option>
                                 <%}%>
                             </select>
-                            <button type="submit" id="buy-button" class="btn btn-primary btn-sm">Add To Cart</button>
+                            <button type="submit" name="buyButton" id="buy-button" class="btn btn-primary btn-sm">Add To Cart</button>
                         </form>
                     </div>
                 </div>
                 <div>
-                    <button type="submit" id="add-review-button" class="btn btn-primary btn-lg btn-block">Add Your
-                        Review
-                    </button>
+                    <form name="reviewForm" method="post" action="CartServlet">
+                        <input name="productId" type="hidden" value=<%=id%>>
+                        <button type="submit" name="reviewButton" id="add-review-button" class="btn btn-primary btn-lg btn-block">Add Your
+                            Review
+                        </button>
+                        <input type="text" class="form-control" id="comment" name="comment"
+                               placeholder="Comment...">
+                        <div>
+                            <select name="points" Points>
+                                <% for (int i = 1; i <= 5; i++) { %>
+                                <option>
+                                    <%=i%>
+                                </option>
+                                <%}%>
+                            </select>
+                            <label>Points</label>
+                        </div>
+                    </form>
                     <p id="review-label">Reviews</p>
                     <% List<Review> productReviews = Review.getReviewsByProductId(id); %>
                     <% for (Review rev : productReviews) { %>
