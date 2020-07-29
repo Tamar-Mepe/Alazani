@@ -27,11 +27,10 @@ public class SellServlet extends HttpServlet {
         String productQuantityString  = request.getParameter("product-quantity");
         String productPriceString  = request.getParameter("product-price");
         String productCategory= request.getParameter("category-select");
-        // for image parsing
-        String imageAddress = "blablabla";
+        String imageAddress = request.getParameter("image-address");;
         String errorMessage = "";
 
-        if (productName.equals("") || productDescription.equals("") || productQuantityString.equals("") || productPriceString.equals("") || imageAddress.equals("")) {
+        if (productName.equals("") || productQuantityString.equals("") || productPriceString.equals("") || imageAddress.equals("")) {
 
             errorMessage = "Please fill blank spaces";
             request.setAttribute("error", errorMessage);
@@ -49,6 +48,6 @@ public class SellServlet extends HttpServlet {
         User user = User.get(userId);  //shouldn't be null
         Category category = Category.getByName(productCategory);
         new Product(productName,productDescription,productPrice,category.getId(),productQuantity,user.getId(),imageAddress).save();
-
+        response.sendRedirect("/index.jsp");
     }
 }

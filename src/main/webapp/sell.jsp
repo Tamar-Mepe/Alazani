@@ -54,10 +54,10 @@
                         <input type="text" class="form-control" id="inputPrice" name="product-price"
                                placeholder="Enter price...">
                     </div>
-                    <label class="sell-labels" for="customFile">Upload Image</label><br>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" name="image-name">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    <div class="form-group">
+                        <label class="sell-labels" for="imageAddress">Image Address</label>
+                        <input type="text" class="form-control" id="imageAddress" name="image-address"
+                               placeholder="Enter link of image...">
                     </div>
                     <% if (request.getAttribute("error") != null) {%>
                     <div class="form-group">

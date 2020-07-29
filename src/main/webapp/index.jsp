@@ -1,11 +1,14 @@
 <%@ page import="models.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="models.Category" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Collections" %>
 <!DOCTYPE html>
 <html>
 <%
     // Categorization
     List<Product> products = Product.getAll();
+    Collections.reverse(products);
     String categoryIdStr = request.getParameter("category");
     if (categoryIdStr != null) {
         Category cat = Category.get(Integer.parseInt(categoryIdStr));
