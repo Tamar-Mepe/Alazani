@@ -69,14 +69,18 @@ public class CartServlet extends HttpServlet {
                                 if(temp.get(i).getQuantity() >= numberToDelete){
                                     temp.get(i).updateQuantity(temp.get(i).getQuantity()-numberToDelete);
                                     if(temp.get(i).getQuantity() == 0) temp.get(i).deleteRow();
-                                    /*gamodzaxeba*/
+                                    numberToDelete-=temp.get(i).getQuantity();
+
                                 }else{
                                     temp.get(i).updateQuantity(0);
                                     numberToDelete -= temp.get(i).getQuantity();
                                     temp.get(i).deleteRow();
-                                    /*gamodzaxeba*/
-                                    return;
+
+
                                 }
+                            }
+                            if(numberToDelete == 0) {
+                                return;
                             }
                         }
                     }
