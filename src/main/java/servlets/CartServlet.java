@@ -17,9 +17,8 @@ public class CartServlet extends HttpServlet {
 
         int productId = Integer.parseInt(request.getParameter("productId"));
         if(request.getParameter("buyButton") != null){
-            int quantity = Integer.parseInt(request.getParameter("quantity-select"));
-            System.out.println("quantity = " + quantity);
             if (request.getParameter("quantity-select") != null) {
+                int quantity = Integer.parseInt(request.getParameter("quantity-select"));
                 Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
                 if (userId == null) {
                     response.sendRedirect("/itempage.jsp?id=" + productId);
@@ -27,8 +26,10 @@ public class CartServlet extends HttpServlet {
                 }
                 new Cart(userId, productId, quantity).save();
                 Product prod = Product.get(productId);
+                prod.setQuantity(prod.getQuantity() - quantity);
                 prod.update();
                 response.sendRedirect("/itempage.jsp?id=" + productId);
+                System.out.println("pls ye");
                 return;
             }
         }
@@ -40,10 +41,6 @@ public class CartServlet extends HttpServlet {
                 Review currReview = new Review(comment, points, userId, productId);
                 currReview.save();
             }
-            System.out.println("points = " + points);
-            System.out.println("userId = " + userId);
-            System.out.println("comment = " + comment);
-            System.out.println("productId = " + productId);
         }
         response.sendRedirect("/itempage.jsp?id=" + productId);
     }

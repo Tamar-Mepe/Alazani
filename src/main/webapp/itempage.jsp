@@ -40,7 +40,7 @@
                         </label><br>
                         <label class="price-label">$<%=currProd.getPriceString()%>
                         </label>
-                        <form nane="buyForm" method="post" action="CartServlet">
+                        <form method="post" action="CartServlet">
                             <input name="productId" type="hidden" value=<%=id%>>
                             <select name="quantity-select">
                                 <% for (int i = 1; i <= currProd.getQuantity(); i++) { %>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div>
-                    <form name="reviewForm" method="post" action="CartServlet">
+                    <form method="post" action="CartServlet">
                         <input name="productId" type="hidden" value=<%=id%>>
                         <button type="submit" name="reviewButton" id="add-review-button" class="btn btn-primary btn-lg btn-block">Add Your
                             Review
