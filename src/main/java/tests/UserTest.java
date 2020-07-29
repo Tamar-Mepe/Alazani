@@ -193,7 +193,7 @@ class UserTest {
     }
 
     @Test
-    public void checkEmail() {
+    public void checkEmail() throws SQLException, ClassNotFoundException {
         List<User> allUsers = new ArrayList<User>() {
             {
                 add(new User("f1", "l1", "p1", "u1", "e1"));
@@ -213,6 +213,12 @@ class UserTest {
             User user = allUsers.get(i);
             assertEquals(userDB.getWithEmail(user.getEmail()).getId(), user.getId());
         }
+        User user = new User("f1", "l1", "p1", "u10", "e10");
+        user.save();
+        assertEquals(User.getAll().size(),5);
+        int savedID = user.getId();
+        user.deleteRow();
+        assertEquals(User.getAll().size(),4);
     }
 
 }

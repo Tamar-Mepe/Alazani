@@ -66,7 +66,10 @@ public class BaseModel {
             return false;
         }
     }
-
+    public void deleteRow() throws SQLException, ClassNotFoundException {
+        DB db = MySQL.getInstance();
+        db.deleteRow(this.table_name,this.id);
+    }
     public void setId(int id) {
         this.id = id;
     }

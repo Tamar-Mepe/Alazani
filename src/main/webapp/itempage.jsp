@@ -49,7 +49,7 @@
                                 </option>
                                 <%}%>
                             </select>
-                            <button type="submit" name="buyButton" id="buy-button" class="btn btn-primary btn-sm">Add To Cart</button>
+                            <button type="submit" name="cartButton" id="buy-button" class="btn btn-primary btn-sm">Add To Cart</button>
                         </form>
                     </div>
                 </div>

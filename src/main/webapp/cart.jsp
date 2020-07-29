@@ -36,7 +36,9 @@
                     </jsp:include>
                     <%}%>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm cart-buttons">Buy</button>
+                <%if(products.size() != 0){%>
+                    <button type="submit" class="btn btn-primary btn-sm cart-buttons">Buy</button>
+                <%}%>
             </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>

@@ -30,6 +30,8 @@ public interface DB {
 
     int insert(String tableName, Map<String, Object> fields) throws SQLException;
 
+    void deleteRow(String tableName, int  id) throws SQLException;
+
     void update(String tableName, int id, Map<String, Object> fields) throws SQLException;
 
     Map<String, String> get(String tableName, int id) throws SQLException;

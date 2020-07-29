@@ -139,7 +139,11 @@ public class MySQL implements DB {
         String query = updateQuery(tableName, id, fields);
         execute(query);
     }
-
+    @Override
+    public void deleteRow(String tableName, int id) throws SQLException {
+        String query = "Delete from " + tableName + " WHERE id = " + id + ";";
+        execute(query);
+    }
     @Override
     public Map<String, String> get(String tableName, int id) throws SQLException {
         Map<String, String> answer = new HashMap<>();

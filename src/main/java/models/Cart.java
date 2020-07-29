@@ -2,10 +2,19 @@ package models;
 
 import db.Fields;
 
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cart extends BaseModel {
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
     private int userId;
     private int productId;
     private int quantity;
@@ -89,7 +98,22 @@ public class Cart extends BaseModel {
         return quantity;
     }
 
+    public static void removeCart(int userId, int productId) throws SQLException, ClassNotFoundException {
+        List<Cart> carts = Cart.getCarts(userId);
+        for(Cart cart : carts){
+            if(cart.getProductId() == productId){
+                Product product = Product.get(productId);
+                product.setQuantity(product.getQuantity() + cart.getQuantity());
+                product.update();
+                cart.deleteRow();
+                return;
+            }
+        }
+    }
+
     public void updateQuantity(int newQuantity) {
         quantity = newQuantity;
     }
+
+
 }
