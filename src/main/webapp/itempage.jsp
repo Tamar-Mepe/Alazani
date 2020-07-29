@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div>
-                    <form method="post" action="CartServlet">
+                    <form method="post" action="ReviewServlet">
                         <input name="productId" type="hidden" value=<%=id%>>
                         <button type="submit" name="reviewButton" id="add-review-button" class="btn btn-primary btn-lg btn-block">Add Your
                             Review

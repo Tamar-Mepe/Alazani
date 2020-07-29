@@ -24,6 +24,7 @@
                     <label id="review-styling">
                         <%=Review.getAverageReviewByProductId(id)%>/5 (<%=Review.getReviewsByProductId(id).size()%>)
                     </label><br>
+                    <form method="post" action="RemoveItemFromCart"
                     <button type="submit" class="btn btn-secondary btn-sm cart-buttons">Remove</button>
                 </div>
             </div>

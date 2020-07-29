@@ -33,15 +33,6 @@ public class CartServlet extends HttpServlet {
                 return;
             }
         }
-        if(request.getParameter("reviewButton") != null){
-            String comment = request.getParameter("comment");
-            Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
-            int points = Integer.parseInt(request.getParameter("points"));
-            if(comment != null && userId != null){
-                Review currReview = new Review(comment, points, userId, productId);
-                currReview.save();
-            }
-        }
         response.sendRedirect("/itempage.jsp?id=" + productId);
     }
 }
