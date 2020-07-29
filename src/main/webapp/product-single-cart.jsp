@@ -25,7 +25,6 @@
                         <%=Review.getAverageReviewByProductId(id)%>/5 (<%=Review.getReviewsByProductId(id).size()%>)
                     </label><br>
                     <button type="submit" class="btn btn-secondary btn-sm cart-buttons">Remove</button>
-                    <button type="submit" class="btn btn-primary btn-sm cart-buttons">Buy</button>
                 </div>
             </div>
         </div>

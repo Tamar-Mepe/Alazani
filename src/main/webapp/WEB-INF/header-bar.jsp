@@ -25,7 +25,7 @@
                 <li class="nav-item"><a class="nav-link" href="/sell.jsp" style="color: white">Sell Items</a></li>
                 <li class="nav-item"><a class="nav-link" href="/cart.jsp" style="color: white">Cart</a></li>
                 <li class="nav-item"><a class="nav-link" href="/profile.jsp" style="color: white">Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="/index.jsp" style="color: white">Sign Out</a></li>
+                <li class="nav-item"><a class="nav-link" href="/SignOutServlet" style="color: white">Sign Out</a></li>
                 <%}%>
             </ul>
             .
