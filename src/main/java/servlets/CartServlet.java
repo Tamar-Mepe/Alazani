@@ -74,7 +74,6 @@ public class CartServlet extends HttpServlet {
                                     int curr = numberToDelete;
                                     numberToDelete -= temp.get(i).getQuantity();
                                     temp.get(i).updateQuantity(temp.get(i).getQuantity()-curr);
-                                    System.out.println(temp.get(i).getQuantity());
                                     if(temp.get(i).getQuantity() == 0) temp.get(i).deleteRow();
                                     else temp.get(i).update();
 
