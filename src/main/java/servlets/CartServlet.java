@@ -15,6 +15,7 @@ public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (request.getParameter("cartButton") != null) {
             int productId = Integer.parseInt(request.getParameter("productId"));
+            Product prod = Product.get(productId);
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             if (request.getParameter("quantity-select") != null) {
                 int quantity = Integer.parseInt(request.getParameter("quantity-select"));
@@ -22,8 +23,21 @@ public class CartServlet extends HttpServlet {
                     response.sendRedirect("/item-page.jsp?id=" + productId);
                     return;
                 }
-                new Cart(userId, productId, quantity).save();
-                Product prod = Product.get(productId);
+                /**/
+                Cart userProdCart = Cart.getCart(userId, productId);
+                if (userProdCart == null)
+                    userProdCart = (Cart) new Cart(userId, productId, 0).save();
+
+                // Set correct quantity
+                int totalQuantity = prod.getQuantity();
+                if (totalQuantity < quantity + userProdCart.getQuantity()){
+                    // ToDo: redirect with error
+                    response.sendRedirect("/item-page.jsp?id=" + productId);
+                    return;
+                }
+                userProdCart.setQuantity(userProdCart.getQuantity()+quantity);
+                userProdCart.update();
+                /**/
                 prod.update();
                 response.sendRedirect("/item-page.jsp?id=" + productId);
                 return;

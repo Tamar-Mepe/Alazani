@@ -49,7 +49,6 @@ public class BuyServlet extends HttpServlet {
                                 cart.updateQuantity(cart.getQuantity() - curr);
                                 if (cart.getQuantity() == 0) cart.deleteRow();
                                 else cart.update();
-
                             } else {
                                 numberToDelete -= cart.getQuantity();
                                 cart.deleteRow();
