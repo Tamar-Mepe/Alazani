@@ -63,17 +63,16 @@ public class Product extends BaseModel {
     public static List<Product> getAll() {
         List<Map<String, String>> fields = BaseModel.getAllGeneric(TABLE_NAME);
         List<Product> allProducts = new ArrayList<>();
-        for (Map<String, String> field : fields) {
+        for (Map<String, String> field : fields)
             allProducts.add(DBToJava(field));
-        }
         return allProducts;
     }
 
     public static List<Product> searchProduct(String prodName) {
         List<Product> products = Product.getAll();
-        List<Product> result = new ArrayList<Product>();
+        List<Product> result = new ArrayList<>();
         for (Product currProduct : products) {
-            if (currProduct.getName().toUpperCase().indexOf(prodName.toUpperCase()) != -1)
+            if (currProduct.getName().toUpperCase().contains(prodName.toUpperCase()))
                 result.add(currProduct);
         }
         return result;

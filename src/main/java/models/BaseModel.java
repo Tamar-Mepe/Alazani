@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class BaseModel {
-    // Model Table Name
-    public static final String TABLE_NAME = "table";
 
     // Model Table Fields
     public static Map<String, String[]> FIELDS = new HashMap<>();
@@ -67,17 +65,12 @@ public class BaseModel {
         }
     }
 
-    public boolean deleteRow() {
-        DB db = null;
+    public void deleteRow() {
         try {
-            db = MySQL.getInstance();
+            DB db = MySQL.getInstance();
             db.deleteRow(this.table_name, this.id);
-            return true;
-        } catch (SQLException throwables) {
-            return false;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
         }
     }
 

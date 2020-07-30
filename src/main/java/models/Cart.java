@@ -10,10 +10,6 @@ public class Cart extends BaseModel {
         return productId;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
     private int userId;
     private int productId;
     private int quantity;
@@ -77,7 +73,7 @@ public class Cart extends BaseModel {
     }
 
     public static Map<Product, Integer> getProductsByUserId(int userId) {
-        Map<Integer, Integer> resultProducts = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> resultProducts = new HashMap<>();
         List<Cart> carts = getCarts(userId);
         for (Cart currCart : carts) {
             if (resultProducts.containsKey(currCart.productId)) {
@@ -86,7 +82,7 @@ public class Cart extends BaseModel {
                 resultProducts.put(currCart.productId, currCart.quantity);
             }
         }
-        Map<Product, Integer> prodMap = new HashMap<Product, Integer>();
+        Map<Product, Integer> prodMap = new HashMap<>();
         for (int prodId : resultProducts.keySet()) {
             prodMap.put(Product.get(prodId), resultProducts.get(prodId));
         }
@@ -97,7 +93,7 @@ public class Cart extends BaseModel {
         return quantity;
     }
 
-    public static boolean removeCart(int userId, int productId) {
+    public static void removeCart(int userId, int productId) {
         List<Cart> carts = Cart.getCarts(userId);
         for (Cart cart : carts) {
             if (cart.getProductId() == productId) {
@@ -106,7 +102,6 @@ public class Cart extends BaseModel {
                 cart.deleteRow();
             }
         }
-        return false;
     }
 
     public void updateQuantity(int newQuantity) {

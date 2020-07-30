@@ -112,7 +112,4 @@ public class Review extends BaseModel {
         return productId;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
 }
