@@ -2,7 +2,7 @@
 <% int id = Integer.parseInt(request.getParameter("product-id"));%>
 <div class="mb-4 col-md-4">
     <div class="product">
-        <a href="itempage.jsp?id=<%=request.getParameter("product-id")%>">
+        <a href="item-page.jsp?id=<%=request.getParameter("product-id")%>">
             <p class="item-name-style"><%=request.getParameter("product-name")%>
             </p>
         </a>

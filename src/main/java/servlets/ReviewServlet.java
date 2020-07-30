@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/ReviewServlet")
 public class ReviewServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int productId = Integer.parseInt(request.getParameter("productId"));
         if (request.getParameter("reviewButton") != null) {
             String comment = request.getParameter("comment");
@@ -23,7 +23,7 @@ public class ReviewServlet extends HttpServlet {
                 currReview.save();
             }
         }
-        response.sendRedirect("/itempage.jsp?id=" + productId);
+        response.sendRedirect("/item-page.jsp?id=" + productId);
     }
 
 }

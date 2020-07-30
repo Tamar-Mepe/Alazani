@@ -19,16 +19,16 @@ public class CartServlet extends HttpServlet {
             if (request.getParameter("quantity-select") != null) {
                 int quantity = Integer.parseInt(request.getParameter("quantity-select"));
                 if (userId == null) {
-                    response.sendRedirect("/itempage.jsp?id=" + productId);
+                    response.sendRedirect("/item-page.jsp?id=" + productId);
                     return;
                 }
                 new Cart(userId, productId, quantity).save();
                 Product prod = Product.get(productId);
                 prod.update();
-                response.sendRedirect("/itempage.jsp?id=" + productId);
+                response.sendRedirect("/item-page.jsp?id=" + productId);
                 return;
             }
-            response.sendRedirect("/itempage.jsp?id=" + productId);
+            response.sendRedirect("/item-page.jsp?id=" + productId);
         }
         if (request.getParameter("removeButton") != null) {
             int productId = Integer.parseInt(request.getParameter("productId"));

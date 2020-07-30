@@ -37,12 +37,15 @@
                     <div class="form-group">
                         <label class="sell-labels">Category</label>
                         <br>
-                        <select name="category-select">
-                            <% for (int i = 1; i < categories.size(); i++) { %>
-                            <option name="cat"><%=categories.get(i).getName()%>
-                            </option>
-                            <%}%>
-                        </select>
+                        <label>
+                            <select name="category-select">
+                                <% for (int i = 1; i < categories.size(); i++) { %>
+                                <option>
+                                    <%=categories.get(i).getName()%>
+                                </option>
+                                <%}%>
+                            </select>
+                        </label>
                     </div>
                     <div class="form-group">
                         <label class="sell-labels" for="inputQuantity">Quantity</label>
