@@ -136,4 +136,17 @@ public class User extends BaseModel {
         List<Product> allProducts = Product.getAll();
         return allProducts.stream().filter(product -> product.getUserId() == this.id).collect(Collectors.toList());
     }
+
+    public List<Product> purchasedProducts() {
+        List<Purchase> allPurchases = Purchase.getAll();
+        System.out.println(allPurchases.size());
+        allPurchases = allPurchases.stream().filter(purchase -> purchase.getUserId() == this.id).collect(Collectors.toList());
+        System.out.println(allPurchases.size());
+
+        List<Product> products = new ArrayList<>();
+        for (Purchase pur : allPurchases) {
+            products.add(Product.get(pur.getProductId()));
+        }
+        return products;
+    }
 }

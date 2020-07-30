@@ -1,4 +1,6 @@
 <%@ page import="models.User" %>
+<%@ page import="models.Product" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 
@@ -61,6 +63,19 @@
                         <button type="button" class="btn btn-warning">Change</button>
                     </div>
                 </div>
+            </div>
+
+            <div class="product-list row">
+                <% List<Product> products = user.purchasedProducts();
+                    for (Product product : products) { %>
+                <jsp:include page="product-single.jsp">
+                    <jsp:param name="product-id" value="<%=product.getId()%>"/>
+                    <jsp:param name="product-name" value="<%=product.getName()%>"/>
+                    <jsp:param name="product-description" value="<%=product.getDescription()%>"/>
+                    <jsp:param name="product-image-path" value="<%=product.getImageAddress()%>"/>
+                    <jsp:param name="product-price" value="<%=product.getPriceString()%>"/>
+                </jsp:include>
+                <%}%>
             </div>
         </main>
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
