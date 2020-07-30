@@ -15,11 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ReviewTest {
-    private DB db;
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        db = MySQL.getInstance();
+        DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 

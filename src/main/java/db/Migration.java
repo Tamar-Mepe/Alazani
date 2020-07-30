@@ -15,12 +15,12 @@ public class Migration {
         db.createTable(Cart.TABLE_NAME, Cart.FIELDS);
     }
 
-    public static void createStartingData(DB db) {
-        UserSeeder.Seed(db);
-        CategorySeeder.Seed(db);
-        ProductSeeder.Seed(db);
-        PurchaseSeeder.Seed(db);
-        ReviewSeeder.Seed(db);
+    public static void createStartingData() {
+        UserSeeder.Seed();
+        CategorySeeder.Seed();
+        ProductSeeder.Seed();
+        PurchaseSeeder.Seed();
+        ReviewSeeder.Seed();
     }
 
 }

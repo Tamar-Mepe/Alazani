@@ -15,16 +15,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
-    private DB db;
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        db = MySQL.getInstance();
+        DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void get() throws SQLException {
+    void get() {
         // Save To DB
         Product product = new Product("Bu", "fav predator", 100, -1, 3, -1, "image address");
         product.save();
@@ -79,7 +78,7 @@ class ProductTest {
     }
 
     @Test
-    void getAll() throws SQLException {
+    void getAll() {
         // Initialize all products
         List<Product> allProducts = new ArrayList<Product>() {
             {
@@ -111,7 +110,7 @@ class ProductTest {
     }
 
     @Test
-    void update() throws SQLException {
+    void update() {
         // Save To DB
         Product product = new Product("Bu", "predator breed", 100, -1, 1, -1, "address");
         product.save();

@@ -1,6 +1,5 @@
 package db.seeder;
 
-import db.DB;
 import models.Product;
 import models.Purchase;
 import models.User;
@@ -11,7 +10,7 @@ import java.util.Random;
 
 public class PurchaseSeeder {
 
-    public static void Seed(DB db) {
+    public static void Seed() {
         List<User> users = User.getAll();
         List<Integer> userId = new ArrayList<>();
         for (User user : users) {

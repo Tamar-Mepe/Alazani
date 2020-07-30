@@ -15,16 +15,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class CategoryTest {
-    private DB db;
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        db = MySQL.getInstance();
+        DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void get() throws SQLException {
+    void get() {
         // Save To DB
         Category category = new Category("testCategory");
         category.save();
@@ -36,7 +35,7 @@ class CategoryTest {
     }
 
     @Test
-    void getAll() throws SQLException {
+    void getAll() {
         // Initialize all users
         List<Category> allCategories = new ArrayList<Category>() {
             {
@@ -60,7 +59,7 @@ class CategoryTest {
     }
 
     @Test
-    void update() throws SQLException {
+    void update() {
         // Save To DB
         Category category = new Category("axalikategoria");
         category.save();

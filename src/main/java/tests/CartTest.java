@@ -27,11 +27,11 @@ class CartTest {
     }
 
     @Test
-    void getAll() throws SQLException {
+    void getAll() {
         // Save To DB
-        UserSeeder.Seed(db);
-        CategorySeeder.Seed(db);
-        ProductSeeder.Seed(db);
+        UserSeeder.Seed();
+        CategorySeeder.Seed();
+        ProductSeeder.Seed();
 
         new Cart(1, 1, 1).save();
         new Cart(2, 2, 1).save();
@@ -48,11 +48,11 @@ class CartTest {
     }
 
     @Test
-    void updateQuantity() throws SQLException {
+    void updateQuantity() {
         // Save To DB
-        UserSeeder.Seed(db);
-        CategorySeeder.Seed(db);
-        ProductSeeder.Seed(db);
+        UserSeeder.Seed();
+        CategorySeeder.Seed();
+        ProductSeeder.Seed();
 
         Cart cart = (Cart) new Cart(1, 1, 3).save();
         cart.updateQuantity(10);
@@ -64,11 +64,11 @@ class CartTest {
     }
 
     @Test
-    void getProducts() throws SQLException {
+    void getProducts() {
         // Save To DB
-        UserSeeder.Seed(db);
-        CategorySeeder.Seed(db);
-        ProductSeeder.Seed(db);
+        UserSeeder.Seed();
+        CategorySeeder.Seed();
+        ProductSeeder.Seed();
 
         new Cart(1, 1, 1).save();
         new Cart(1, 2, 1).save();

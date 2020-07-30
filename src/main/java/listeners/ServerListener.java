@@ -32,7 +32,7 @@ public class ServerListener implements ServletContextListener,
         try {
             DB db = MySQL.getInstance();
             Migration.createTables(db);
-            Migration.createStartingData(db);
+            Migration.createStartingData();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

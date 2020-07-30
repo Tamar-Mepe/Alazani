@@ -18,26 +18,24 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PurchaseTest {
-    private DB db;
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        db = MySQL.getInstance();
+        DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void get() throws SQLException {
+    void get() {
         // Save To DB
-        UserSeeder.Seed(db);
-        CategorySeeder.Seed(db);
-        ProductSeeder.Seed(db);
+        UserSeeder.Seed();
+        CategorySeeder.Seed();
+        ProductSeeder.Seed();
         List<Product> products = Product.getAll();
 
         Purchase purchase = new Purchase(-1, products.get(0).getId(), 100, "22/12/2014");
         purchase.save();
         int savedId = purchase.getId();
-//        TODO:
         Purchase newPurchase = Purchase.get(savedId);
 
         assertEquals(newPurchase.getId(), savedId);
@@ -48,7 +46,7 @@ class PurchaseTest {
     }
 
     @Test
-    void getAll() throws SQLException {
+    void getAll() {
         // Initialize all products
         List<Purchase> AllPurchase = new ArrayList<Purchase>() {
             {

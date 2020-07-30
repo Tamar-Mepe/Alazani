@@ -1,12 +1,11 @@
 package db.seeder;
 
-import db.DB;
 import models.User;
 import utils.BCrypt;
 
 public class UserSeeder {
 
-    public static void Seed(DB db) {
+    public static void Seed() {
 
         new User("Admin", "Admin", BCrypt.hashpw("admin451", BCrypt.gensalt()), "GM", "admin@gmail").save();
         new User("Tamar", "Davitaia", BCrypt.hashpw("101010", BCrypt.gensalt()), "Tamar.Davitaia", "tdavi18@freeuni.edu.ge").save();

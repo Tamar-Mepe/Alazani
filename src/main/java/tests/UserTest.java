@@ -15,11 +15,10 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
-    private DB db;
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        db = MySQL.getInstance();
+        DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
@@ -56,7 +55,7 @@ class UserTest {
     }
 
     @Test
-    void get() throws SQLException {
+    void get() {
         // Save To DB
         User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         user.save();
@@ -71,7 +70,7 @@ class UserTest {
     }
 
     @Test
-    void getAll() throws SQLException {
+    void getAll() {
         // Initialize all users
         List<User> allUsers = new ArrayList<User>() {
             {
@@ -99,7 +98,7 @@ class UserTest {
     }
 
     @Test
-    void update() throws SQLException {
+    void update() {
         // Save To DB
         User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         user.save();
@@ -193,7 +192,7 @@ class UserTest {
     }
 
     @Test
-    public void checkEmail() throws SQLException, ClassNotFoundException {
+    public void checkEmail() {
         List<User> allUsers = new ArrayList<User>() {
             {
                 add(new User("f1", "l1", "p1", "u1", "e1"));

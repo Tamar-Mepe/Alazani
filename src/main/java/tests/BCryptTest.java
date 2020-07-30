@@ -3,20 +3,20 @@ package tests;
 import org.junit.jupiter.api.Test;
 import utils.BCrypt;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BCryptTest {
-    private String passwords[] = {"Jij1*!@)(#naaaaaaaaAskkkasdllll",
+    private String[] passwords = {"Jij1*!@)(#naaaaaaaaAskkkasdllll",
             "RuNHIj5BK236TC",
             "StillDoggOOP_1",
             "MeArviYoParoliTu"};
 
     @Test
-    void simpleTest() throws SQLException {
+    void simpleTest() {
         String password = "Oesischabareba";
         String savedPassword = "Oesischabareba";
         String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
@@ -25,10 +25,10 @@ class BCryptTest {
     }
 
     @Test
-    void mediocreTest() throws SQLException {
-        List<String> hashedPasswords = new ArrayList<String>();
-        for (int i = 0; i < passwords.length; i++) {
-            String generatedSecuredPasswordHash = BCrypt.hashpw(passwords[i], BCrypt.gensalt());
+    void mediocreTest() {
+        List<String> hashedPasswords = new ArrayList<>();
+        for (String password : passwords) {
+            String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt());
             hashedPasswords.add(generatedSecuredPasswordHash);
         }
 
