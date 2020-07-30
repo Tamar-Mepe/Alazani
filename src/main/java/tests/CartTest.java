@@ -18,11 +18,10 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CartTest {
-    private DB db;
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        db = MySQL.getInstance();
+        DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 

@@ -183,12 +183,8 @@ class UserTest {
         for (User user : allUsers)
             user.save();
 
-        List<User> allUsersDB = User.getAll();
-        for (int i = 0; i < allUsers.size(); i++) {
-            User userDB = allUsersDB.get(i);
-            User user = allUsers.get(i);
-            assertEquals(userDB.getWithUserName(user.getUsername()).getId(), user.getId());
-        }
+        for (User user : allUsers)
+            assertEquals(Objects.requireNonNull(User.getWithUserName(user.getUsername())).getId(), user.getId());
     }
 
     @Test
@@ -206,16 +202,11 @@ class UserTest {
         for (User user : allUsers)
             user.save();
 
-        List<User> allUsersDB = User.getAll();
-        for (int i = 0; i < allUsers.size(); i++) {
-            User userDB = allUsersDB.get(i);
-            User user = allUsers.get(i);
-            assertEquals(userDB.getWithEmail(user.getEmail()).getId(), user.getId());
-        }
+        for (User user : allUsers)
+            assertEquals(Objects.requireNonNull(User.getWithEmail(user.getEmail())).getId(), user.getId());
         User user = new User("f1", "l1", "p1", "u10", "e10");
         user.save();
         assertEquals(User.getAll().size(), 5);
-        int savedID = user.getId();
         user.deleteRow();
         assertEquals(User.getAll().size(), 4);
     }

@@ -9,7 +9,7 @@ import java.util.*;
 public class BaseModel {
 
     // Model Table Fields
-    public static Map<String, String[]> FIELDS = new HashMap<>();
+    public static final Map<String, String[]> FIELDS = new HashMap<>();
 
     static {
         FIELDS.put("id", new String[]{"int"});
@@ -69,8 +69,8 @@ public class BaseModel {
         try {
             DB db = MySQL.getInstance();
             db.deleteRow(this.table_name, this.id);
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

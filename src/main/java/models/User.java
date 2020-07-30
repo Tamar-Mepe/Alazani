@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class User extends BaseModel {
     public static final String TABLE_NAME = "users";
     public static final String ATTRIBUTE_NAME = "userID";
-    public static Map<String, Object> FIELDS = new LinkedHashMap<>();
+    public static final Map<String, Object> FIELDS = new LinkedHashMap<>();
 
     static {
         FIELDS.put("id", Fields.ID);

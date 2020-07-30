@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Review extends BaseModel {
     public static final String TABLE_NAME = "reviews";
-    public static Map<String, Object> FIELDS = new LinkedHashMap<>();
+    public static final Map<String, Object> FIELDS = new LinkedHashMap<>();
 
     static {
         FIELDS.put("id", Fields.ID);
@@ -59,11 +59,11 @@ public class Review extends BaseModel {
 
     public static List<Review> getAll() {
         List<Map<String, String>> fields = BaseModel.getAllGeneric(TABLE_NAME);
-        List<Review> allRewviews = new ArrayList<>();
+        List<Review> allReviews = new ArrayList<>();
         for (Map<String, String> field : fields) {
-            allRewviews.add(DBToJava(field));
+            allReviews.add(DBToJava(field));
         }
-        return allRewviews;
+        return allReviews;
     }
 
     public static List<Review> getReviewsByProductId(int productId) {

@@ -10,7 +10,7 @@ import java.util.Map;
 public class Purchase extends BaseModel {
 
     public static final String TABLE_NAME = "Purchases";
-    public static Map<String, Object> FIELDS = new LinkedHashMap<>();
+    public static final Map<String, Object> FIELDS = new LinkedHashMap<>();
 
     static {
         FIELDS.put("id", Fields.ID);

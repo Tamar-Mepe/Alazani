@@ -46,16 +46,16 @@ class ProductTest {
         Category cat2 = (Category) new Category("cat2").save();
 
         // init products
-        Product prod1 = (Product) new Product("prod1", "desc1", 99.99, cat1.getId(), 100, -1, null).save();
-        Product prod2 = (Product) new Product("prod2", "desc2", 99.99, cat1.getId(), 100, -1, null).save();
-        Product prod3 = (Product) new Product("prod3", "desc3", 99.99, cat1.getId(), 100, -1, null).save();
-        Product prod4 = (Product) new Product("prod4", "desc4", 99.99, cat1.getId(), 100, -1, null).save();
-        Product prod5 = (Product) new Product("prod5", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
-        Product prod6 = (Product) new Product("termo", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
-        Product prod7 = (Product) new Product("puppet", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
-        Product prod8 = (Product) new Product("gull", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
-        Product prod9 = (Product) new Product("reso", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
-        Product prod10 = (Product) new Product("zermoo", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+        new Product("prod1", "desc1", 99.99, cat1.getId(), 100, -1, null).save();
+        new Product("prod2", "desc2", 99.99, cat1.getId(), 100, -1, null).save();
+        new Product("prod3", "desc3", 99.99, cat1.getId(), 100, -1, null).save();
+        new Product("prod4", "desc4", 99.99, cat1.getId(), 100, -1, null).save();
+        new Product("prod5", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+        new Product("termo", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+        new Product("puppet", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+        new Product("gull", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+        new Product("reso", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
+        new Product("zermoo", "desc5", 99.99, cat2.getId(), 100, -1, null).save();
 
         // check Product.searchProduct()
 

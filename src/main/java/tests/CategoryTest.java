@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -77,7 +78,7 @@ class CategoryTest {
         category.update();
         newCategory = Category.get(savedId);
         Category newCategory2 = Category.getByName("axalikategoria2");
-        assertEquals(savedId, newCategory2.getId());
+        assertEquals(savedId, Objects.requireNonNull(newCategory2).getId());
         assertEquals(newCategory.getId(), savedId);
         assertEquals(newCategory.getName(), category.getName());
         assertNull(Category.getByName("chgrpgr"));
