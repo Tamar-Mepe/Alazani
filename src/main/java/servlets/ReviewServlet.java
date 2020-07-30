@@ -26,7 +26,4 @@ public class ReviewServlet extends HttpServlet {
         response.sendRedirect("/itempage.jsp?id=" + productId);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

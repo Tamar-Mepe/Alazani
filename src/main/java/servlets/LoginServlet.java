@@ -26,14 +26,14 @@ public class LoginServlet extends HttpServlet {
         }
         if (errorMessage.equals("") && BCrypt.checkpw(password, user.getPassword())) {
             request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
-            //TODO: move to front page
             RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);
             return;
         } else if (errorMessage.equals("")) {
             errorMessage = "Incorrect password";
         }
-        // happend if username doesn't exist or password was incorrect
+
+        // if username doesn't exist or password was incorrect
         request.setAttribute("error", errorMessage);
         RequestDispatcher view = request.getRequestDispatcher("/login.jsp");
         view.forward(request, response);

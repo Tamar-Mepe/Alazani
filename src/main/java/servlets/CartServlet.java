@@ -16,7 +16,6 @@ import java.util.Map;
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         if (request.getParameter("cartButton") != null) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
@@ -28,7 +27,6 @@ public class CartServlet extends HttpServlet {
                 }
                 new Cart(userId, productId, quantity).save();
                 Product prod = Product.get(productId);
-                // prod.setQuantity(prod.getQuantity() - quantity);
                 prod.update();
                 response.sendRedirect("/itempage.jsp?id=" + productId);
                 return;
@@ -44,7 +42,7 @@ public class CartServlet extends HttpServlet {
         if (request.getParameter("bBuy") != null) {
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             List<Cart> carts = Cart.getCarts(userId);
-            HashMap<Integer, Integer> cont = new HashMap<Integer, Integer>();
+            HashMap<Integer, Integer> cont = new HashMap<>();
             for (Cart cart : carts) {
                 Product product = Product.get(cart.getProductId());
                 if (!cont.containsKey(cart.getProductId()))
@@ -54,12 +52,10 @@ public class CartServlet extends HttpServlet {
                 product.update();
                 Cart.removeCart(userId, cart.getProductId());
             }
-            Map<Integer, Integer> map = new HashMap<Integer, Integer>();
             for (User user : User.getAll()) {
                 List<Cart> temp = Cart.getCarts(user.getId());
-                Map<Integer, Integer> tmp = new HashMap<Integer, Integer>();
-                for (int i = 0; i < temp.size(); i++) {
-                    Cart currCart = temp.get(i);
+                Map<Integer, Integer> tmp = new HashMap<>();
+                for (Cart currCart : temp) {
                     if (!tmp.containsKey(currCart.getProductId()))
                         tmp.put(currCart.getProductId(), currCart.getQuantity());
                     else
@@ -68,18 +64,18 @@ public class CartServlet extends HttpServlet {
                 for (Integer product : tmp.keySet()) {
                     if (tmp.get(product) > Product.get(product).getQuantity()) {
                         int numberToDelete = tmp.get(product) - Product.get(product).getQuantity();
-                        for (int i = 0; i < temp.size(); i++) {
-                            if (temp.get(i).getProductId() == product) {
-                                if (temp.get(i).getQuantity() >= numberToDelete) {
+                        for (Cart cart : temp) {
+                            if (cart.getProductId() == product) {
+                                if (cart.getQuantity() >= numberToDelete) {
                                     int curr = numberToDelete;
-                                    numberToDelete -= temp.get(i).getQuantity();
-                                    temp.get(i).updateQuantity(temp.get(i).getQuantity() - curr);
-                                    if (temp.get(i).getQuantity() == 0) temp.get(i).deleteRow();
-                                    else temp.get(i).update();
+                                    numberToDelete -= cart.getQuantity();
+                                    cart.updateQuantity(cart.getQuantity() - curr);
+                                    if (cart.getQuantity() == 0) cart.deleteRow();
+                                    else cart.update();
 
                                 } else {
-                                    numberToDelete -= temp.get(i).getQuantity();
-                                    temp.get(i).deleteRow();
+                                    numberToDelete -= cart.getQuantity();
+                                    cart.deleteRow();
                                 }
                             }
                             if (numberToDelete <= 0) {

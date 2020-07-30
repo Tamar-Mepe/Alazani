@@ -23,19 +23,18 @@ public class SellServlet extends HttpServlet {
         String productPriceString = request.getParameter("product-price");
         String productCategory = request.getParameter("category-select");
         String imageAddress = request.getParameter("image-address");
-        ;
-        String errorMessage = "";
+        String errorMessage;
 
         if (productName.equals("") || productQuantityString.equals("") || productPriceString.equals("") || imageAddress.equals("")) {
-
             errorMessage = "Please fill blank spaces";
             request.setAttribute("error", errorMessage);
             RequestDispatcher view = request.getRequestDispatcher("/sell.jsp");
             view.forward(request, response);
             return;
         }
-        Integer productQuantity = Integer.parseInt(productQuantityString);
-        Double productPrice = Double.parseDouble(productPriceString);
+
+        int productQuantity = Integer.parseInt(productQuantityString);
+        double productPrice = Double.parseDouble(productPriceString);
 
         // TODO: download and save image to images
 
@@ -43,6 +42,7 @@ public class SellServlet extends HttpServlet {
         Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
         User user = User.get(userId);  //shouldn't be null
         Category category = Category.getByName(productCategory);
+        assert category != null;
         new Product(productName, productDescription, productPrice, category.getId(), productQuantity, user.getId(), imageAddress).save();
         response.sendRedirect("/index.jsp");
     }
