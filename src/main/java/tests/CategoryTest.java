@@ -78,9 +78,9 @@ class CategoryTest {
         category.update();
         newCategory = Category.get(savedId);
         Category newCategory2 = Category.getByName("axalikategoria2");
-        assertEquals(savedId,newCategory2.getId());
+        assertEquals(savedId, newCategory2.getId());
         assertEquals(newCategory.getId(), savedId);
         assertEquals(newCategory.getName(), category.getName());
-        assertNull( Category.getByName("chgrpgr"));
+        assertNull(Category.getByName("chgrpgr"));
     }
 }

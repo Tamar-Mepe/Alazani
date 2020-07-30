@@ -26,7 +26,8 @@
                     </label><br>
                     <form method="post" action="CartServlet">
                         <input name="productId" type="hidden" value=<%=id%>>
-                        <button type="submit" name="removeButton" class="btn btn-secondary btn-sm cart-buttons">Remove</button>
+                        <button type="submit" name="removeButton" class="btn btn-secondary btn-sm cart-buttons">Remove
+                        </button>
                     </form>
                 </div>
             </div>

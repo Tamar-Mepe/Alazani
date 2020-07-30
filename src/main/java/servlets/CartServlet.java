@@ -2,7 +2,6 @@ package servlets;
 
 import models.Cart;
 import models.Product;
-import models.Review;
 import models.User;
 
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        if(request.getParameter("cartButton") != null){
+        if (request.getParameter("cartButton") != null) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             if (request.getParameter("quantity-select") != null) {
@@ -35,54 +35,54 @@ public class CartServlet extends HttpServlet {
             }
             response.sendRedirect("/itempage.jsp?id=" + productId);
         }
-        if(request.getParameter("removeButton") != null){
+        if (request.getParameter("removeButton") != null) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
-            Cart.removeCart(userId,productId);
+            Cart.removeCart(userId, productId);
             response.sendRedirect("/cart.jsp");
         }
-        if(request.getParameter("bBuy") != null){
+        if (request.getParameter("bBuy") != null) {
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             List<Cart> carts = Cart.getCarts(userId);
-            HashMap<Integer,Integer> cont = new HashMap<Integer,Integer>();
-            for(Cart cart : carts){
+            HashMap<Integer, Integer> cont = new HashMap<Integer, Integer>();
+            for (Cart cart : carts) {
                 Product product = Product.get(cart.getProductId());
-                if(!cont.containsKey(cart.getProductId()))
-                cont.put(cart.getProductId(),cart.getQuantity());
-                else cont.put(cart.getProductId(),cart.getQuantity()+cont.get(cart.getProductId()));
-                product.setQuantity(product.getQuantity()-cart.getQuantity());
+                if (!cont.containsKey(cart.getProductId()))
+                    cont.put(cart.getProductId(), cart.getQuantity());
+                else cont.put(cart.getProductId(), cart.getQuantity() + cont.get(cart.getProductId()));
+                product.setQuantity(product.getQuantity() - cart.getQuantity());
                 product.update();
-                Cart.removeCart(userId,cart.getProductId());
+                Cart.removeCart(userId, cart.getProductId());
             }
-            Map<Integer,Integer> map = new HashMap<Integer,Integer>();
-            for(User user : User.getAll()){
+            Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+            for (User user : User.getAll()) {
                 List<Cart> temp = Cart.getCarts(user.getId());
-                Map<Integer,Integer> tmp = new HashMap<Integer,Integer>();
-                for(int i = 0 ; i < temp.size();i++){
+                Map<Integer, Integer> tmp = new HashMap<Integer, Integer>();
+                for (int i = 0; i < temp.size(); i++) {
                     Cart currCart = temp.get(i);
-                    if(!tmp.containsKey(currCart.getProductId()))
-                        tmp.put(currCart.getProductId(),currCart.getQuantity());
+                    if (!tmp.containsKey(currCart.getProductId()))
+                        tmp.put(currCart.getProductId(), currCart.getQuantity());
                     else
-                        tmp.put(currCart.getProductId(),currCart.getQuantity()+tmp.get(currCart.getProductId()));
+                        tmp.put(currCart.getProductId(), currCart.getQuantity() + tmp.get(currCart.getProductId()));
                 }
-                for(Integer product : tmp.keySet()){
-                    if(tmp.get(product) > Product.get(product).getQuantity()){
+                for (Integer product : tmp.keySet()) {
+                    if (tmp.get(product) > Product.get(product).getQuantity()) {
                         int numberToDelete = tmp.get(product) - Product.get(product).getQuantity();
-                        for(int i = 0; i < temp.size();i ++){
-                            if(temp.get(i).getProductId() == product){
-                                if(temp.get(i).getQuantity() >= numberToDelete){
+                        for (int i = 0; i < temp.size(); i++) {
+                            if (temp.get(i).getProductId() == product) {
+                                if (temp.get(i).getQuantity() >= numberToDelete) {
                                     int curr = numberToDelete;
                                     numberToDelete -= temp.get(i).getQuantity();
-                                    temp.get(i).updateQuantity(temp.get(i).getQuantity()-curr);
-                                    if(temp.get(i).getQuantity() == 0) temp.get(i).deleteRow();
+                                    temp.get(i).updateQuantity(temp.get(i).getQuantity() - curr);
+                                    if (temp.get(i).getQuantity() == 0) temp.get(i).deleteRow();
                                     else temp.get(i).update();
 
-                                }else{
+                                } else {
                                     numberToDelete -= temp.get(i).getQuantity();
                                     temp.get(i).deleteRow();
                                 }
                             }
-                            if(numberToDelete <= 0) {
+                            if (numberToDelete <= 0) {
                                 response.sendRedirect("/cart.jsp");
                                 return;
                             }

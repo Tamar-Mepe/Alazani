@@ -68,11 +68,12 @@ public class Product extends BaseModel {
         }
         return allProducts;
     }
-    public static List<Product> searchProduct(String prodName){
-        List<Product> products  = Product.getAll();
+
+    public static List<Product> searchProduct(String prodName) {
+        List<Product> products = Product.getAll();
         List<Product> result = new ArrayList<Product>();
-        for(Product currProduct : products){
-            if(currProduct.getName().toUpperCase().indexOf(prodName.toUpperCase()) != -1)
+        for (Product currProduct : products) {
+            if (currProduct.getName().toUpperCase().indexOf(prodName.toUpperCase()) != -1)
                 result.add(currProduct);
         }
         return result;

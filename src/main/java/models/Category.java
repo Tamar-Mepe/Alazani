@@ -28,10 +28,11 @@ public class Category extends BaseModel {
         assert fields != null;
         return DBToJava(fields);
     }
+
     public static Category getByName(String name) {
         List<Category> categories = Category.getAll();
-        for(Category category:categories){
-            if(category.getName().equals(name)){
+        for (Category category : categories) {
+            if (category.getName().equals(name)) {
                 return category;
             }
         }

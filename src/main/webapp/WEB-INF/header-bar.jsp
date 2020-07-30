@@ -30,7 +30,6 @@
                 <li class="nav-item"><a class="nav-link" href="/SignOutServlet" style="color: white">Sign Out</a></li>
                 <%}%>
             </ul>
-            .
         </div>
     </div>
 </nav>

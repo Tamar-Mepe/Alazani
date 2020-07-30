@@ -12,7 +12,7 @@ import java.io.IOException;
 public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String curr = request.getParameter("searchText");
-        request.setAttribute("search",curr);
+        request.setAttribute("search", curr);
         RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
         view.forward(request, response);
     }

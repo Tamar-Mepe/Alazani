@@ -49,14 +49,17 @@
                                 </option>
                                 <%}%>
                             </select>
-                            <button type="submit" name="cartButton" id="buy-button" class="btn btn-primary btn-sm">Add To Cart</button>
+                            <button type="submit" name="cartButton" id="buy-button" class="btn btn-primary btn-sm">Add
+                                To Cart
+                            </button>
                         </form>
                     </div>
                 </div>
                 <div>
                     <form method="post" action="ReviewServlet">
                         <input name="productId" type="hidden" value=<%=id%>>
-                        <button type="submit" name="reviewButton" id="add-review-button" class="btn btn-primary btn-lg btn-block">Add Your
+                        <button type="submit" name="reviewButton" id="add-review-button"
+                                class="btn btn-primary btn-lg btn-block">Add Your
                             Review
                         </button>
                         <input type="text" class="form-control" id="comment" name="comment"

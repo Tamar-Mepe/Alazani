@@ -215,10 +215,10 @@ class UserTest {
         }
         User user = new User("f1", "l1", "p1", "u10", "e10");
         user.save();
-        assertEquals(User.getAll().size(),5);
+        assertEquals(User.getAll().size(), 5);
         int savedID = user.getId();
         user.deleteRow();
-        assertEquals(User.getAll().size(),4);
+        assertEquals(User.getAll().size(), 4);
     }
 
 }

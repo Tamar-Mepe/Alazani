@@ -2,7 +2,6 @@ package models;
 
 import db.Fields;
 
-import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -100,8 +99,8 @@ public class Cart extends BaseModel {
 
     public static boolean removeCart(int userId, int productId) {
         List<Cart> carts = Cart.getCarts(userId);
-        for(Cart cart : carts){
-            if(cart.getProductId() == productId){
+        for (Cart cart : carts) {
+            if (cart.getProductId() == productId) {
                 Product product = Product.get(productId);
                 product.update();
                 cart.deleteRow();
