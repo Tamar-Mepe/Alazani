@@ -17,7 +17,7 @@ public class Product extends BaseModel {
         FIELDS.put("user_id", Fields.INT);
         FIELDS.put("category_id", Fields.INT);
         FIELDS.put("name", Fields.varchar(30));
-        FIELDS.put("description", Fields.varchar(250));
+        FIELDS.put("description", Fields.varchar(512));
         FIELDS.put("price", Fields.DOUBLE);
         FIELDS.put("quantity", Fields.INT);
         FIELDS.put("image_address", Fields.varchar(256));

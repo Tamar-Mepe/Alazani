@@ -49,5 +49,21 @@ public class ProductSeeder {
         new Product("Owl Talisman", "No words needed", 11, categoryId.get("Accessories"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/talisman.jpg").save();
         new Product("Wireless Charger", "Great charger", 9, categoryId.get("Phone Accessories"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/wirelessCharger.jpg").save();
         new Product("Fabio Canavarro", "Iebs icavs", 3, categoryId.get("Toys"), 3, userId.get(rand.nextInt(userId.size())), "/images/product/fabio.jpg").save();
+        new Product("NARS Lipstick", "A new lineup of Lipstick featuring 60 shades in matte, satin, and sheer finishes", 72, categoryId.get("Beauty & Personal Care"), 12, userId.get(rand.nextInt(userId.size())), "/images/product/lipstick.jpg").save();
+        new Product("Selpak Tissue", "Selpak Pocket Hanky Lotioned Perfumed Tissue - " +
+                "10 Sheets/piece", 20, categoryId.get("Beauty & Personal Care"), 5, userId.get(rand.nextInt(userId.size())), "/images/product/selpak.jpg").save();
+        new Product("Vepkhistkaosani", "Georgian medieval epic poem, " +
+                "written in the 12th century by poet Shota Rustaveli", 30, categoryId.get("Books"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/vepkh.jpg").save();
+        new Product("Cheetos", "Cheetos Crunchy Flamin Hot Cheese " +
+                "Flavored Snacks, 8.5 oz Bag", 1.85, categoryId.get("Food & Drinks"), 30, userId.get(rand.nextInt(userId.size())), "/images/product/cheetos.jpeg").save();
+        new Product("Sofa", "Imagine this tan leather sofa centered on an accent wall or flaunting a beautiful throw", 215, categoryId.get("Furniture"), 1, userId.get(rand.nextInt(userId.size())), "/images/product/sofa.jpg").save();
+        new Product("Supplements", "Vitalfuse Biotin 10000mcg Hair Growth Supplements for Women - " +
+                "for Healthy Hair Skin Nails Vitamins for Women", 23, categoryId.get("Health & Household"), 55, userId.get(rand.nextInt(userId.size())), "/images/product/hair.jpg").save();
+        new Product("Yamaha Guitar", "Great guitar for playing " +
+                "Chemo Magnolia", 453, categoryId.get("Music"), 7, userId.get(rand.nextInt(userId.size())), "/images/product/guitar.jpg").save();
+        new Product("Magic Pen", "If you have 1000 word essay to write and " +
+                "you want to watch Netflix instead, this pen will write it for you", 5637, categoryId.get("Office Products"), 10, userId.get(rand.nextInt(userId.size())), "/images/product/pen.jpg").save();
+        new Product("Resistance Band Set", "Get your desired body with this amazing resistance band set " +
+                "and make your ex cry for breaking up with you", 14, categoryId.get("Sport"), 15, userId.get(rand.nextInt(userId.size())), "/images/product/band.jpg").save();
     }
 }

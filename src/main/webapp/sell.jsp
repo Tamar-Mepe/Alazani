@@ -32,7 +32,7 @@
                         <label class="sell-labels" for="exampleFormControlTextarea1">Description</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
                                   name="product-description"
-                                  maxlength="256"></textarea>
+                                  maxlength="512"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="sell-labels">Category</label>
