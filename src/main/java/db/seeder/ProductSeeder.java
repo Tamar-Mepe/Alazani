@@ -65,5 +65,7 @@ public class ProductSeeder {
                 "you want to watch Netflix instead, this pen will write it for you", 5637, categoryId.get("Office Products"), 10, userId.get(rand.nextInt(userId.size())), "/images/product/pen.jpg").save();
         new Product("Resistance Band Set", "Get your desired body with this amazing resistance band set " +
                 "and make your ex cry for breaking up with you", 14, categoryId.get("Sport"), 15, userId.get(rand.nextInt(userId.size())), "/images/product/band.jpg").save();
+        new Product("Firework Box", "Great thing to get on your neighbours nerves", 56.99, categoryId.get("Other"), 4, userId.get(rand.nextInt(userId.size())), "/images/product/firework.jpg").save();
+        new Product("Samsung TV", "Series 5 Samsung Smart TV. Thanks to a powerful Quad Core processor, your Samsung Smart TV offers enhanced performance", 899.99, categoryId.get("Electronics"), 11, userId.get(rand.nextInt(userId.size())), "/images/product/tv.jpg").save();
     }
 }
