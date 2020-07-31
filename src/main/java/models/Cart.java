@@ -108,7 +108,7 @@ public class Cart extends BaseModel {
         quantity = newQuantity;
     }
 
-    public static Cart getCart(int userId, int productId){
+    public static Cart getCart(int userId, int productId) {
         List<Cart> userCarts = Cart.getCarts(userId);
         List<Cart> userProdCart = userCarts.stream().filter(cart -> cart.getProductId() == productId).collect(Collectors.toList());
         if (userProdCart.size() == 0)
