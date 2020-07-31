@@ -51,7 +51,8 @@
                                     <%}%>
                                 </select>
                             </label>
-                            <button type="submit" name="cartButton" id="buy-button" class="btn btn-primary btn-sm">Add
+                            <button onclick="checkIfLogged()" type="submit" name="cartButton" id="buy-button"
+                                    class="btn btn-primary btn-sm">Add
                                 To Cart
                             </button>
                         </form>
@@ -75,10 +76,11 @@
                             </select>
                             Stars
                         </label>
-                        <button type="submit" name="reviewButton" id="add-review-button"
+                        <button onclick="checkIfLogged()" type="submit" name="reviewButton" id="add-review-button"
                                 class="btn btn-primary btn-lg btn-block">Add Your
                             Review
                         </button>
+                    </form>
                 </div>
                 <div>
                     </form>
@@ -102,5 +104,12 @@
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
     </div>
 </div>
+<script>
+    function checkIfLogged() {
+        <%if (request.getSession().getAttribute(User.ATTRIBUTE_NAME) == null){%>
+        confirm("Sign in first!");
+        <%}%>
+    }
+</script>
 </body>
 </html>

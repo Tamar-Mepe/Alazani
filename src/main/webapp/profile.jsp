@@ -55,14 +55,6 @@
                         </div>
                         <button type="button" class="btn btn-warning">Change</button>
                     </div>
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-md-2 profile-styling bold-name">
-                            Email
-                        </div>
-                        <div class="col-md-3 profile-styling gray-label"><%=user.getEmail()%>
-                        </div>
-                        <button type="button" class="btn btn-warning">Change</button>
-                    </div>
                     <div>
                         <p class="label-styling-bold-3">
                             Already Purchased<br>
