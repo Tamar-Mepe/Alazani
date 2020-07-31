@@ -67,5 +67,13 @@ public class ProductSeeder {
                 "and make your ex cry for breaking up with you", 14, categoryId.get("Sport"), 15, userId.get(rand.nextInt(userId.size())), "/images/product/band.jpg").save();
         new Product("Firework Box", "Great thing to get on your neighbours nerves", 56.99, categoryId.get("Other"), 4, userId.get(rand.nextInt(userId.size())), "/images/product/firework.jpg").save();
         new Product("Samsung TV", "Series 5 Samsung Smart TV. Thanks to a powerful Quad Core processor, your Samsung Smart TV offers enhanced performance", 899.99, categoryId.get("Electronics"), 11, userId.get(rand.nextInt(userId.size())), "/images/product/tv.jpg").save();
+
+
+        new Product("Rossignol skis", "Rossignol skis Hero Athlete FIS GS is the new, F.I.S. approved, World Cup GS ski designed for elite-level athletes and competitive racers", 599.99, categoryId.get("Sport"), 10, userId.get(rand.nextInt(userId.size())), "/images/product/ski.jpg").save();
+        new Product("Yoga Mat", "Prevent hands and feet slipping during asana practice in modern yoga as exercise. Easy to clean", 12.89, categoryId.get("Sport"), 7, userId.get(rand.nextInt(userId.size())), "/images/product/mat.jpg").save();
+        new Product("Programmer T-Shirt", "Buy this creative T-Shirt, so that everyone knows you are not like others", 23.59, categoryId.get("Clothes"), 12, userId.get(rand.nextInt(userId.size())), "/images/product/programmer.jpg").save();
+        new Product("Adidas Shoes", "Adidas Superstar shoes made their debut on the " +
+                "basketball court and have been an icon ever since", 45.99, categoryId.get("Shoes"), 2, userId.get(rand.nextInt(userId.size())), "/images/product/adidas.jpg").save();
+        new Product("Apple Watch Series 4", "Incorporates fitness tracking and health-oriented capabilities with integration with iOS and other Apple products and services.", 72, categoryId.get("Electronics"), 12, userId.get(rand.nextInt(userId.size())), "/images/product/watch.jpg").save();
     }
 }

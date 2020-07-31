@@ -35,26 +35,41 @@
                         <div class="col-md-2 profile-styling bold-name">
                             First Name
                         </div>
-                        <div class="col-md-3 profile-styling gray-label"><%=user.getFirstName()%>
+                        <div class="col-lg-2 profile-styling gray-label"><%=user.getFirstName()%>
                         </div>
-                        <button type="button" class="btn btn-warning">Change</button>
+                        <input type="text" name="change-first-name"
+                               placeholder="Enter First Name...">
                     </div>
                     <div class="row" style="margin-bottom: 20px">
                         <div class="col-md-2 profile-styling bold-name">
                             Last Name
                         </div>
-                        <div class="col-md-3 profile-styling gray-label"><%=user.getLastName()%>
+                        <div class="col-lg-2 profile-styling gray-label"><%=user.getLastName()%>
                         </div>
-                        <button type="button" class="btn btn-warning">Change</button>
+                        <input type="text" name="change-last-name"
+                               placeholder="Enter Last Name...">
                     </div>
                     <div class="row" style="margin-bottom: 20px">
                         <div class="col-md-2 profile-styling bold-name">
                             Username
                         </div>
-                        <div class="col-md-3 profile-styling gray-label"><%=user.getUsername()%>
+                        <div class="col-lg-2 profile-styling gray-label"><%=user.getUsername()%>
                         </div>
-                        <button type="button" class="btn btn-warning">Change</button>
+                        <input type="text" name="change-username"
+                               placeholder="Enter Username...">
                     </div>
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col-md-2 profile-styling bold-name">
+                            Password
+                        </div>
+                        <div class="col-lg-2 profile-styling gray-label">********
+                        </div>
+                        <input type="password" name="change-password"
+                               placeholder="Enter Password...">
+                        <input style="margin-left: 20px" type="password" name="change-password-confirm"
+                               placeholder="Confirm Password...">
+                    </div>
+                    <button type="button" class="btn btn-warning change-button">Change</button>
                     <div>
                         <p class="label-styling-bold-3">
                             Already Purchased<br>
