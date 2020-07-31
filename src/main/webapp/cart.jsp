@@ -25,7 +25,12 @@
             <h1 class="cart-header">Shopping Cart</h1>
             <div class="container-fluid">
                 <div class="product-list row">
-                    <% for (Product product : products.keySet()) { %>
+                    <% if (products.size() == 0) {%>
+                    <p class="empty-label">Your shopping cart is empty.</p>
+                    <%
+                    } else {
+                        for (Product product : products.keySet()) {
+                    %>
                     <jsp:include page="product-single-cart.jsp">
                         <jsp:param name="product-id" value="<%=product.getId()%>"/>
                         <jsp:param name="product-quantity" value="<%=products.get(product)%>"/>
@@ -34,7 +39,10 @@
                         <jsp:param name="product-image-path" value="<%=product.getImageAddress()%>"/>
                         <jsp:param name="product-price" value="<%=product.getPriceString()%>"/>
                     </jsp:include>
-                    <%}%>
+                    <%
+                            }
+                        }
+                    %>
                 </div>
                 <%if (products.size() != 0) {%>
                 <form method="post" action="BuyServlet">

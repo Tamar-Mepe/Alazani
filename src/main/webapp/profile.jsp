@@ -62,6 +62,9 @@
                     </div>
                     <div class="product-list row">
                         <% List<Pair<Product, Integer>> products = user.purchasedProducts();
+                            if (products.size() == 0) { %>
+                        <p class="empty-label">You haven't purchased anything yet.</p>
+                        <% } else {
                             for (Pair<Product, Integer> purchased : products) {
                                 Product product = purchased.getKey();
                                 int quantity = purchased.getValue();%>
@@ -73,7 +76,10 @@
                             <jsp:param name="product-image-path" value="<%=product.getImageAddress()%>"/>
                             <jsp:param name="product-price" value="<%=product.getPriceString()%>"/>
                         </jsp:include>
-                        <%}%>
+                        <%
+                                }
+                            }
+                        %>
                     </div>
                     <div>
                         <p class="label-styling-bold-3">
@@ -82,6 +88,10 @@
                     </div>
                     <div class="product-list row">
                         <% List<Product> currProducts = user.products();
+                            if (currProducts.size() == 0) { %>
+                        <p class="empty-label">You don't have any items on sale.</p>
+                        <%
+                        } else {
                             for (Product currProd : currProducts) {
                         %>
                         <jsp:include page="already-purchased.jsp">
@@ -92,7 +102,10 @@
                             <jsp:param name="product-image-path" value="<%=currProd.getImageAddress()%>"/>
                             <jsp:param name="product-price" value="<%=currProd.getPriceString()%>"/>
                         </jsp:include>
-                        <%}%>
+                        <%
+                                }
+                            }
+                        %>
                     </div>
                 </div>
             </div>

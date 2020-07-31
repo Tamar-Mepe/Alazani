@@ -36,8 +36,6 @@ public class SellServlet extends HttpServlet {
         int productQuantity = Integer.parseInt(productQuantityString);
         double productPrice = Double.parseDouble(productPriceString);
 
-        // TODO: download and save image to images
-
         // add product and save it
         Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
         User user = User.get(userId);  //shouldn't be null

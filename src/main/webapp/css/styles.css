@@ -137,7 +137,7 @@ select {
 }
 
 #sell-button {
-    margin-top: 30px;
+    margin-top: 20px;
     width: 10%;
 }
 
@@ -249,6 +249,7 @@ select {
 .cart-header {
     padding-left: 20px;
     padding-bottom: 30px;
+    font-weight: bold;
 }
 
 #comment {
@@ -261,4 +262,15 @@ select {
     font-size: 40px;
     font-weight: bold;
     padding-bottom: 20px;
+}
+
+.error-message-sell {
+    color: #FF0000;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.empty-label {
+    font-size: 20px;
+    margin-left: 20px;
 }

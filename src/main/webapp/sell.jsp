@@ -63,11 +63,8 @@
                                placeholder="Enter link of image...">
                     </div>
                     <% if (request.getAttribute("error") != null) {%>
-                    <div class="form-group">
-                        <br>
-                        <label><%=request.getAttribute("error")%>
-                        </label>
-                    </div>
+                    <p class="error-message-sell"><%=request.getAttribute("error")%>
+                    </p>
                     <% }%>
                     <div class="custom-file">
                         <button type="submit" id="sell-button" class="btn btn-primary btn-lg btn-block">Sell
