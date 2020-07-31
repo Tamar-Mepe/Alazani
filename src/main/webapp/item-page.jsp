@@ -32,8 +32,13 @@
                         </label><br>
                         <label class="seller-label">Added by: <%=User.get(currProd.getUserId()).getUsername()%>
                         </label><br>
-                        <label class="quantity-label">Only <%=currProd.getQuantity()%> Left in stock - order
+                        <% int quantity = currProd.getQuantity();
+                            if (quantity > 0) { %>
+                        <label class="quantity-label">Only <%=quantity%> Left in stock - order
                             soon.</label><br>
+                        <%} else { %>
+                        <label class="quantity-label">Out of stock.</label><br>
+                        <%} %>
                         <label class="product-description-label">Description: </label>
                         <br>
                         <label class="product-description"><%=currProd.getDescription()%>

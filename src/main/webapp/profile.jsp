@@ -65,7 +65,7 @@
                         <div class="col-lg-2 profile-styling gray-label">********
                         </div>
                         <input type="password" name="change-password"
-                               placeholder="Enter Password...">
+                               placeholder="Enter New Password...">
                         <input style="margin-left: 20px" type="password" name="change-password-confirm"
                                placeholder="Confirm Password...">
                     </div>
