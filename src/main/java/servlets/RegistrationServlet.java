@@ -22,18 +22,14 @@ public class RegistrationServlet extends HttpServlet {
         String confirmPassword = request.getParameter("password_confirmation");
         String errorMessage = "";
 
-        if (firstName == null || lastName == null || username == null || email == null || password == null || confirmPassword == null) {
+        if (firstName.equals("") || lastName.equals("") || username.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("")) {
             errorMessage = "Please fill blank spaces";
-        }
-        if (User.getWithUserName(username) != null) {
+        } else if (User.getWithUserName(username) != null) {
             errorMessage = "This username already exists";
-        }
-        if (errorMessage.equals("") && User.getWithEmail(email) != null) {
+        } else if (User.getWithEmail(email) != null) {
             errorMessage = "This email already exists";
-        }
-        if (errorMessage.equals("") && !password.equals(confirmPassword)) {
+        } else if (!password.equals(confirmPassword)) {
             errorMessage = "Passwords don't match";
-            //TODO: redirect
         }
         if (!errorMessage.equals("")) {
             request.setAttribute("error", errorMessage);
@@ -44,8 +40,8 @@ public class RegistrationServlet extends HttpServlet {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = (User) new User(firstName, lastName, hashedPassword, username, email).save();
         request.getSession().setAttribute(User.ATTRIBUTE_NAME, user.getId());
-        //TODO: send redirect to main page
-
+        RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+        view.forward(request, response);
     }
 
 }

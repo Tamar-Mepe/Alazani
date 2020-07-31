@@ -74,3 +74,11 @@ a {
         line-height: 70px;
     }
 }
+
+.error-message {
+    padding-top: 5px;
+    color: #FF0000;
+    display: table;
+    margin: 0 auto;
+    font-size: 20px;
+}

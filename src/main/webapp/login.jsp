@@ -12,7 +12,8 @@
 </head>
 <body>
 <div class="registration-form">
-    <form method="post" action="LoginServlet">
+    <form method="post" action="LoginServlet" style="padding-bottom: 10px;"
+    >
         <div class="form-icon">
             <span><i class="icon icon-user"></i></span>
         </div>
@@ -26,8 +27,8 @@
             <button type="submit" class="btn btn-block create-account">Sign in</button>
         </div>
         <% if (request.getAttribute("error") != null) {%>
-        <label><%=request.getAttribute("error")%>
-        </label>
+        <span class="error-message"><%=request.getAttribute("error")%>
+        </span>
         <% }%>
     </form>
     <div class="not-registered">

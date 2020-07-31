@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String errorMessage = "";
-        if (username == null || password == null) {
+        if (username.equals("") || password.equals("")) {
             errorMessage = "Please fill blank spaces";
         }
         User user = User.getWithUserName(username);
