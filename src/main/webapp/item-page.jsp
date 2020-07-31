@@ -42,13 +42,15 @@
                         </label>
                         <form method="post" action="CartServlet">
                             <input name="productId" type="hidden" value=<%=id%>>
-                            <select name="quantity-select">
-                                <% for (int i = 1; i <= currProd.getQuantity(); i++) { %>
-                                <option>
-                                    <%=i%>
-                                </option>
-                                <%}%>
-                            </select>
+                            <label>
+                                <select name="quantity-select">
+                                    <% for (int i = 1; i <= currProd.getQuantity(); i++) { %>
+                                    <option>
+                                        <%=i%>
+                                    </option>
+                                    <%}%>
+                                </select>
+                            </label>
                             <button type="submit" name="cartButton" id="buy-button" class="btn btn-primary btn-sm">Add
                                 To Cart
                             </button>
@@ -58,22 +60,27 @@
                 <div>
                     <form method="post" action="ReviewServlet">
                         <input name="productId" type="hidden" value=<%=id%>>
-                        <button type="submit" name="reviewButton" id="add-review-button"
-                                class="btn btn-primary btn-lg btn-block">Add Your
-                            Review
-                        </button>
-                        <input type="text" class="form-control" id="comment" name="comment"
-                               placeholder="Comment...">
                         <div>
-                            <select name="points" Points>
+                            <textarea class="form-control" id="comment" name="comment" rows="3"
+                                      placeholder="Comment..."
+                                      maxlength="1024"></textarea>
+                        </div>
+                        <label>
+                            <select name="points">
                                 <% for (int i = 1; i <= 5; i++) { %>
                                 <option>
                                     <%=i%>
                                 </option>
                                 <%}%>
                             </select>
-                            <label>Points</label>
-                        </div>
+                            Stars
+                        </label>
+                        <button type="submit" name="reviewButton" id="add-review-button"
+                                class="btn btn-primary btn-lg btn-block">Add Your
+                            Review
+                        </button>
+                </div>
+                <div>
                     </form>
                     <p id="review-label">Reviews</p>
                     <% List<Review> productReviews = Review.getReviewsByProductId(id); %>

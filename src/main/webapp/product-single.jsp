@@ -11,7 +11,7 @@
                 <img src="<%=request.getParameter("product-image-path")%>" alt="product" width="80%">
             </div>
             <div>
-                <p><%=request.getParameter("product-description")%>
+                <p class="gray-label"><%=request.getParameter("product-description")%>
                 </p>
                 <p id="font-30">$<%=request.getParameter("product-price")%>
                 </p>

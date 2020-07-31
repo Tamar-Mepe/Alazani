@@ -37,6 +37,7 @@
 .title-label {
     font-size: 60px;
     margin-bottom: 0px;
+    font-weight: bold;
 }
 
 .seller-label {
@@ -79,6 +80,7 @@ select {
     margin-bottom: 20px;
     margin-top: 20px;
     padding-left: 10px;
+    font-weight: bold;
 }
 
 #buy-button {
@@ -169,8 +171,8 @@ select {
 }
 
 #add-review-button {
-    margin-top: 150px;
-    width: 20%;
+    margin-top: 10px;
+    width: 15%;
 }
 
 #about-us-styling {
@@ -247,4 +249,9 @@ select {
 .cart-header {
     padding-left: 20px;
     padding-bottom: 30px;
+}
+
+#comment {
+    margin-top: 200px;
+    margin-bottom: 20px;
 }
