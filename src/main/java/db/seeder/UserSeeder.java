@@ -7,6 +7,7 @@ public class UserSeeder {
 
     public static void Seed() {
 
+        new User("Test", "User", BCrypt.hashpw("test", BCrypt.gensalt()), "test", "test@gmail.com").save();
         new User("Admin", "Admin", BCrypt.hashpw("admin451", BCrypt.gensalt()), "GM", "admin@gmail.com").save();
         new User("Tamar", "Davitaia", BCrypt.hashpw("101010", BCrypt.gensalt()), "Tamar.Davitaia", "tdavi18@freeuni.edu.ge").save();
         new User("Irakli", "Gabelia", BCrypt.hashpw("bubu123", BCrypt.gensalt()), "irakli98", "igabe18@freeuni.edu.ge").save();

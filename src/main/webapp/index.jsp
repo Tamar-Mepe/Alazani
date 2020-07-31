@@ -1,8 +1,7 @@
-<%@ page import="models.Product" %>
-<%@ page import="java.util.List" %>
 <%@ page import="models.Category" %>
-<%@ page import="java.util.Collection" %>
+<%@ page import="models.Product" %>
 <%@ page import="java.util.Collections" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <%

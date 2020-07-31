@@ -1,6 +1,7 @@
 package models;
 
 import db.Fields;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -137,13 +138,14 @@ public class User extends BaseModel {
         return allProducts.stream().filter(product -> product.getUserId() == this.id).collect(Collectors.toList());
     }
 
-    public List<Product> purchasedProducts() {
+    public List<Pair<Product, Integer>> purchasedProducts() {
         List<Purchase> allPurchases = Purchase.getAll();
         allPurchases = allPurchases.stream().filter(purchase -> purchase.getUserId() == this.id).collect(Collectors.toList());
 
-        List<Product> products = new ArrayList<>();
+        List<Pair<Product, Integer>> products = new ArrayList<>();
         for (Purchase pur : allPurchases) {
-            products.add(Product.get(pur.getProductId()));
+            Pair<Product, Integer> pair = new Pair<>(Product.get(pur.getProductId()), pur.getSoldQuantity());
+            products.add(pair);
         }
         return products;
     }
