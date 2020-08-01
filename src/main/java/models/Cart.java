@@ -6,9 +6,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cart extends BaseModel {
-    public int getProductId() {
-        return productId;
-    }
 
     private int userId;
     private int productId;
@@ -36,6 +33,10 @@ public class Cart extends BaseModel {
                 Integer.parseInt(fields.get("quantity")));
         cart.setId(Integer.parseInt(fields.get("id")));
         return cart;
+    }
+
+    public int getProductId() {
+        return productId;
     }
 
     public static Cart get(int id) {
@@ -120,5 +121,10 @@ public class Cart extends BaseModel {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public static List<Cart> getCartsByProductID(int productId) {
+        List<Cart> Carts = Cart.getAll();
+        return Carts.stream().filter(art -> art.getProductId() == productId).collect(Collectors.toList());
     }
 }
