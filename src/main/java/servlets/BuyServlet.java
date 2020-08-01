@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet("/BuyServlet")
 public class BuyServlet extends HttpServlet {
@@ -29,14 +27,10 @@ public class BuyServlet extends HttpServlet {
             String date = "Date";
 
             // ToDo: add Date
-            new Purchase(userId, productID, quantity, date).save();
+            new Purchase(userId, productID, quantity).save();
 
-            // Decrease on Products
+            // Decrease Quantity on product
             Product product = Product.get(productID);
-            if (product.getQuantity() < quantity) {
-                // ToDo: Error
-                return;
-            }
             product.setQuantity(product.getQuantity() - quantity);
             product.update();
             cart.deleteRow();

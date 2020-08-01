@@ -33,7 +33,7 @@ class PurchaseTest {
         ProductSeeder.Seed();
         List<Product> products = Product.getAll();
 
-        Purchase purchase = new Purchase(-1, products.get(0).getId(), 100, "22/12/2014");
+        Purchase purchase = new Purchase(-1, products.get(0).getId(), 100);
         purchase.save();
         int savedId = purchase.getId();
         Purchase newPurchase = Purchase.get(savedId);
@@ -42,7 +42,6 @@ class PurchaseTest {
         assertEquals(newPurchase.getUserId(), purchase.getUserId());
         assertEquals(newPurchase.getProductId(), purchase.getProductId());
         assertEquals(newPurchase.getSoldQuantity(), purchase.getSoldQuantity());
-        assertEquals(newPurchase.getPurchaseDate(), purchase.getPurchaseDate());
     }
 
     @Test
@@ -50,11 +49,11 @@ class PurchaseTest {
         // Initialize all products
         List<Purchase> AllPurchase = new ArrayList<Purchase>() {
             {
-                add(new Purchase(1, 1, 10, "12/23/2010"));
-                add(new Purchase(2, 2, 100, "12/24/2010"));
-                add(new Purchase(3, 3, 1000, "12/25/2010"));
-                add(new Purchase(4, 4, 10000, "12/26/2010"));
-                add(new Purchase(5, 5, 100000, "12/27/2010"));
+                add(new Purchase(1, 1, 10));
+                add(new Purchase(2, 2, 100));
+                add(new Purchase(3, 3, 1000));
+                add(new Purchase(4, 4, 10000));
+                add(new Purchase(5, 5, 100000));
             }
         };
 
@@ -70,7 +69,6 @@ class PurchaseTest {
             assertEquals(purchaseDB.getProductId(), purchase.getProductId());
             assertEquals(purchaseDB.getUserId(), purchase.getUserId());
             assertEquals(purchaseDB.getSoldQuantity(), purchase.getSoldQuantity());
-            assertEquals(purchaseDB.getPurchaseDate(), purchase.getPurchaseDate());
         }
     }
 }

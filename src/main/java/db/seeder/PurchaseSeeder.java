@@ -24,7 +24,7 @@ public class PurchaseSeeder {
         }
         Random rand = new Random();
         for (int i = 0; i < 20; i++) {
-            new Purchase(userId.get(rand.nextInt(userId.size())), productId.get(rand.nextInt(productId.size())), rand.nextInt(10), "23/05/2020").save();
+            new Purchase(userId.get(rand.nextInt(userId.size())), productId.get(rand.nextInt(productId.size())), rand.nextInt(10)).save();
         }
 
     }

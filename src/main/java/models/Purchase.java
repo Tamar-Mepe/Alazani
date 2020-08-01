@@ -17,20 +17,18 @@ public class Purchase extends BaseModel {
         FIELDS.put("user_id", Fields.INT);
         FIELDS.put("product_id", Fields.INT);
         FIELDS.put("quantity", Fields.INT);
-        FIELDS.put("purchase_date", Fields.varchar(15));
+        FIELDS.put("purchase_date", Fields.DATE);
     }
 
     private int userId;
     private int productId;
     private int quantity;
-    private String purchaseDate;
 
-    public Purchase(int userId, int productId, int quantity, String purchaseDate) {
+    public Purchase(int userId, int productId, int quantity) {
         super(TABLE_NAME);
         this.userId = userId;
         this.productId = productId;
         this.quantity = quantity;
-        this.purchaseDate = purchaseDate;
     }
 
 
@@ -38,8 +36,8 @@ public class Purchase extends BaseModel {
         Purchase purchase = new Purchase(
                 Integer.parseInt(fields.get("user_id")),
                 Integer.parseInt(fields.get("product_id")),
-                Integer.parseInt(fields.get("quantity")),
-                fields.get("purchase_date"));
+                Integer.parseInt(fields.get("quantity"))
+        );
         purchase.setId(Integer.parseInt(fields.get("id")));
         return purchase;
     }
@@ -66,7 +64,6 @@ public class Purchase extends BaseModel {
                 put("user_id", userId);
                 put("product_id", productId);
                 put("quantity", quantity);
-                put("purchase_date", purchaseDate);
             }
         };
     }
@@ -83,7 +80,4 @@ public class Purchase extends BaseModel {
         return this.productId;
     }
 
-    public String getPurchaseDate() {
-        return this.purchaseDate;
-    }
 }
