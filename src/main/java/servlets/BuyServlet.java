@@ -24,9 +24,6 @@ public class BuyServlet extends HttpServlet {
             // Variables
             int productID = cart.getProductId();
             int quantity = cart.getQuantity();
-            String date = "Date";
-
-            // ToDo: add Date
             new Purchase(userId, productID, quantity).save();
 
             // Decrease Quantity on product

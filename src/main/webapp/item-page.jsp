@@ -59,7 +59,15 @@
                             <button onclick="checkIfLogged()" type="submit" name="cartButton" id="buy-button"
                                     class="btn btn-primary btn-sm">Add
                                 To Cart
-                            </button>
+                            </button><br>
+                            <%
+                                Object err = request.getSession().getAttribute("error");
+                                if (err != null) {%>
+                            <label class="error-message-cant-add"><%=(String) err%></label>
+                            <%
+                                    request.getSession().setAttribute("error", null);
+                                }
+                            %>
                         </form>
                     </div>
                 </div>
@@ -88,7 +96,6 @@
                     </form>
                 </div>
                 <div>
-                    </form>
                     <p id="review-label">Reviews</p>
                     <% List<Review> productReviews = Review.getReviewsByProductId(id); %>
                     <% for (Review rev : productReviews) { %>

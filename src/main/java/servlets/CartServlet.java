@@ -4,6 +4,8 @@ import models.Cart;
 import models.Product;
 import models.User;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         if (request.getParameter("cartButton") != null) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             Product prod = Product.get(productId);
@@ -30,12 +32,17 @@ public class CartServlet extends HttpServlet {
 
                 // Set correct quantity
                 int totalQuantity = prod.getQuantity();
-                if (totalQuantity < quantity + userProdCart.getQuantity()){
-                    // ToDo: redirect with error
-                    response.sendRedirect("/item-page.jsp?id=" + productId);
+                if (totalQuantity < quantity + userProdCart.getQuantity()) {
+                    String errorMessage;
+                    int left = totalQuantity - userProdCart.getQuantity();
+                    if (left <= 0) errorMessage = "You can't choose more products";
+                    else errorMessage = "You can choose up to " + left + " more product(s)";
+                    request.getSession().setAttribute("error", errorMessage);
+                    RequestDispatcher view = request.getRequestDispatcher("/item-page.jsp?id=" + productId);
+                    view.forward(request, response);
                     return;
                 }
-                userProdCart.setQuantity(userProdCart.getQuantity()+quantity);
+                userProdCart.setQuantity(userProdCart.getQuantity() + quantity);
                 userProdCart.update();
                 /**/
                 prod.update();
@@ -49,7 +56,6 @@ public class CartServlet extends HttpServlet {
             Integer userId = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
             Cart.removeCart(userId, productId);
             response.sendRedirect("/cart.jsp");
-
         }
     }
 }
