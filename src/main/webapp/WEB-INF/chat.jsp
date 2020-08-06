@@ -30,27 +30,27 @@
                     </button>
                 </div> <!-- end chat-message-content -->
             </div> <!-- end chat-message -->
-<%--            <hr>--%>
-<%--            <div class="chat-message clearfix">--%>
-<%--                <img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32"--%>
-<%--                     height="32">--%>
-<%--                <div class="chat-message-content clearfix">--%>
-<%--                    <span class="chat-time">13:37</span>--%>
-<%--                    <h5>Marco Biedermann</h5>--%>
-<%--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel--%>
-<%--                        debitis numquam qui tempora rem voluptatem delectus!</p>--%>
-<%--                </div> <!-- end chat-message-content -->--%>
-<%--            </div> <!-- end chat-message -->--%>
-<%--            <hr>--%>
-<%--            <div class="chat-message clearfix">--%>
-<%--                <img src="ASD">--%>
-<%--                <div class="chat-message-content clearfix">--%>
-<%--                    <span class="chat-time">13:38</span>--%>
-<%--                    <h5>John Doe</h5>--%>
-<%--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>--%>
-<%--                </div> <!-- end chat-message-content -->--%>
-<%--            </div> <!-- end chat-message -->--%>
-<%--            <hr>--%>
+            <%--            <hr>--%>
+            <%--            <div class="chat-message clearfix">--%>
+            <%--                <img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32"--%>
+            <%--                     height="32">--%>
+            <%--                <div class="chat-message-content clearfix">--%>
+            <%--                    <span class="chat-time">13:37</span>--%>
+            <%--                    <h5>Marco Biedermann</h5>--%>
+            <%--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel--%>
+            <%--                        debitis numquam qui tempora rem voluptatem delectus!</p>--%>
+            <%--                </div> <!-- end chat-message-content -->--%>
+            <%--            </div> <!-- end chat-message -->--%>
+            <%--            <hr>--%>
+            <%--            <div class="chat-message clearfix">--%>
+            <%--                <img src="ASD">--%>
+            <%--                <div class="chat-message-content clearfix">--%>
+            <%--                    <span class="chat-time">13:38</span>--%>
+            <%--                    <h5>John Doe</h5>--%>
+            <%--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>--%>
+            <%--                </div> <!-- end chat-message-content -->--%>
+            <%--            </div> <!-- end chat-message -->--%>
+            <%--            <hr>--%>
         </div> <!-- end chat-history -->
     </div> <!-- end chat -->
 </div> <!-- end live-chat -->
@@ -60,10 +60,23 @@
             $('.chat').toggle(300, 'swing');
         });
     })();
-
-    function showQuestions(){
-
-    }
+    url = 'http://localhost:8080/Questions';
+    // ToDo: Fix data is not returned in JSON (non string)
+    $.ajax({
+        type: 'GET',
+        url: url,
+        context: document.body,
+        success: function(data){
+            var json = $.parseJSON(data); // create an object with the key of the array
+            alert(json.html); // where html is the key of array that you want, $response['html'] = "<a>something..</a>";
+        },
+        error: function(data){
+            console.log(data.responseText);
+            var json = $.parseJSON(data.responseText);
+            console.log(json);
+            alert(json.error);
+        }
+    });
 </script>
 
 </html>

@@ -12,11 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/Questions")
-public class Questions extends HttpServlet {
+public class QuestionsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<ArrayList<String>> allBots = Bot.allQuestionAnswers();
 
+        // ToDo: Fix JSON bug
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
