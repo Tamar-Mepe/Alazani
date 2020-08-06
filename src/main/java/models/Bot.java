@@ -2,10 +2,8 @@ package models;
 
 import db.Fields;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Bot extends BaseModel {
     public static final String TABLE_NAME = "bots";
@@ -62,6 +60,16 @@ public class Bot extends BaseModel {
             allBots.add(DBToJava(field));
         }
         return allBots;
+    }
+
+    public static List<ArrayList<String>> allQuestionAnswers() {
+        List<Bot> bots = Bot.getAll();
+        System.out.println(bots.size());
+        return bots.stream().map(x -> new ArrayList<String>() {{
+            add(String.valueOf(x.getId()));
+            add(x.getQuestion());
+            add(x.getAnswer());
+        }}).collect(Collectors.toList());
     }
 
 }
