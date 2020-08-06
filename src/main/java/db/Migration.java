@@ -13,6 +13,7 @@ public class Migration {
         db.createTable(Purchase.TABLE_NAME, Purchase.FIELDS);
         db.createTable(Review.TABLE_NAME, Review.FIELDS);
         db.createTable(Cart.TABLE_NAME, Cart.FIELDS);
+        db.createTable(Bot.TABLE_NAME, Bot.FIELDS);
     }
 
     public static void createStartingData() {
@@ -21,6 +22,7 @@ public class Migration {
         ProductSeeder.Seed();
         PurchaseSeeder.Seed();
         ReviewSeeder.Seed();
+        BotSeeder.Seed();
     }
 
 }
