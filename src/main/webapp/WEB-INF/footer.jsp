@@ -66,36 +66,25 @@
                         <a href="https://github.com/dtarg16" target="_blank">dtarg16</a>
                     </li>
                 </ul>
-
             </div>
             <!-- Grid column -->
-
         </div>
         <!-- Grid row -->
-
     </div>
     <!-- Footer Links -->
-
     <!-- Copyright -->
     <div class="footer-mini footer-copyright text-center py-3">
         <a href="https://mdbootstrap.com/">2020 Copyright</a>
     </div>
     <!-- Copyright -->
-
 </footer>
 <!-- Footer -->
-
 <script>
     function adjustFooter() {
         var viewPortHeight = $(window).height();
         var footerHeight = $("footer").outerHeight(true);
         var contentHeight = $("main").outerHeight(true);
         var headerHeight = $("header").outerHeight(true);
-
-        console.log(contentHeight)
-        console.log(footerHeight)
-        console.log(headerHeight)
-        console.log(viewPortHeight)
         if (contentHeight + headerHeight + footerHeight < viewPortHeight) {
             $("footer").addClass("fixed")
         }

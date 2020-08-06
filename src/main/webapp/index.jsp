@@ -74,8 +74,10 @@
                         </li>
                     </ul>
                 </nav>
+                <jsp:include page="WEB-INF/chat.jsp"></jsp:include>
             </div>
         </main>
+
         <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
     </div>
 </div>
