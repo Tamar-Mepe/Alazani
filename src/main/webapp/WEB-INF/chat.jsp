@@ -10,7 +10,7 @@
         <h4>Mehmet Mert</h4>
         <span class="chat-message-counter">3</span>
     </header>
-    <div class="chat">
+    <div class="chat" style="display: none;">
         <div class="chat-history">
             <div class="chat-message clearfix">
                 <img src="ASD">

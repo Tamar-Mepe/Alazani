@@ -19,7 +19,7 @@
     }
 
     // Pagination
-    int prodPerPage = 18;
+    int prodPerPage = 12;
     int pageNum = 1;
     int totalPages = (int) Math.ceil((double) products.size() / prodPerPage);
     String pageNumStr = request.getParameter("page");
