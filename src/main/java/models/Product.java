@@ -157,7 +157,6 @@ public class Product extends BaseModel {
         return Category.get(this.categoryId);
     }
 
-
     public User user() {
         return User.get(this.userId);
     }

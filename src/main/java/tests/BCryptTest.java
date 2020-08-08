@@ -16,7 +16,7 @@ class BCryptTest {
             "MeArviYoParoliTu"};
 
     @Test
-    void simpleTest() {
+    public void simpleTest() {
         String password = "Oesischabareba";
         String savedPassword = "Oesischabareba";
         String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
@@ -25,7 +25,7 @@ class BCryptTest {
     }
 
     @Test
-    void mediocreTest() {
+    public void mediocreTest() {
         List<String> hashedPasswords = new ArrayList<>();
         for (String password : passwords) {
             String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt());

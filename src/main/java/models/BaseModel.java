@@ -80,7 +80,7 @@ public class BaseModel {
 
     //  Adding to Database
     public Map<String, Object> JavaToDB() {
-        throw new Error("JavaToDB Function should be overrided");
+        throw new Error("JavaToDB Function should be overriden");
     }
 
     public Object save() {

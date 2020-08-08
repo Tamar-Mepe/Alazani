@@ -20,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class PurchaseTest {
 
     @BeforeEach
-    void setUp() throws SQLException, ClassNotFoundException {
+    public void setUp() throws SQLException, ClassNotFoundException {
         DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void get() {
+    public void get() {
         // Save To DB
         UserSeeder.Seed();
         CategorySeeder.Seed();
@@ -45,7 +45,7 @@ class PurchaseTest {
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
         // Initialize all products
         List<Purchase> AllPurchase = new ArrayList<Purchase>() {
             {

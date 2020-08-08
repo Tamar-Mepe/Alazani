@@ -3,8 +3,10 @@ package tests;
 import db.DB;
 import db.Migration;
 import db.MySQL;
+import javafx.util.Pair;
 import models.Category;
 import models.Product;
+import models.Purchase;
 import models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,13 +19,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserTest {
 
     @BeforeEach
-    void setUp() throws SQLException, ClassNotFoundException {
+    public void setUp() throws SQLException, ClassNotFoundException {
         DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void javaToDB() {
+    public void javaToDB() {
         User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         Map<String, Object> map = user.JavaToDB();
         assertTrue(map.containsKey("first_name") && map.get("first_name").equals("f_test"));
@@ -34,7 +36,7 @@ class UserTest {
     }
 
     @Test
-    void DBToJava() {
+    public void DBToJava() {
         Map<String, String> map = new LinkedHashMap<String, String>() {
             {
                 put("id", "0");
@@ -55,7 +57,7 @@ class UserTest {
     }
 
     @Test
-    void get() {
+    public void get() {
         // Save To DB
         User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         user.save();
@@ -70,7 +72,7 @@ class UserTest {
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
         // Initialize all users
         List<User> allUsers = new ArrayList<User>() {
             {
@@ -98,7 +100,7 @@ class UserTest {
     }
 
     @Test
-    void update() {
+    public void update() {
         // Save To DB
         User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         user.save();
@@ -184,7 +186,10 @@ class UserTest {
             user.save();
 
         for (User user : allUsers)
-            assertEquals(Objects.requireNonNull(User.getWithUserName(user.getUsername())).getId(), user.getId());
+            assertEquals((Objects.requireNonNull(User.getWithUserName(user.getUsername()))).getId(), user.getId());
+
+        // Non existent username
+        assertNull(User.getWithUserName("username_1234567890_username_1234567890_username"));
     }
 
     @Test
@@ -209,6 +214,32 @@ class UserTest {
         assertEquals(User.getAll().size(), 5);
         user.deleteRow();
         assertEquals(User.getAll().size(), 4);
+
+        // Non existent email
+        assertNull(User.getWithEmail("username_1234567890_username_1234567890@gmail.com"));
+    }
+
+    @Test
+    public void checkPurchasedProducts() {
+        User user1 = (User) new User("name_1", "last_1", "pass_1", "user_1", "email_1").save();
+
+        Category cat1 = (Category) new Category("cat1").save();
+        Category cat2 = (Category) new Category("cat2").save();
+
+        List<Pair<Product, Integer>> prodList = new ArrayList<Pair<Product, Integer>>() {
+            {
+                add(new Pair<>(new Product("prod1", "desc1", 2, cat1.getId(), 100, user1.getId(), null), 100));
+                add(new Pair<>(new Product("prod2", "desc2", 3, cat2.getId(), 20, user1.getId(), null), 20));
+                add(new Pair<>(new Product("prod3", "desc3", 4, cat2.getId(), 10, user1.getId(), null), 10));
+            }
+        };
+
+        for (Pair<Product, Integer> currProd : prodList) {
+            currProd.getKey().save();
+            new Purchase(user1.getId(), currProd.getKey().getId(), currProd.getValue()).save();
+        }
+
+        assertEquals(prodList, user1.purchasedProducts());
     }
 
 }

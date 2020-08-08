@@ -5,6 +5,7 @@ import db.Migration;
 import db.MySQL;
 import models.Category;
 import models.Product;
+import models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductTest {
 
     @BeforeEach
-    void setUp() throws SQLException, ClassNotFoundException {
+    public void setUp() throws SQLException, ClassNotFoundException {
         DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void get() {
+    public void get() {
         // Save To DB
         Product product = new Product("Bu", "fav predator", 100, -1, 3, -1, "image address");
         product.save();
@@ -39,8 +40,9 @@ class ProductTest {
         assertEquals(newProduct.getUserId(), product.getUserId());
         assertEquals(newProduct.getImageAddress(), product.getImageAddress());
     }
+
     @Test
-    void searchProduct(){
+    public void searchProduct() {
         // init categories
         Category cat1 = (Category) new Category("cat1").save();
         Category cat2 = (Category) new Category("cat2").save();
@@ -78,7 +80,7 @@ class ProductTest {
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
         // Initialize all products
         List<Product> allProducts = new ArrayList<Product>() {
             {
@@ -110,7 +112,7 @@ class ProductTest {
     }
 
     @Test
-    void update() {
+    public void update() {
         // Save To DB
         Product product = new Product("Bu", "predator breed", 100, -1, 1, -1, "address");
         product.save();
@@ -174,5 +176,27 @@ class ProductTest {
 
         assertEquals(cat1Products.size(), 4);
         assertEquals(cat2Products.size(), 1);
+    }
+
+    @Test
+    public void testPriceString() {
+        Product newProd = new Product("p1", "d1", 3.2, -1, 30, -1, "image");
+        newProd.save();
+        String expectedString = "3.20";
+        assertEquals(expectedString, newProd.getPriceString());
+    }
+
+    @Test
+    public void testGetUser() {
+        User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
+        user.save();
+        int savedId = user.getId();
+
+        Product product = new Product("Bu", "fav predator", 100, -1, 3, savedId, "image address");
+        product.save();
+        int productSavedId = product.getId();
+        Product newProduct = Product.get(savedId);
+
+        assertEquals(newProduct.user().getId(), product.user().getId());
     }
 }

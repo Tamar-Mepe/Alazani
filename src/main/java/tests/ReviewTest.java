@@ -3,6 +3,7 @@ package tests;
 import db.DB;
 import db.Migration;
 import db.MySQL;
+import models.Product;
 import models.Review;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 class ReviewTest {
 
     @BeforeEach
-    void setUp() throws SQLException, ClassNotFoundException {
+    public void setUp() throws SQLException, ClassNotFoundException {
         DB db = MySQL.getInstance();
         Migration.createTables(db);
     }
 
     @Test
-    void get() {
+    public void get() {
         Review review = (Review) new Review("comment", -1, -2, -3).save();
         int savedId = review.getId();
         Review newReview = Review.get(savedId);
@@ -49,7 +50,7 @@ class ReviewTest {
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
         List<Review> allReviews = new ArrayList<Review>() {
             {
                 add((Review) new Review("comment1", 1, 10, 1).save());
@@ -72,7 +73,7 @@ class ReviewTest {
     }
 
     @Test
-    void getReviewsByProductId() {
+    public void getReviewsByProductId() {
         new Review("comment1", 1, 10, 1).save();
         new Review("comment2", 2, 100, 2).save();
         new Review("comment3", 3, 1000, 1).save();
@@ -88,4 +89,20 @@ class ReviewTest {
             assertNotEquals("comment2", comment);
         }
     }
+
+    @Test
+    public void getAverage() {
+        Product product = new Product("Product", "Great product", 43, -1, 10, -1, null);
+        product.save();
+        int productId = product.getId();
+        int points1 = 3;
+        int points2 = 4;
+        int points3 = 5;
+        new Review("nice", points1, 1, productId).save();
+        new Review("very nice", points2, 2, productId).save();
+        new Review("very very nice", points3, 3, productId).save();
+        int average = (points1 + points2 + points3) / 3;
+        assertEquals(average + ".0", Review.getAverageReviewByProductId(productId));
+    }
+
 }
