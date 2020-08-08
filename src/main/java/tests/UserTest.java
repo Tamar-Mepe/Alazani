@@ -28,6 +28,7 @@ class UserTest {
     public void javaToDB() {
         User user = new User("f_test", "l_test", "p_test", "u_test", "e_test");
         Map<String, Object> map = user.JavaToDB();
+
         assertTrue(map.containsKey("first_name") && map.get("first_name").equals("f_test"));
         assertTrue(map.containsKey("last_name") && map.get("last_name").equals("l_test"));
         assertTrue(map.containsKey("password") && map.get("password").equals("p_test"));
@@ -48,6 +49,7 @@ class UserTest {
             }
         };
         User user = User.DBToJava(map);
+
         assertEquals(user.getFirstName(), "f_test");
         assertEquals(user.getLastName(), "l_test");
         assertEquals(user.getPassword(), "p_test");
@@ -91,6 +93,7 @@ class UserTest {
         for (int i = 0; i < allUsers.size(); i++) {
             User userDB = allUsersDB.get(i);
             User user = allUsers.get(i);
+
             assertEquals(userDB.getFirstName(), user.getFirstName());
             assertEquals(userDB.getLastName(), user.getLastName());
             assertEquals(userDB.getPassword(), user.getPassword());
@@ -115,6 +118,7 @@ class UserTest {
 
         // Should fail
         User newUser = User.get(savedId);
+
         assertEquals(newUser.getId(), savedId);
         assertNotEquals(newUser.getFirstName(), user.getFirstName());
         assertNotEquals(newUser.getLastName(), user.getLastName());
@@ -125,6 +129,7 @@ class UserTest {
         // Should Pass after updating
         user.update();
         newUser = User.get(savedId);
+
         assertEquals(newUser.getId(), savedId);
         assertEquals(newUser.getFirstName(), user.getFirstName());
         assertEquals(newUser.getLastName(), user.getLastName());
@@ -166,6 +171,7 @@ class UserTest {
         for (Product product : user2Products) {
             assertTrue(user2SavedProductIds.contains(product.getId()));
         }
+
         assertEquals(user1Products.size(), 2);
         assertEquals(user2Products.size(), 3);
     }
@@ -211,7 +217,9 @@ class UserTest {
             assertEquals(Objects.requireNonNull(User.getWithEmail(user.getEmail())).getId(), user.getId());
         User user = new User("f1", "l1", "p1", "u10", "e10");
         user.save();
+
         assertEquals(User.getAll().size(), 5);
+
         user.deleteRow();
         assertEquals(User.getAll().size(), 4);
 

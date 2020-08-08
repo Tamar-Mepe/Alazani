@@ -100,6 +100,7 @@ class ProductTest {
         for (int i = 0; i < allProductsDB.size(); i++) {
             Product productDB = allProductsDB.get(i);
             Product product = allProducts.get(i);
+
             assertEquals(productDB.getId(), product.getId());
             assertEquals(productDB.getName(), product.getName());
             assertEquals(productDB.getDescription(), product.getDescription());
@@ -126,8 +127,10 @@ class ProductTest {
         product.setCategoryId(7);
         product.setUserId(9);
         product.setImageAddress("image address");
+
         // Should fail
         Product newProductTmp = Product.get(savedId);
+
         assertEquals(newProductTmp.getId(), savedId);
         assertNotEquals(newProductTmp.getName(), product.getName());
         assertNotEquals(newProductTmp.getDescription(), product.getDescription());
@@ -140,6 +143,7 @@ class ProductTest {
         // Should Pass after updating
         product.update();
         Product newProduct = Product.get(savedId);
+
         assertEquals(newProduct.getId(), savedId);
         assertEquals(newProduct.getName(), product.getName());
         assertEquals(newProduct.getDescription(), product.getDescription());

@@ -60,20 +60,20 @@ class CartTest {
         // Save To DB
         Cart cart = (Cart) new Cart(1, 1, 3).save();
         cart.updateQuantity(10);
-        int saved_id = cart.getId();
+        int savedId = cart.getId();
 
-        assertNotEquals(10, Cart.get(saved_id).getQuantity());
-        assertEquals(3, Cart.get(saved_id).getQuantity());
+        assertNotEquals(10, Cart.get(savedId).getQuantity());
+        assertEquals(3, Cart.get(savedId).getQuantity());
         assertEquals(3, Objects.requireNonNull(Cart.getCart(1, 1)).getQuantity());
 
         cart.update();
-        assertEquals(10, Cart.get(saved_id).getQuantity());
+        assertEquals(10, Cart.get(savedId).getQuantity());
         assertEquals(10, Objects.requireNonNull(Cart.getCart(1, 1)).getQuantity());
 
         cart.setQuantity(15);
         cart.update();
 
-        assertEquals(15, Cart.get(saved_id).getQuantity());
+        assertEquals(15, Cart.get(savedId).getQuantity());
         assertEquals(15, Objects.requireNonNull(Cart.getCart(1, 1)).getQuantity());
 
     }

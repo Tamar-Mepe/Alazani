@@ -55,6 +55,7 @@ class CategoryTest {
         for (int i = 0; i < allCategoriesDB.size(); i++) {
             Category categoryDB = allCategoriesDB.get(i);
             Category category = allCategories.get(i);
+
             assertEquals(categoryDB.getName(), category.getName());
         }
     }
@@ -71,6 +72,7 @@ class CategoryTest {
 
         // Should fail
         Category newCategory = Category.get(savedId);
+
         assertEquals(newCategory.getId(), savedId);
         assertNotEquals(newCategory.getName(), category.getName());
 
@@ -78,6 +80,7 @@ class CategoryTest {
         category.update();
         newCategory = Category.get(savedId);
         Category newCategory2 = Category.getByName("axalikategoria2");
+
         assertEquals(savedId, Objects.requireNonNull(newCategory2).getId());
         assertEquals(newCategory.getId(), savedId);
         assertEquals(newCategory.getName(), category.getName());

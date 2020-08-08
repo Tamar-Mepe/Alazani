@@ -64,7 +64,6 @@ public class Bot extends BaseModel {
 
     public static List<ArrayList<String>> allQuestionAnswers() {
         List<Bot> bots = Bot.getAll();
-        System.out.println(bots.size());
         return bots.stream().map(x -> new ArrayList<String>() {{
             add(String.valueOf(x.getId()));
             add(x.getQuestion());

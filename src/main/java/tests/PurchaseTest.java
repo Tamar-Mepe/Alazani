@@ -65,6 +65,7 @@ class PurchaseTest {
         for (int i = 0; i < AllPurchaseDB.size(); i++) {
             Purchase purchaseDB = AllPurchaseDB.get(i);
             Purchase purchase = AllPurchase.get(i);
+
             assertEquals(purchaseDB.getId(), purchase.getId());
             assertEquals(purchaseDB.getProductId(), purchase.getProductId());
             assertEquals(purchaseDB.getUserId(), purchase.getUserId());
