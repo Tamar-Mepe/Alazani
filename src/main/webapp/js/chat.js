@@ -1,9 +1,38 @@
 let questions = [];
+let QUESTION_TXT = 'What can I help you with?';
 
-// update questions
+/* EVENT ON QUESTION SELECETION */
+function answerQuestion(idx) {
+    // 1. Delete Old Questions
+    $('.bot-questions').html('');
+
+    // 2. Add answer
+    const mainMsg = $('<div class="chat-message clearfix"></div>');
+    const mainImg = $('<img src="../images/user.svg" alt="Bot" width="32" height="32">');
+    const mainQuestions = $('<div class="chat-message-content clearfix"></div>');
+    const mainBot = $('<h5>User</h5>');
+    var question = `${questions[idx]['question']}`;
+    const mainText = $(`<p>${question}</p>`);
+
+    mainQuestions.append(mainBot);
+    mainQuestions.append(mainText);
+
+    mainMsg.append(mainImg);
+    mainMsg.append(mainImg);
+    mainMsg.append(mainQuestions);
+
+    const mainChat = $(document.getElementById('chat-main'));
+    mainChat.append('<hr>');
+    mainChat.append(mainMsg);
+
+    // 3. Ask Question again
+    writeQuestions(questions, `${questions[idx]['answer']}<br>${QUESTION_TXT}`);
+}
+
+/* WRITE QUESTIONS IN CHAT */
 function writeQuestions(questions, text) {
     function f(bot, i) {
-        const buttonTag = $(`<button type="button" class="btn btn-outline-dark" id="${i}"></button>`);
+        const buttonTag = $(`<button type="button" class="btn btn-outline-dark" onclick="answerQuestion(${i})" id="${i}"></button>`);
         const spanTag = $(`<span>${bot['question']}</span>`);
 
         buttonTag.append(spanTag);
@@ -20,9 +49,11 @@ function writeQuestions(questions, text) {
     mainQuestions.append(mainBot);
     mainQuestions.append(mainText);
 
+    const botQuestions = $('<div class="bot-questions"></div>')
     for (let i = 0; i < questions.length; i++)
-        mainQuestions.append(f(questions[i], i));
+        botQuestions.append(f(questions[i], i));
 
+    mainQuestions.append(botQuestions);
     mainMsg.append(mainImg);
     mainMsg.append(mainImg);
     mainMsg.append(mainQuestions);
@@ -32,14 +63,14 @@ function writeQuestions(questions, text) {
     mainChat.append(mainMsg);
 }
 
-// fetch questions
+/* FETCH QUESTIONS FROM SERVER */
 url = 'http://localhost:8080/Questions';
 WELCOME_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
     'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
     'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ' +
     'irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
-    'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>' +
-    'How Can I Help You With?';
+    'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
+
 $.ajax({
     type: 'GET',
     url: url,
@@ -47,10 +78,10 @@ $.ajax({
     context: document.body,
     success: function (data) {
         questions = data;
-        writeQuestions(questions, WELCOME_TEXT);
-        writeQuestions(questions, WELCOME_TEXT);
+        writeQuestions(questions, `${WELCOME_TEXT}<br>${QUESTION_TXT}`);
     },
 });
+
 
 
 (function () {
