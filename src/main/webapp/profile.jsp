@@ -15,7 +15,8 @@
 </jsp:include>
 
 <body>
-
+<script src="js/password.js">
+</script>
 <div class="wrapper">
     <%--suppress CheckTagEmptyBody Sidebar--%>
     <jsp:include page="/sidebar.jsp"></jsp:include>
@@ -31,45 +32,74 @@
                     Account Settings<br>
                 </p>
                 <div class="container">
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-md-2 profile-styling bold-name">
-                            First Name
+                    <form name="changeForm" onsubmit="return validateForm()">
+                        <div class="row" style="margin-bottom: 20px">
+                            <div class="col-md-2 profile-styling bold-name">
+                                First Name
+                            </div>
+                            <div class="col-lg-2 profile-styling gray-label"><%=user.getFirstName()%>
+                            </div>
+                            <input type="text" name="change-first-name"
+                                   placeholder="Enter First Name...">
                         </div>
-                        <div class="col-lg-2 profile-styling gray-label"><%=user.getFirstName()%>
+                        <div class="row" style="margin-bottom: 20px">
+                            <div class="col-md-2 profile-styling bold-name">
+                                Last Name
+                            </div>
+                            <div class="col-lg-2 profile-styling gray-label"><%=user.getLastName()%>
+                            </div>
+                            <input type="text" name="change-last-name"
+                                   placeholder="Enter Last Name...">
                         </div>
-                        <input type="text" name="change-first-name"
-                               placeholder="Enter First Name...">
-                    </div>
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-md-2 profile-styling bold-name">
-                            Last Name
+                        <div class="row" style="margin-bottom: 20px">
+                            <div class="col-md-2 profile-styling bold-name">
+                                Username
+                            </div>
+                            <div class="col-lg-2 profile-styling gray-label"><%=user.getUsername()%>
+                            </div>
+                            <input type="text" name="change-username"
+                                   placeholder="Enter Username...">
                         </div>
-                        <div class="col-lg-2 profile-styling gray-label"><%=user.getLastName()%>
+                        <div class="row" style="margin-bottom: 20px">
+                            <div class="col-md-2 profile-styling bold-name">
+                                Password
+                            </div>
+                            <div class="col-lg-2 profile-styling gray-label">********
+                            </div>
+                            <input type="password" id="password" name="password" placeholder="Enter New Password...">
+                            <input style="margin-left: 20px" id="confirm_password" type="password"
+                                   name="confirm_password" placeholder="Confirm Password...">
                         </div>
-                        <input type="text" name="change-last-name"
-                               placeholder="Enter Last Name...">
-                    </div>
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-md-2 profile-styling bold-name">
-                            Username
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Save Changes
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            Alazani</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Please enter current password to save changes</p>
+                                        <input style="width: 100%" type="password" id="current-password"
+                                               name="current-password" placeholder=" Enter Current Password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-2 profile-styling gray-label"><%=user.getUsername()%>
-                        </div>
-                        <input type="text" name="change-username"
-                               placeholder="Enter Username...">
-                    </div>
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-md-2 profile-styling bold-name">
-                            Password
-                        </div>
-                        <div class="col-lg-2 profile-styling gray-label">********
-                        </div>
-                        <input type="password" name="change-password"
-                               placeholder="Enter New Password...">
-                        <input style="margin-left: 20px" type="password" name="change-password-confirm"
-                               placeholder="Confirm Password...">
-                    </div>
-                    <button type="button" class="btn btn-warning change-button">Change</button>
+                    </form>
                     <div>
                         <p class="label-styling-bold-3">
                             Already Purchased<br>
@@ -129,4 +159,21 @@
     </div>
 </div>
 </body>
+<script>
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+        if (password.value !== confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+</script>
 </html>
