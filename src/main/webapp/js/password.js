@@ -12,12 +12,14 @@ function validateForm(isCart = false) {
                 if (isCart) {
                     const loader = $('<div class="circle-loader"><div class="checkmark draw"></div></div>');
                     $('.loader-wrapper-class').append(loader);
+                    $('.loader-text-class').html("Proceeding...");
 
                     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-                    wait(2000).then(() => function () {
+                    wait(2500).then(() => function () {
                             $('.circle-loader').toggleClass('load-complete');
                             $('.checkmark').toggle();
-                            wait(1000).then(() => document.getElementById("buy-form-id").submit());
+                            $('.loader-text-class').html("Transaction Completed!");
+                            wait(1400).then(() => document.getElementById("buy-form-id").submit());
                         }()
                     );
 

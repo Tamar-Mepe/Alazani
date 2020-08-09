@@ -70,9 +70,9 @@
                                   onsubmit="return validateForm(true)">
 
                                 <div class="modal-body">
-                                    <p>Please enter current password to save changes</p>
+                                    <p>Please enter password to confirm payment</p>
                                     <input style="width: 100%" type="password" id="current-password"
-                                           name="current-password" placeholder=" Enter Current Password">
+                                           name="current-password" placeholder=" Enter Password">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
@@ -81,6 +81,7 @@
                                 </div>
                                 <div class="loader-wrapper-class">
                                 </div>
+                                <p class="loader-text-class"></p>
                             </form>
                         </div>
                     </div>
