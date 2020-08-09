@@ -1,6 +1,5 @@
-function validateForm() {
+function validateForm(isCart = false) {
     const current_password = document.forms["changeForm"]["current-password"].value;
-
     let url = 'http://localhost:8080/ConfirmPassword';
     let result = false;
     $.ajax({
@@ -9,9 +8,23 @@ function validateForm() {
         async: false,
         data: {'current-password': current_password},
         success: function (data) {
-            console.log(data);
             if (data === "1") {
-                result = true;
+                if (isCart) {
+                    const loader = $('<div class="circle-loader"><div class="checkmark draw"></div></div>');
+                    $('.loader-wrapper-class').append(loader);
+
+                    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+                    wait(2000).then(() => function () {
+                            $('.circle-loader').toggleClass('load-complete');
+                            $('.checkmark').toggle();
+                            wait(1000).then(() => document.getElementById("buy-form-id").submit());
+                        }()
+                    );
+
+                    result = false;
+                } else {
+                    result = true;
+                }
             } else {
                 const elem = document.getElementById('pass-err-no-match');
                 if (!elem) {

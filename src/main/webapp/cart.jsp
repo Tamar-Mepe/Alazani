@@ -4,6 +4,8 @@
 <%@ page import="java.util.Map" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="css/loader.css">
+
 <%
     int id = (Integer) request.getSession().getAttribute(User.ATTRIBUTE_NAME);
     Map<Product, Integer> products = Cart.getProductsByUserId(id);
@@ -12,6 +14,8 @@
     <jsp:param name="title" value="Shopping Cart"/>
 </jsp:include>
 <body>
+<script src="js/password.js">
+</script>
 <div class="wrapper">
     <%--suppress CheckTagEmptyBody Sidebar--%>
     <jsp:include page="/sidebar.jsp"></jsp:include>
@@ -45,9 +49,43 @@
                     %>
                 </div>
                 <%if (products.size() != 0) {%>
-                <form method="post" action="BuyServlet">
-                    <button type="submit" class="btn btn-primary btn-lg cart-buttons">Buy All</button>
-                </form>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Buy All
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    Alazani</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="buy-form-id" name="changeForm" method="post" action="BuyServlet"
+                                  onsubmit="return validateForm(true)">
+
+                                <div class="modal-body">
+                                    <p>Please enter current password to save changes</p>
+                                    <input style="width: 100%" type="password" id="current-password"
+                                           name="current-password" placeholder=" Enter Current Password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Checkout</button>
+                                </div>
+                                <div class="loader-wrapper-class">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <%}%>
             </div>
         </main>
