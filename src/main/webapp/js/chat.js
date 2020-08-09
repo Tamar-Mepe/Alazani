@@ -10,7 +10,7 @@ function answerQuestion(idx) {
     const mainMsg = $('<div class="chat-message clearfix"></div>');
     const mainImg = $('<img src="../images/user.svg" alt="Bot" width="32" height="32">');
     const mainQuestions = $('<div class="chat-message-content clearfix"></div>');
-    const mainBot = $('<h5>User</h5>');
+    const mainBot = $('<h5 class="chat-label">You</h5>');
     var question = `${questions[idx]['question']}`;
     const mainText = $(`<p>${question}</p>`);
 
@@ -27,6 +27,11 @@ function answerQuestion(idx) {
 
     // 3. Ask Question again
     writeQuestions(questions, `${questions[idx]['answer']}<br>${QUESTION_TXT}`);
+    // document.getElementById('live-chat').scrollBy(0, 100); // Scroll 100px downwards
+
+    const elem = document.getElementById('chat-main');
+    elem.scrollTop = elem.scrollHeight;
+
 }
 
 /* WRITE QUESTIONS IN CHAT */
@@ -43,7 +48,7 @@ function writeQuestions(questions, text) {
     const mainMsg = $('<div class="chat-message clearfix"></div>');
     const mainImg = $('<img src="../images/bot.png" alt="Bot" width="32" height="32">');
     const mainQuestions = $('<div class="chat-message-content clearfix"></div>');
-    const mainBot = $('<h5>Bot</h5>');
+    const mainBot = $('<h5 class="chat-label">Alazani Chat Bot</h5>');
     const mainText = $(`<p>${text}</p>`);
 
     mainQuestions.append(mainBot);

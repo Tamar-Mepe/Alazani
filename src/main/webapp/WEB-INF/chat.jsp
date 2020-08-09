@@ -7,12 +7,12 @@
 <div id="live-chat">
     <header class="clearfix">
         <a href="#" class="chat-close">x</a>
-        <h4>Chat Bot</h4>
+        <h4>Alazani Chat Bot</h4>
         <span class="chat-message-counter">3</span>
     </header>
     <div class="chat">
         <div class="chat-history" id="chat-main">
-            <img src="../images/bot.png" alt="Bot">
+            <img class="main-bot-img" src="../images/bot.png" alt="Bot">
             <div class="chat-message clearfix">
             </div> <!-- end chat-message -->
         </div> <!-- end chat-history -->
