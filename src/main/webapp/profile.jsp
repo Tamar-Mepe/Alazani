@@ -32,12 +32,12 @@
                     Account Settings<br>
                 </p>
                 <div class="container">
-                    <form name="changeForm" onsubmit="return validateForm()">
+                    <form name="changeForm" method="post" action="/UpdateProfile" onsubmit="return validateForm()">
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-md-2 profile-styling bold-name">
                                 First Name
                             </div>
-                            <div class="col-lg-2 profile-styling gray-label"><%=user.getFirstName()%>
+                            <div class="col-lg-3 profile-styling gray-label"><%=user.getFirstName()%>
                             </div>
                             <input type="text" name="change-first-name"
                                    placeholder="Enter First Name...">
@@ -46,25 +46,25 @@
                             <div class="col-md-2 profile-styling bold-name">
                                 Last Name
                             </div>
-                            <div class="col-lg-2 profile-styling gray-label"><%=user.getLastName()%>
+                            <div class="col-lg-3 profile-styling gray-label"><%=user.getLastName()%>
                             </div>
                             <input type="text" name="change-last-name"
                                    placeholder="Enter Last Name...">
                         </div>
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-md-2 profile-styling bold-name">
-                                Username
+                                Email
                             </div>
-                            <div class="col-lg-2 profile-styling gray-label"><%=user.getUsername()%>
+                            <div class="col-lg-3 profile-styling gray-label"><%=user.getEmail()%>
                             </div>
-                            <input type="text" name="change-username"
-                                   placeholder="Enter Username...">
+                            <input type="email" name="change-email"
+                                   placeholder="Enter Email...">
                         </div>
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-md-2 profile-styling bold-name">
                                 Password
                             </div>
-                            <div class="col-lg-2 profile-styling gray-label">********
+                            <div class="col-lg-3 profile-styling gray-label">********
                             </div>
                             <input type="password" id="password" name="password" placeholder="Enter New Password...">
                             <input style="margin-left: 20px" id="confirm_password" type="password"
