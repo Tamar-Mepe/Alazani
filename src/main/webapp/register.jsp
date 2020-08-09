@@ -33,7 +33,7 @@
                    placeholder="Confirm Password">
         </div>
         <div class="form-group">
-            <input type="text" name="email" class="form-control item" id="email" placeholder="Email">
+            <input type="email" name="email" class="form-control item" id="email" placeholder="Email">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-block create-account">Create Account</button>
