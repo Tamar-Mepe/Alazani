@@ -6,12 +6,12 @@ function answerQuestion(idx) {
     // 1. Delete Old Questions
     $('.bot-questions').html('');
 
-    // 2. Add answer
+    // 2. Add question on user side
     const mainMsg = $('<div class="chat-message clearfix"></div>');
     const mainImg = $('<img src="../images/user.svg" alt="Bot" width="32" height="32">');
     const mainQuestions = $('<div class="chat-message-content clearfix"></div>');
     const mainBot = $('<h5 class="chat-label">You</h5>');
-    var question = `${questions[idx]['question']}`;
+    const question = `${questions[idx]['question']}`;
     const mainText = $(`<p>${question}</p>`);
 
     mainQuestions.append(mainBot);
@@ -25,12 +25,14 @@ function answerQuestion(idx) {
     mainChat.append('<hr>');
     mainChat.append(mainMsg);
 
-    // 3. Ask Question again
-    writeQuestions(questions, `${questions[idx]['answer']}<br>${QUESTION_TXT}`);
-    // document.getElementById('live-chat').scrollBy(0, 100); // Scroll 100px downwards
-
-    const elem = document.getElementById('chat-main');
-    elem.scrollTop = elem.scrollHeight;
+    // 3. add answer and as questions again
+    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    wait(1500).then(() => function () {
+            writeQuestions(questions, `${questions[idx]['answer']}<br>${QUESTION_TXT}`);
+            const elem = document.getElementById('chat-main');
+            elem.scrollTop = elem.scrollHeight;
+        }()
+    );
 
 }
 
@@ -86,7 +88,6 @@ $.ajax({
         writeQuestions(questions, `${WELCOME_TEXT}<br>${QUESTION_TXT}`);
     },
 });
-
 
 
 (function () {

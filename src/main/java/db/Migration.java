@@ -20,7 +20,6 @@ public class Migration {
         UserSeeder.Seed();
         CategorySeeder.Seed();
         ProductSeeder.Seed();
-        PurchaseSeeder.Seed();
         ReviewSeeder.Seed();
         BotSeeder.Seed();
     }
