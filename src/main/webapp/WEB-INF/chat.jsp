@@ -55,28 +55,29 @@
     </div> <!-- end chat -->
 </div> <!-- end live-chat -->
 <script>
+
     (function () {
         $('#live-chat header').on('click', function () {
             $('.chat').toggle(300, 'swing');
         });
     })();
+
+    // fetch questions
     url = 'http://localhost:8080/Questions';
-    // ToDo: Fix data is not returned in JSON (non string)
     $.ajax({
         type: 'GET',
         url: url,
+        async: false,
         context: document.body,
-        success: function(data){
-            var json = $.parseJSON(data); // create an object with the key of the array
-            alert(json.html); // where html is the key of array that you want, $response['html'] = "<a>something..</a>";
+        success: function (data) {
+            questions = data;
         },
-        error: function(data){
-            console.log(data.responseText);
-            var json = $.parseJSON(data.responseText);
-            console.log(json);
-            alert(json.error);
-        }
     });
+
+    // update questions
+    function writeQuestinos() {
+
+    }
 </script>
 
 </html>
