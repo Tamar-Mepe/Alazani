@@ -4,7 +4,6 @@
 
 * **DB** Interface
   ```java
-
   public interface DB {
       // Queries
       String createTableQuery(String tableName, Map<String, Object> fields);
@@ -99,5 +98,6 @@
   }
   ``` 
 
-* **In The end we have follwoing hierarchy**
+* **In the end we have the following hierarchy**
 ![DB_Graph](utils/images/DB_graph.jpg)
+
