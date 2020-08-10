@@ -285,3 +285,21 @@ select {
     margin-top: 20px;
     margin-bottom: 0px;
 }
+
+.password-error {
+    color: red;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.free-shipping {
+    font-style: italic;
+    font-size: 15px;
+    color: #ffb429;
+}

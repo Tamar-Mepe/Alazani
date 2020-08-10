@@ -49,8 +49,10 @@
                     %>
                 </div>
                 <%if (products.size() != 0) {%>
-
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <span class="total-price">TOTAL: $<%=Cart.totalPrice(id)%></span>
+                <span class="free-shipping"> + FREE SHIPPING </span><br>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        style="margin-top: 20px">
                     Buy All
                 </button>
 
@@ -68,7 +70,6 @@
                             </div>
                             <form id="buy-form-id" name="changeForm" method="post" action="BuyServlet"
                                   onsubmit="return validateForm(true)">
-
                                 <div class="modal-body">
                                     <p>Please enter password to confirm payment</p>
                                     <input style="width: 100%" type="password" id="current-password"

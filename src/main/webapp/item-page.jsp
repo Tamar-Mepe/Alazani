@@ -59,11 +59,13 @@
                             <button onclick="checkIfLogged()" type="submit" name="cartButton" id="buy-button"
                                     class="btn btn-primary btn-sm">Add
                                 To Cart
-                            </button><br>
+                            </button>
+                            <br>
                             <%
                                 Object err = request.getSession().getAttribute("error");
                                 if (err != null) {%>
-                            <label class="error-message-cant-add"><%=(String) err%></label>
+                            <label class="error-message-cant-add"><%=(String) err%>
+                            </label>
                             <%
                                     request.getSession().setAttribute("error", null);
                                 }

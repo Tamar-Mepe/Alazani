@@ -11,8 +11,9 @@
             <div class="col-md-6 mt-md-0 mt-3">
 
                 <!-- Content -->
-                <h5 class="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content.</p>
+                <h5 class="text-uppercase">Alazani</h5>
+                <p>One of the best online commerces that allow you to directly sell or buy goods from a seller over the
+                    Internet.</p>
 
             </div>
             <!-- Grid column -->

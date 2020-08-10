@@ -30,7 +30,7 @@ function validateForm(isCart = false) {
             } else {
                 const elem = document.getElementById('pass-err-no-match');
                 if (!elem) {
-                    const errMsg = $('<label id="pass-err-no-match" style="color:red" >Password Mismatch</label>');
+                    const errMsg = $('<label class="password-error" id="pass-err-no-match">Password Mismatch</label>');
                     $('.modal-body').append(errMsg);
                 }
                 result = false;

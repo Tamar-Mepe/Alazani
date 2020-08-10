@@ -125,4 +125,27 @@ class CartTest {
         Cart.removeCart(userId, prodId);
         assertEquals(0, Cart.getCartsByProductID(prodId).size());
     }
+
+    @Test
+    public void testTotalPrice() {
+        Product prod1 = Product.get(1);
+        Product prod2 = Product.get(2);
+        Product prod3 = Product.get(3);
+        Product prod4 = Product.get(4);
+
+        int userId = 1;
+        int quantity1 = 1;
+        int quantity2 = 4;
+        int quantity3 = 1;
+        int quantity4 = 2;
+
+        new Cart(userId, 1, quantity1).save();
+        new Cart(userId, 2, quantity2).save();
+        new Cart(userId, 3, quantity3).save();
+        new Cart(userId, 4, quantity4).save();
+
+        double expectedPrice = prod1.getPrice() * quantity1 + prod2.getPrice() * quantity2
+                + prod3.getPrice() * quantity3 + prod4.getPrice() * quantity4;
+        assertEquals(Cart.totalPrice(userId), expectedPrice);
+    }
 }

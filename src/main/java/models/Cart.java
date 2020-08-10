@@ -2,6 +2,7 @@ package models;
 
 import db.Fields;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -126,5 +127,14 @@ public class Cart extends BaseModel {
     public static List<Cart> getCartsByProductID(int productId) {
         List<Cart> Carts = Cart.getAll();
         return Carts.stream().filter(art -> art.getProductId() == productId).collect(Collectors.toList());
+    }
+
+    public static double totalPrice(int userId) {
+        Map<Product, Integer> mp = getProductsByUserId(userId);
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Double.parseDouble(df.format(mp.keySet()
+                .stream()
+                .map(product -> product.getPrice() * mp.get(product))
+                .reduce(0.0, Double::sum)));
     }
 }
