@@ -61,10 +61,6 @@ a:focus {
     text-align: center;
 }
 
-#sidebar .sidebar-header .alazani-label {
-    font-size: 2em;
-}
-
 #sidebar ul.components {
     padding: 20px 0;
     border-bottom: 1px solid #FF8C00;

@@ -2,9 +2,8 @@
 <%@ page import="java.util.List" %>
 <nav id="sidebar">
     <div class="sidebar-header">
-        <label class="alazani-label"><a href="/index.jsp">Alazani</a></label>
+        <a href="/index.jsp"><img src="images/alazani.png" width="100%"></a>
     </div>
-
     <ul class="list-unstyled components">
         <li class="active">
             <a id="href-id" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
