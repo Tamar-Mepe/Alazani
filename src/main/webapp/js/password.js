@@ -9,6 +9,7 @@ function validateForm(isCart = false) {
         data: {'current-password': current_password},
         success: function (data) {
             if (data === "1") {
+                $('.password-error').html("");
                 if (isCart) {
                     const loader = $('<div class="circle-loader"><div class="checkmark draw"></div></div>');
                     $('.loader-wrapper-class').append(loader);
