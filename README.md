@@ -49,7 +49,7 @@
       }
       
       ...
-      /* Ovverides of DB Interface */
+      /* Overrides of DB Interface */
       ...
   }
   ```
