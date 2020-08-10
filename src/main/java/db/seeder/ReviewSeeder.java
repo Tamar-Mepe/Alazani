@@ -26,7 +26,7 @@ public class ReviewSeeder {
             }
         };
 
-        for (int i = 0; i < 250; i++)
+        for (int i = 1; i < 250; i++)
             new Review(comments.get(rand.nextInt(comments.size())),
                     rand.nextInt(5) + 1,
                     users.get(rand.nextInt(users.size())).getId(),
