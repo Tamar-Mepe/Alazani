@@ -98,3 +98,6 @@
       }
   }
   ``` 
+
+* **In The end we have follwoing hierarchy**
+![DB_Graph](utils/images/DB_graph.jpg)
