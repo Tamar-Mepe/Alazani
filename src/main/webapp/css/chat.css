@@ -73,7 +73,7 @@ p {
     font-size: 12px;
     right: 24px;
     position: fixed;
-    width: 300px;
+    width: 320px;
     z-index: 1;
 }
 
@@ -150,13 +150,13 @@ p {
 }
 
 .chat-history {
-    height: 600px;
-    padding: 8px 24px;
+    height: 500px;
+    padding: 8px 15px;
     overflow-y: scroll;
 }
 
 .chat-message {
-    margin: 16px 0;
+    margin: 10px 0 8px;
 }
 
 .chat-message img {
@@ -165,7 +165,7 @@ p {
 }
 
 .chat-message-content {
-    margin-left: 56px;
+    margin-left: 50px;
 }
 
 .chat-time {
@@ -180,5 +180,15 @@ p {
 
 .chat-label {
     font-weight: bold;
+    font-size: 15px;
+}
+
+.question-button {
     font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.you-may-ask {
+
 }

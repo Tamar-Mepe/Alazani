@@ -1,5 +1,5 @@
 let questions = [];
-let QUESTION_TXT = 'What can I help you with?';
+let QUESTION_TXT = '<br>What is your question?<br>';
 
 /* EVENT ON QUESTION SELECETION */
 function answerQuestion(idx) {
@@ -8,7 +8,7 @@ function answerQuestion(idx) {
 
     // 2. Add question on user side
     const mainMsg = $('<div class="chat-message clearfix"></div>');
-    const mainImg = $('<img src="../images/user.svg" alt="Bot" width="32" height="32">');
+    const mainImg = $('<img src="../images/user.svg" alt="Bot" width="40" height="40">');
     const mainQuestions = $('<div class="chat-message-content clearfix"></div>');
     const mainBot = $('<h5 class="chat-label">You</h5>');
     const question = `${questions[idx]['question']}`;
@@ -39,7 +39,7 @@ function answerQuestion(idx) {
 /* WRITE QUESTIONS IN CHAT */
 function writeQuestions(questions, text) {
     function f(bot, i) {
-        const buttonTag = $(`<button type="button" class="btn btn-outline-dark" onclick="answerQuestion(${i})" id="${i}"></button>`);
+        const buttonTag = $(`<button type="button" class="btn btn-outline-dark question-button" onclick="answerQuestion(${i})" id="${i}"></button>`);
         const spanTag = $(`<span>${bot['question']}</span>`);
 
         buttonTag.append(spanTag);
@@ -48,7 +48,7 @@ function writeQuestions(questions, text) {
     }
 
     const mainMsg = $('<div class="chat-message clearfix"></div>');
-    const mainImg = $('<img src="../images/bot.png" alt="Bot" width="32" height="32">');
+    const mainImg = $('<img src="../images/bot.png" alt="Bot" width="40" height="40">');
     const mainQuestions = $('<div class="chat-message-content clearfix"></div>');
     const mainBot = $('<h5 class="chat-label">Alazani Chat Bot</h5>');
     const mainText = $(`<p>${text}</p>`);
@@ -72,11 +72,7 @@ function writeQuestions(questions, text) {
 
 /* FETCH QUESTIONS FROM SERVER */
 url = 'http://localhost:8080/Questions';
-WELCOME_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
-    'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
-    'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ' +
-    'irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
-    'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
+WELCOME_TEXT = 'Hello There! <br> Get answers on your question instantly using our chat bot.';
 
 $.ajax({
     type: 'GET',
