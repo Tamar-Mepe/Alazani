@@ -31,7 +31,14 @@
                         <label class="title-label"><%=currProd.getName()%>
                         </label><br>
                         <label class="seller-label">Added by: <%=User.get(currProd.getUserId()).getUsername()%>
-                        </label><br>
+                        </label><br><br>
+                        <div>
+                            <img src="images/star.png" alt="star" id="image-style">
+                            <label id="review-styling">
+                                <%=Review.getAverageReviewByProductId(id)%>/5
+                                (<%=Review.getReviewsByProductId(id).size()%>)
+                            </label>
+                        </div>
                         <% int quantity = currProd.getQuantity();
                             if (quantity > 0) { %>
                         <label class="quantity-label">Only <%=quantity%> Left in stock - order

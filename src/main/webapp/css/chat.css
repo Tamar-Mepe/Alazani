@@ -150,7 +150,7 @@ p {
 }
 
 .chat-history {
-    height: 500px;
+    height: 580px;
     padding: 8px 15px;
     overflow-y: scroll;
 }
@@ -187,8 +187,4 @@ p {
     font-size: 13px;
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-.you-may-ask {
-
 }

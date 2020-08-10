@@ -35,6 +35,7 @@ public class RegistrationServlet extends HttpServlet {
             request.setAttribute("error", errorMessage);
             RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
             view.forward(request, response);
+            return;
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
