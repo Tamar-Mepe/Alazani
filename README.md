@@ -3,12 +3,16 @@
 
 ### Table of Contents
 * **[Database](#Database)**
-   * **[DB](#DB)**
-   * **[MySQL](#MySQL)**
+   * **[DB Interface](#DB)**
+   * **[MySQL Class](#MySQL)**
    * **[Migrations](#Migrations)**
    * **[Seeders](#Seeders)**
    * **[DB-MySQL](#DB-MySQL)**
 * **[Models](#Models)**
+   * **[BaseModel](#BaseModel)**
+   * **[MySQL](#MySQL)**
+   * **[Migrations](#Migrations)**
+   * **[Seeders](#Seeders)**
 
 <a name="Database"></a>
 ## Database
@@ -118,4 +122,34 @@
 <a name="DB-MySQL"></a>
 * **In the end we have the following hierarchy**
 ![DB_Graph](utils/images/DB_graph.jpg)
+
+* **Models
+
+  * **BaseModel
+  
+  ```java
+
+  public class BaseModel {
+      ...
+      /* Constructors and util functions*/
+      ...
+      
+      /* CRUD Operations */
+      // Create object in Database
+      public Object save() {...}
+
+      // Read Object from Database
+      public static Map<String, String> getGeneric(String table_name, int id) {...}
+
+      // Update Object in Database
+      public boolean update() {...}
+
+      // Delete Object's record from Database
+      public void deleteRow() {...}
+
+      // Get all of Objects from Database
+      public static List<Map<String, String>> getAllGeneric(String table_name) {...}
+  }
+  ```
+
 
