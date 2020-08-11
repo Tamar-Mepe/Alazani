@@ -7,6 +7,7 @@
    * **[MySQL](#MySQL)**
    * **[Migrations](#Migrations)**
    * **[Seeders](#Seeders)**
+   * **[DB-MySQL](#DB-MySQL)**
 * **[Models](#Models)**
 
 <a name="Database"></a>
@@ -114,6 +115,7 @@
   }
   ``` 
 
+<a name="DB-MySQL"></a>
 * **In the end we have the following hierarchy**
 ![DB_Graph](utils/images/DB_graph.jpg)
 
