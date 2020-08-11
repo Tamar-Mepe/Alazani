@@ -10,9 +10,8 @@
    * **[DB-MySQL](#DB-MySQL)**
 * **[Models](#Models)**
    * **[BaseModel](#BaseModel)**
-   * **[MySQL](#MySQL)**
-   * **[Migrations](#Migrations)**
-   * **[Seeders](#Seeders)**
+   * **[Models-BaseModel](#Models-BaseModel)**
+   
 
 <a name="Database"></a>
 ## Database
@@ -123,9 +122,11 @@
 * **In the end we have the following hierarchy**
 ![DB_Graph](utils/images/DB_graph.jpg)
 
-* **Models
+<a name="Models"></a>
+* **Models**
 
-  * **BaseModel
+  <a name="BaseModel"></a>
+  * **BaseModel**
   
   ```java
 
@@ -153,3 +154,6 @@
   ```
 
 
+  <a name="Models-BaseModel"></a>
+  * **In the end we have the following hierarchy**
+  ![DB_Graph](utils/images/Models_graph.jpg)
