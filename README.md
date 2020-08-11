@@ -1,7 +1,18 @@
 # Alazani
 
+
+### Table of Contents
+* **[Database](#Database)**
+   * **[DB](#DB)**
+   * **[MySQL](#MySQL)**
+   * **[Migrations](#Migrations)**
+   * **[Seeders](#Seeders)**
+* **[Models](#Models)**
+
+<a name="Database"></a>
 ## Database
 
+<a name="DB"></a>
 * **DB** Interface
   ```java
   public interface DB {
@@ -23,7 +34,8 @@
       List<Map<String, String>> getAll(String tableName) throws SQLException;
   }
   ```
-
+  
+<a name="MySQL"></a>
 * **MySQL** Singleton Class (Implements DB Interface)
   ```java
   public class MySQL implements DB {
@@ -52,6 +64,8 @@
       ...
   }
   ```
+  
+<a name="Migrations"></a>
 * **Migrations**:
 
   * Table Creation/Dummy Data Initialization
@@ -84,6 +98,8 @@
       ...
   }
   ```
+  
+<a name="Seeders"></a>
 * **Seeders**:
   
   Project includes a simple method of seeding your database with test data using seed classes. See example below:
