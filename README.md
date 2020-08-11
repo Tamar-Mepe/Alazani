@@ -111,16 +111,16 @@
   ```java
   public class UserSeeder {
       public static void Seed() {
-          new User("Test", "User", BCrypt.hashpw("test", BCrypt.gensalt()), "test", "test@gmail.com").save();
-          new User("Admin", "Admin", BCrypt.hashpw("admin451", BCrypt.gensalt()), "GM", "admin@gmail.com").save();
+          new User("Test", "User", BCrypt.hashpw("test"), "test", "test@gmail.com").save();
+          new User("Admin", "Admin", BCrypt.hashpw("admin451"), "GM", "admin@gmail.com").save();
           ...
       }
   }
   ``` 
 
-<a name="DB-MySQL"></a>
-* **In the end we have the following hierarchy**
-![DB_Graph](utils/images/DB_graph.jpg)
+  <a name="DB-MySQL"></a>
+  * **In the end we have the following hierarchy**
+    ![DB_Graph](utils/images/DB_graph.jpg)
 
 <a name="Models"></a>
 * **Models**
@@ -128,6 +128,7 @@
   <a name="BaseModel"></a>
   * **BaseModel**
   
+  Any model that needs to be added should extend Basemodel class. Extending this class, describe DB fields and implementing `JavaToDB` and `DBToJava` will allow user's model to have all CRUD operations right away, without needing to affect and write DB queries.
   ```java
 
   public class BaseModel {
@@ -152,8 +153,57 @@
       public static List<Map<String, String>> getAllGeneric(String table_name) {...}
   }
   ```
+  
+  * **User Model** (example)
+  
+  User Model should:
+  1. extend `BaseModel`
+  2. Describe DB Fields
+  3. Implement JavaToDB
+  4. Implement DBToJava
+  
+  ```java
+  // 1. extend BaseModel
+  public class User extends BaseModel {
+      public static final String TABLE_NAME = "users";
+      
+      // 2. Describe DB Fields
+      public static final Map<String, Object> FIELDS = new LinkedHashMap<>();
+      static {
+          FIELDS.put("id", Fields.ID);
+          FIELDS.put("first_name", Fields.varchar(30));
+          FIELDS.put("last_name", Fields.varchar(30));
+          FIELDS.put("password", Fields.varchar(512));
+          FIELDS.put("username", Fields.varchar(32));
+          FIELDS.put("email", Fields.varchar(256));
+      }
+      
+      // 3. Implement JavaToDB
+      public Map<String, Object> JavaToDB() {
+          return new LinkedHashMap<String, Object>() {
+              {
+                  put("first_name", firstName);
+                  put("last_name", lastName);
+                  put("password", password);
+                  put("username", username);
+                  put("email", email);
+              }
+          };
+      }
 
-
+      // 4. Implement DBToJava
+      public static User DBToJava(Map<String, String> fields) {
+          User user = new User(fields.get("first_name"),
+                  fields.get("last_name"),
+                  fields.get("password"),
+                  fields.get("username"),
+                  fields.get("email"));
+          user.setId(Integer.parseInt(fields.get("id")));
+          return user;
+      }
+  }
+  ```
+  
   <a name="Models-BaseModel"></a>
   * **In the end we have the following hierarchy**
-  ![DB_Graph](utils/images/Models_graph.jpg)
+    ![DB_Graph](utils/images/Models_graph.jpg)
